@@ -1,13 +1,38 @@
-filetype plugin indent on
+" Vundle Plugin manager
+set nocompatible                        " Vundle requires no compatibility
+filetype off                            " Disable filetype detection while initialising
+set rtp+=~/.vim/bundle/Vundle.vim       " Include Vundle in runtimepath
+call vundle#begin()                     " Start plugin parsing
+"----------------------------------------
 
-" Enable pathogen (the git version)
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+Plugin 'VundleVim/Vundle.vim'           " Required plugin for Vundle to work properly
+Plugin 'vim-airline/vim-airline'        " Statusbar enhancements
+Plugin 'vim-airline/vim-airline-themes' " Enable themes for vim-airline
 
-" Improve search capabilities
+"----------------------------------------
+call vundle#end()                       " Stop plugin parsing
+filetype plugin indent on               " Detect filetype, plugins and indentation
 
+
+" Search
 set incsearch   " search as you type
 set ignorecase  " ignore case when searching…
 set smartcase   " … but not when an uppercase letter is present
 set hlsearch    " highlight search results
 
 
+" Line wrapping
+set backspace=indent,eol,start " enable backspacing in these chartypes
+
+
+" Editor
+syntax on          " Enable color syntax for known files
+set showmatch      " show match on parenthesis and curly braces
+set nobackup       " Don't create a backup file…
+set writebackup    " … unless you're currently editing.
+set encoding=utf-8 " make sure the encoding is the correct one
+set colorcolumn=90 " draws a bar on given line "
+set laststatus=2   " draws a status bar on the bottom
+
+
+" 
