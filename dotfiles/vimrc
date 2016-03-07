@@ -8,6 +8,8 @@ call vundle#begin()                     " Start plugin parsing
 Plugin 'VundleVim/Vundle.vim'           " Required plugin for Vundle to work properly
 Plugin 'vim-airline/vim-airline'        " Statusbar enhancements
 Plugin 'vim-airline/vim-airline-themes' " Enable themes for vim-airline
+Plugin 'scrooloose/nerdtree'            " file manager for vim
+Plugin 'tpope/vim-fugitive'             " Commands for git
 
 "----------------------------------------
 call vundle#end()                       " Stop plugin parsing
