@@ -1,2 +1,13 @@
-syntax on
 filetype plugin indent on
+
+" Enable pathogen (the git version)
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+" Improve search capabilities
+
+set incsearch   " search as you type
+set ignorecase  " ignore case when searching…
+set smartcase   " … but not when an uppercase letter is present
+set hlsearch    " highlight search results
+
+
