@@ -3,17 +3,67 @@ set nocompatible                        " Vundle requires no compatibility
 filetype off                            " Disable filetype detection while initialising
 set rtp+=~/.vim/bundle/Vundle.vim       " Include Vundle in runtimepath
 call vundle#begin()                     " Start plugin parsing
-"----------------------------------------
+"----------------------------------------------------------------------------------------
 
 Plugin 'VundleVim/Vundle.vim'           " Required plugin for Vundle to work properly
 Plugin 'vim-airline/vim-airline'        " Statusbar enhancements
 Plugin 'vim-airline/vim-airline-themes' " Enable themes for vim-airline
 Plugin 'scrooloose/nerdtree'            " file manager for vim
+Plugin 'scrooloose/syntastic'           " Enable syntax checking on steroids
 Plugin 'tpope/vim-fugitive'             " Commands for git
+Plugin 'tpope/vim-commentary'           " Comments/uncomments
+Plugin 'tpope/vim-ragtag'               " Autocloses xml style tags
+Plugin 'ctrlpvim/ctrlp.vim'             " Fuzzy file finder
+Plugin 'Raimondi/delimitMate'           " Automatically closes quotes, parens, brackets
 
-"----------------------------------------
+Plugin 'moll/vim-node'                , { 'for': 'javascript'      }  
+Plugin 'pangloss/vim-javascript'      , { 'for': 'javascript'      }  
+Plugin 'jelera/vim-javascript-syntax' , { 'for': 'javascript'      }  
+Plugin 'mattn/emmet-vim'              , { 'for': 'html'            }
+Plugin 'othree/html5.vim'             , { 'for': 'html'            }
+Plugin 'hail2u/vim-css3-syntax'       , { 'for': 'css'             }
+Plugin 'digitaltoad/vim-jade'         , { 'for': 'jade'            }
+Plugin 'wavded/vim-stylus'            , { 'for': 'stylus'          }
+Plugin 'ap/vim-css-color'             , { 'for': ['css', 'stylus'] }
+
+"----------------------------------------------------------------------------------------
 call vundle#end()                       " Stop plugin parsing
 filetype plugin indent on               " Detect filetype, plugins and indentation
+
+
+" General» Flags
+syntax on          " Enable color syntax for known files
+set title          " Vim will set the terminal title
+set magic          " Enables regex magic, no need for backslashes in some cases.
+set showcmd        " Shows the last command entered
+set wildmenu       " Enables extended features for completion
+set autoread       " Detect when a file has changed
+set showmatch      " show match on parenthesis and curly braces
+set nobackup       " Don't create a backup file…
+set writebackup    " … unless you're currently editing.
+set number         " Enable line numbers
+set autoindent     " Enable auto indentation
+set smartindent    " Determine indentation level automatically
+set nowrap         " Disable line wrapping
+
+
+" General» Config
+set scrolloff=9999             " Always maintain N lines of context
+set history=1000               " control the history length
+set textwidth=120              " Maximum length of a line
+set encoding=utf-8             " make sure the encoding is the correct one
+set colorcolumn=90             " draws a bar on given line "
+set laststatus=2               " draws a status bar on the bottom
+set wildmode=list:longest      " autocomplete until longest word is filled
+set backspace=indent,eol,start " enable backspacing in these chartypes
+
+" Tabs
+set noexpandtab    " Inserts tabs rather than spaces
+set smarttab       " tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
+set shiftround     " round indent to a multiple of 'shiftwidth'
+set tabstop=4      " Set tab length
+set softtabstop=4
+set shiftwidth=4
 
 
 " Search
@@ -24,17 +74,16 @@ set hlsearch    " highlight search results
 
 
 " Line wrapping
-set backspace=indent,eol,start " enable backspacing in these chartypes
+
+" UI
 
 
-" Editor
-syntax on          " Enable color syntax for known files
-set showmatch      " show match on parenthesis and curly braces
-set nobackup       " Don't create a backup file…
-set writebackup    " … unless you're currently editing.
-set encoding=utf-8 " make sure the encoding is the correct one
-set colorcolumn=90 " draws a bar on given line "
-set laststatus=2   " draws a status bar on the bottom
+" Plugin» Syntastic 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-
-" 
