@@ -1,8 +1,7 @@
 " Plugin manager
 call plug#begin('~/.vim/bundle')
 "----------------------------------------------------------------------------------------
-
-Plug 'VundleVim/Vundle.vim'           " Required plugin for Vundle to work properly
+Plug 'chriskempson/base16-vim'        " Enable theme sharing with xterm
 Plug 'vim-airline/vim-airline'        " Statusbar enhancements
 Plug 'vim-airline/vim-airline-themes' " Enable themes for vim-airline
 Plug 'scrooloose/nerdtree'            " file manager for vim
@@ -31,7 +30,6 @@ filetype plugin indent on               " Detect filetype, plugins and indentati
 
 " General» Flags
 syntax on          " Enable color syntax for known files
-set nocompatible   " We don't need no vi
 set title          " Vim will set the terminal title
 set magic          " Enables regex magic, no need for backslashes in some cases.
 set showcmd        " Shows the last command entered
@@ -55,7 +53,8 @@ set colorcolumn=90             " draws a bar on given line "
 set laststatus=2               " draws a status bar on the bottom
 set wildmode=list:longest      " autocomplete until longest word is filled
 set backspace=indent,eol,start " enable backspacing in these chartypes
-
+set foldcolumn=2               " makes the gutter a little wider
+set numberwidth=4              " sets the width of the line numbering column
 " Tabs
 set noexpandtab    " Inserts tabs rather than spaces
 set smarttab       " tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
@@ -72,12 +71,20 @@ set smartcase   " … but not when an uppercase letter is present
 set hlsearch    " highlight search results
 
 
+" Plugin» Base16
+if has('nvim')
+	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+	let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+	set background=dark
+	colorscheme base16-monokai
+endif
+
 " Plugin» Syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
