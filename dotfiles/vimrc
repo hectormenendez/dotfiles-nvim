@@ -1,38 +1,37 @@
-" Vundle Plugin manager
-set nocompatible                        " Vundle requires no compatibility
-filetype off                            " Disable filetype detection while initialising
-set rtp+=~/.vim/bundle/Vundle.vim       " Include Vundle in runtimepath
-call vundle#begin()                     " Start plugin parsing
+" Plugin manager
+call plug#begin('~/.vim/bundle')
 "----------------------------------------------------------------------------------------
 
-Plugin 'VundleVim/Vundle.vim'           " Required plugin for Vundle to work properly
-Plugin 'vim-airline/vim-airline'        " Statusbar enhancements
-Plugin 'vim-airline/vim-airline-themes' " Enable themes for vim-airline
-Plugin 'scrooloose/nerdtree'            " file manager for vim
-Plugin 'scrooloose/syntastic'           " Enable syntax checking on steroids
-Plugin 'tpope/vim-fugitive'             " Commands for git
-Plugin 'tpope/vim-commentary'           " Comments/uncomments
-Plugin 'tpope/vim-ragtag'               " Autocloses xml style tags
-Plugin 'ctrlpvim/ctrlp.vim'             " Fuzzy file finder
-Plugin 'Raimondi/delimitMate'           " Automatically closes quotes, parens, brackets
+Plug 'VundleVim/Vundle.vim'           " Required plugin for Vundle to work properly
+Plug 'vim-airline/vim-airline'        " Statusbar enhancements
+Plug 'vim-airline/vim-airline-themes' " Enable themes for vim-airline
+Plug 'scrooloose/nerdtree'            " file manager for vim
+Plug 'scrooloose/syntastic'           " Enable syntax checking on steroids
+Plug 'tpope/vim-fugitive'             " Commands for git
+Plug 'tpope/vim-commentary'           " Comments/uncomments
+Plug 'tpope/vim-ragtag'               " Autocloses xml style tags
+Plug 'ctrlpvim/ctrlp.vim'             " Fuzzy file finder
+Plug 'Raimondi/delimitMate'           " Automatically closes quotes, parens, brackets
 
-Plugin 'moll/vim-node'                , { 'for': 'javascript'      }  
-Plugin 'pangloss/vim-javascript'      , { 'for': 'javascript'      }  
-Plugin 'jelera/vim-javascript-syntax' , { 'for': 'javascript'      }  
-Plugin 'mattn/emmet-vim'              , { 'for': 'html'            }
-Plugin 'othree/html5.vim'             , { 'for': 'html'            }
-Plugin 'hail2u/vim-css3-syntax'       , { 'for': 'css'             }
-Plugin 'digitaltoad/vim-jade'         , { 'for': 'jade'            }
-Plugin 'wavded/vim-stylus'            , { 'for': 'stylus'          }
-Plugin 'ap/vim-css-color'             , { 'for': ['css', 'stylus'] }
+Plug 'moll/vim-node'                , { 'for': 'javascript'      }
+Plug 'pangloss/vim-javascript'      , { 'for': 'javascript'      }
+Plug 'jelera/vim-javascript-syntax' , { 'for': 'javascript'      }
+Plug 'mattn/emmet-vim'              , { 'for': 'html'            }
+Plug 'othree/html5.vim'             , { 'for': 'html'            }
+Plug 'hail2u/vim-css3-syntax'       , { 'for': 'css'             }
+Plug 'digitaltoad/vim-jade'         , { 'for': 'jade'            }
+Plug 'wavded/vim-stylus'            , { 'for': 'stylus'          }
+Plug 'ap/vim-css-color'             , { 'for': ['css', 'stylus'] }
 
 "----------------------------------------------------------------------------------------
-call vundle#end()                       " Stop plugin parsing
+call plug#end()                       " Stop plugin parsing
+
 filetype plugin indent on               " Detect filetype, plugins and indentation
 
 
 " General» Flags
 syntax on          " Enable color syntax for known files
+set nocompatible   " We don't need no vi
 set title          " Vim will set the terminal title
 set magic          " Enables regex magic, no need for backslashes in some cases.
 set showcmd        " Shows the last command entered
@@ -73,17 +72,12 @@ set smartcase   " … but not when an uppercase letter is present
 set hlsearch    " highlight search results
 
 
-" Line wrapping
-
-" UI
-
-
-" Plugin» Syntastic 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
+" Plugin» Syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"
