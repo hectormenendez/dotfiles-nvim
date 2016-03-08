@@ -11,6 +11,7 @@ Plug 'tpope/vim-commentary'           " Comments/uncomments
 Plug 'tpope/vim-ragtag'               " Autocloses xml style tags
 Plug 'ctrlpvim/ctrlp.vim'             " Fuzzy file finder
 Plug 'Raimondi/delimitMate'           " Automatically closes quotes, parens, brackets
+Plug 'nathanaelkane/vim-indent-guides' " Indentation
 
 Plug 'moll/vim-node'                , { 'for': 'javascript'      }
 Plug 'pangloss/vim-javascript'      , { 'for': 'javascript'      }
@@ -27,7 +28,6 @@ call plug#end()                       " Stop plugin parsing
 
 filetype plugin indent on               " Detect filetype, plugins and indentation
 
-
 " General» Flags
 syntax on          " Enable color syntax for known files
 set title          " Vim will set the terminal title
@@ -39,6 +39,7 @@ set showmatch      " show match on parenthesis and curly braces
 set nobackup       " Don't create a backup file…
 set writebackup    " … unless you're currently editing.
 set number         " Enable line numbers
+set relativenumber " Enable relative line numbering
 set autoindent     " Enable auto indentation
 set smartindent    " Determine indentation level automatically
 set nowrap         " Disable line wrapping
@@ -55,14 +56,14 @@ set wildmode=list:longest      " autocomplete until longest word is filled
 set backspace=indent,eol,start " enable backspacing in these chartypes
 set foldcolumn=2               " makes the gutter a little wider
 set numberwidth=4              " sets the width of the line numbering column
+
 " Tabs
-set noexpandtab    " Inserts tabs rather than spaces
+set expandtab      " Inserts spaces rather than tabs
 set smarttab       " tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
 set shiftround     " round indent to a multiple of 'shiftwidth'
 set tabstop=4      " Set tab length
 set softtabstop=4
 set shiftwidth=4
-
 
 " Search
 set incsearch   " search as you type
@@ -73,18 +74,42 @@ set hlsearch    " highlight search results
 
 " Plugin» Base16
 if has('nvim')
-	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-	let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-	set background=dark
-	colorscheme base16-monokai
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    set background=dark
+    colorscheme base16-monokai
 endif
 
 " Plugin» Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
 
+" Plugin» Airline
+let g:airline#extensions#tabline#enabled=1  " Enables buffers bar on top
+if has('nvim')
+    let g:airline_powerline_fonts=1
+    set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h12
+endif
+
+" Plugin» vim-indent-plugin
+let g:indent_guides_enable_on_vim_startup=1   " Enable plugin on startup
+let g:indent_guides_start_level=2             " In which indentation level begin marking
+let g:indent_guides_guide_size=1              " width of mark (only valid for spaces)
+let g:indent_guides_auto_colors=0             " Disable autocoloring, set'em manually
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#2c2c2c ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=3
+
+" Plugin» NerdTree
+let g:NERDTreeHighlightCursorLine=1 " Highlight the current line
+let g:NERDTreeQuitOnOpen=1          " Close buffer when opening a file
+
+" Emulate 'SublimeText' keyboard shortcut
+map <C-k><C-b> :NERDTreeToggle<CR>
+
+" Autoclose NerdTree when no buffers are open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
