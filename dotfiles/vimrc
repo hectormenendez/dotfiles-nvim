@@ -1,17 +1,18 @@
 " Plugin manager
 call plug#begin('~/.vim/bundle')
 "----------------------------------------------------------------------------------------
-Plug 'chriskempson/base16-vim'        " Enable theme sharing with xterm
-Plug 'vim-airline/vim-airline'        " Statusbar enhancements
-Plug 'vim-airline/vim-airline-themes' " Enable themes for vim-airline
-Plug 'scrooloose/nerdtree'            " file manager for vim
-Plug 'scrooloose/syntastic'           " Enable syntax checking on steroids
-Plug 'tpope/vim-fugitive'             " Commands for git
-Plug 'tpope/vim-commentary'           " Comments/uncomments
-Plug 'tpope/vim-ragtag'               " Autocloses xml style tags
-Plug 'ctrlpvim/ctrlp.vim'             " Fuzzy file finder
-Plug 'Raimondi/delimitMate'           " Automatically closes quotes, parens, brackets
+Plug 'chriskempson/base16-vim'         " Enable theme sharing with xterm
+Plug 'vim-airline/vim-airline'         " Statusbar enhancements
+Plug 'vim-airline/vim-airline-themes'  " Enable themes for vim-airline
+Plug 'scrooloose/nerdtree'             " file manager for vim
+Plug 'scrooloose/syntastic'            " Enable syntax checking on steroids
+Plug 'tpope/vim-fugitive'              " Commands for git
+Plug 'tpope/vim-commentary'            " Comments/uncomments
+Plug 'tpope/vim-ragtag'                " Autocloses xml style tags
+Plug 'ctrlpvim/ctrlp.vim'              " Fuzzy file finder
+Plug 'Raimondi/delimitMate'            " Automatically closes quotes, parens, brackets
 Plug 'nathanaelkane/vim-indent-guides' " Indentation
+Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
 
 Plug 'moll/vim-node'                , { 'for': 'javascript'      }
 Plug 'pangloss/vim-javascript'      , { 'for': 'javascript'      }
