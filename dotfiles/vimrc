@@ -13,7 +13,7 @@ Plug 'ctrlpvim/ctrlp.vim'              " Fuzzy file finder
 Plug 'Raimondi/delimitMate'            " Automatically closes quotes, parens, brackets
 Plug 'nathanaelkane/vim-indent-guides' " Indentation
 Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
-Plug 'junegunn/vim-easy-plugin'        " Enable alignment plugin
+Plug 'junegunn/vim-easy-align'         " Enable alignment plugin
 
 Plug 'moll/vim-node'                , { 'for': 'javascript'      }
 Plug 'pangloss/vim-javascript'      , { 'for': 'javascript'      }
