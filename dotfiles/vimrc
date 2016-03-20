@@ -13,8 +13,9 @@ Plug 'ctrlpvim/ctrlp.vim'              " Fuzzy file finder
 Plug 'Raimondi/delimitMate'            " Automatically closes quotes, parens, brackets
 Plug 'nathanaelkane/vim-indent-guides' " Indentation
 Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
-Plug 'junegunn/vim-easy-align'         " Enable alignment plugin
+Plug 'godlygeek/tabular'               " Enable spacing with regex
 
+Plug 'plasticboy/vim-markdown'      , { 'for': 'markdown'        }
 Plug 'moll/vim-node'                , { 'for': 'javascript'      }
 Plug 'pangloss/vim-javascript'      , { 'for': 'javascript'      }
 Plug 'jelera/vim-javascript-syntax' , { 'for': 'javascript'      }
@@ -46,12 +47,10 @@ set autoindent     " Enable auto indentation
 set smartindent    " Determine indentation level automatically
 set nowrap         " Disable line wrapping
 
-
-" General» Config
-set scrolloff=9999             " Always maintain N lines of context
+" general» config
+set scrolloff=9999             " always maintain n lines of context
 set history=1000               " control the history length
-set textwidth=120              " Maximum length of a line
-set encoding=utf-8             " make sure the encoding is the correct one
+set textwidth=120              " maximum length of a line
 set colorcolumn=90             " draws a bar on given line "
 set laststatus=2               " draws a status bar on the bottom
 set wildmode=list:longest      " autocomplete until longest word is filled
@@ -74,12 +73,16 @@ set smartcase   " … but not when an uppercase letter is present
 set hlsearch    " highlight search results
 
 
-" Plugin» Base16
+" Neovim-only settings
 if has('nvim')
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-    set background=dark
-    colorscheme base16-monokai
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Enable 24bit colors when supported
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
+    set background=dark                 " Use default colors for dark background
+    colorscheme base16-monokai          " Set the color scheme
+
+" Options not supported by Neovim
+else
+    set encoding=utf-8 " make sure the encoding is the correct one
 endif
 
 " Plugin» Syntastic
@@ -122,3 +125,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object
 nmap ga <Plug>(EasyAlign)
+
+" Disable folding for markdown
+let g:vim_markdown_folding_disabled = 1
