@@ -98,7 +98,7 @@ let g:syntastic_check_on_wq=0
 let g:airline#extensions#tabline#enabled=1  " Enables buffers bar on top
 if has('nvim')
     let g:airline_powerline_fonts=1
-    set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h12
+    set guifont=Hack:h12
 endif
 
 " Plugin» vim-indent-plugin
@@ -113,18 +113,18 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=3
 let g:NERDTreeHighlightCursorLine=1 " Highlight the current line
 let g:NERDTreeQuitOnOpen=1          " Close buffer when opening a file
 
-" Emulate 'SublimeText' keyboard shortcut
+" Plugin» NerdTree» Emulate SublimeText's keys
 map <C-k><C-b> :NERDTreeToggle<CR>
 map kb <Plug>(NERDTreeToggle)
 
-" Autoclose NerdTree when no buffers are open
+" Plugin» NerdTree» Close NerdTree whrn there's no other buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Start interactive EasyAlign in visual mode
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object
-nmap ga <Plug>(EasyAlign)
-
-" Disable folding for markdown
+" Plugin» Markdown» Disable folding
 let g:vim_markdown_folding_disabled = 1
+
+" Plugin» CtrlP
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]\.(git|hg|svn)$',
+    \ 'file': ''
+\}
