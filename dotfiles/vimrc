@@ -5,6 +5,7 @@ Plug 'chriskempson/base16-vim'         " Enable theme sharing with xterm
 Plug 'vim-airline/vim-airline'         " Statusbar enhancements
 Plug 'vim-airline/vim-airline-themes'  " Enable themes for vim-airline
 Plug 'scrooloose/nerdtree'             " file manager for vim
+Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 Plug 'scrooloose/syntastic'            " Enable syntax checking on steroids
 Plug 'tpope/vim-fugitive'              " Commands for git
 Plug 'tpope/vim-commentary'            " Comments/uncomments
