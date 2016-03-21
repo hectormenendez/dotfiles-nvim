@@ -165,9 +165,9 @@ let g:gutentags_exclude=['*/node_modules/*','*.min.js']
 "----------------------------------------------------------------------------------------
 
 " Mapping» normal mode
-nmap <leader>si :set list!<CR>
-nmap <leader>nt :NERDTreeToggle<CR>
-nmap <leader>gt :GutentagsUpdate<CR>
+nnoremap <leader>si :set list!<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>gt :GutentagsUpdate<CR>
 "                                                                          :AUTO-COMMANDS
 "----------------------------------------------------------------------------------------
 " Make NerdTree close when no other buffer exists
