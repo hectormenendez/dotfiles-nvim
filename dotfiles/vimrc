@@ -16,6 +16,7 @@ Plug 'nathanaelkane/vim-indent-guides' " Indentation
 Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
 Plug 'godlygeek/tabular'               " Enable spacing with regex
 Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
+Plug 'esneider/YUNOcommit.vim'         " Shows a message if no commits are made in a while
 
 Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -114,7 +115,6 @@ let g:syntastic_error_symbol='✘'               " Customize error symbol
 let g:syntastic_warning_symbol='➜'             " Customize warning symbol
 let g:syntastic_vim_checkers=['vint']          " Define the linter for vim
 let g:syntastic_javascript_checkers=['eslint'] " Define the linter for javascript
-
 
 " Plugin» Airline
 let g:airline#extensions#tabline#enabled=1  " Enables buffers bar on top
