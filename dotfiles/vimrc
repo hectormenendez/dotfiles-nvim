@@ -18,6 +18,7 @@ Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
 Plug 'godlygeek/tabular'               " Enable spacing with regex
 Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 Plug 'esneider/YUNOcommit.vim'         " Shows a message if no commits are made in a while
+Plug 'ludovicchabant/vim-gutentags'    " Automated tag management
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -155,14 +156,15 @@ let g:ctrlp_custom_ignore = {
 " Plugin» javascript-libraries-syntax
 let g:used_javascript_libs='underscore,react,chai'
 
-
+" plugin» gutentag»
+let g:gutentags_exclude=['*/node_modules/*','*.min.js']
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
 " Mapping» normal mode
 nmap <leader>si :set list!<CR>
 nmap <leader>nt :NERDTreeToggle<CR>
-
+nmap <leader>gt :GutentagsUpdate<CR>
 "                                                                          :AUTO-COMMANDS
 "----------------------------------------------------------------------------------------
 " Make NerdTree close when no other buffer exists
