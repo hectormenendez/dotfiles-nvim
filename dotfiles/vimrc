@@ -67,7 +67,7 @@ set textwidth=100              " buffer» maximum length of a line
 set colorcolumn=90             " buffer» draws a bar on given line
 set laststatus=2               " buffer» draws a status bar on the bottom
 set foldcolumn=2               " gutter» Makes the gutter a little wider
-set numberwidth=3              " gutter» Sets the width of the line numbering column
+set numberwidth=4              " gutter» Sets the width of the line numbering column
 set backspace=indent,eol,start " indent» Make backspace behave the way you expect
 set tabstop=4                  " indent» Set tab length
 set softtabstop=4              " indent» Force softtabbing
@@ -80,20 +80,31 @@ let mapleader=' ' " Use space as <Leader> key for plugins namespace
 set listchars=tab:▸-,space:·,eol:¬,trail:·,nbsp:_
 nmap <leader>ti :set list!<CR>
 
+" General» colorscheme (TODO: These should be on the color scheme file)
+autocmd VimEnter,Colorscheme * highlight ExtraWhitespace  guibg=#ff0000 ctermbg=1
+autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd  guibg=#2c2c2c ctermbg=3
+autocmd VimEnter,Colorscheme * highlight IndentGuidesEven guibg=#3c3c3c ctermbg=3
+
+" General» whitespace matching
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/        " Highlight trailing whitespace
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ " Disable highlight on insert
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/        " …but reenable it afterwards
+autocmd BufWinLeave * call clearmatches()                  " Apply matching to new buffers
+
 " Neovim-only settings
 if has('nvim')
-    
+
     " Neovim» settings
     set background=dark        " Use default colors for dark background
     colorscheme base16-monokai " Set the color scheme
-    
+
     " Neovim» variables
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Enable 24bit colors when supported
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
 
 " Options not supported by Neovim
-else 
-    
+else
+
     " Vim» settings
     set encoding=utf-8 " make sure the encoding is the correct one
 
@@ -129,9 +140,7 @@ let g:indent_guides_start_level=2             " In which indentation level begin
 let g:indent_guides_guide_size=1              " width of mark (only valid for spaces)
 let g:indent_guides_auto_colors=0             " Disable autocoloring, set'em manually
 let g:indent_guides_exclude_filetypes = []
-" TODO: This should be on the color scheme file
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#2c2c2c ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=3
+
 
 " Plugin» NerdTree
 let g:NERDTreeHighlightCursorLine=1 " Highlight the current line
