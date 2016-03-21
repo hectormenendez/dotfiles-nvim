@@ -9,6 +9,7 @@ Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 Plug 'scrooloose/syntastic'            " Enable syntax checking on steroids
 Plug 'tpope/vim-fugitive'              " Commands for git
 Plug 'tpope/vim-commentary'            " Comments/uncomments
+Plug 'tpope/vim-sleuth'                " Auto-adjust tabbing settings according to file
 Plug 'tpope/vim-ragtag'                " Autocloses xml style tags
 Plug 'ctrlpvim/ctrlp.vim'              " Fuzzy file finder
 Plug 'Raimondi/delimitMate'            " Automatically closes quotes, parens, brackets
