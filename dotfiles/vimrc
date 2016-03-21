@@ -1,6 +1,7 @@
-" Plugin manager
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.vim/bundle')                                                  " :PLUG
 "----------------------------------------------------------------------------------------
+
+" plug» on-load»
 Plug 'chriskempson/base16-vim'         " Enable theme sharing with xterm
 Plug 'vim-airline/vim-airline'         " Statusbar enhancements
 Plug 'vim-airline/vim-airline-themes'  " Enable themes for vim-airline
@@ -18,10 +19,9 @@ Plug 'godlygeek/tabular'               " Enable spacing with regex
 Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 Plug 'esneider/YUNOcommit.vim'         " Shows a message if no commits are made in a while
 
-Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
+" plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
-Plug 'pangloss/vim-javascript'                , { 'for': 'javascript'      }
-Plug 'othree/yajs.vim'                        , { 'for': 'javascript'      }
+Plug 'othree/yajs.vim'                        , { 'for': 'javascript'      } " JS syntax
 Plug 'othree/es.next.syntax.vim'              , { 'for': 'javascript'      }
 Plug 'othree/javascript-libraries-syntax.vim' , { 'for': 'javascript'      }
 Plug 'othree/html5.vim'                       , { 'for': 'html'            }
@@ -30,13 +30,16 @@ Plug 'hail2u/vim-css3-syntax'                 , { 'for': 'css'             }
 Plug 'digitaltoad/vim-jade'                   , { 'for': 'jade'            }
 Plug 'wavded/vim-stylus'                      , { 'for': 'stylus'          }
 Plug 'ap/vim-css-color'                       , { 'for': ['css', 'stylus'] }
+Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
 
 "----------------------------------------------------------------------------------------
-call plug#end()                       " Stop plugin parsing
+call plug#end()
+filetype plugin indent on
 
-filetype plugin indent on               " Detect filetype, plugins and indentation
+"                                                                                :GENERAL
+"----------------------------------------------------------------------------------------
 
-" General» Flags
+" general»flags»
 syntax on          " Enable color syntax for known files
 set title          " Vim will set the terminal title
 set magic          " Enables regex magic, no need for backslashes in some cases.
@@ -59,7 +62,7 @@ set expandtab      " indent» Inserts spaces rather than tabs
 set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
 set shiftround     " indent» round indent to a multiple of 'shiftwidth'
 
-" General» settings
+" general» settings»
 set wildmode=list:longest      " autocomplete until longest word is filled
 set scrolloff=9999             " buffer» Always maintain n lines of context
 set history=1000               " buffer» Control the history length
@@ -72,43 +75,38 @@ set backspace=indent,eol,start " indent» Make backspace behave the way you expe
 set tabstop=4                  " indent» Set tab length
 set softtabstop=4              " indent» Force softtabbing
 set shiftwidth=4               " indent» How many columns to indent on reindent operations
+set listchars=                 " indent» How invisibles will look when shown
+    \tab:▸-,
+    \space:·,
+    \eol:¬,
+    \trail:·,
+    \nbsp:_
 
-" General» variables
+" general» vars»
 let mapleader=' ' " Use space as <Leader> key for plugins namespace
 
-" General» Invisibles
-set listchars=tab:▸-,space:·,eol:¬,trail:·,nbsp:_
-nmap <leader>ti :set list!<CR>
 
-" General» colorscheme (TODO: These should be on the color scheme file)
-autocmd VimEnter,Colorscheme * highlight ExtraWhitespace  guibg=#ff0000 ctermbg=1
-autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd  guibg=#2c2c2c ctermbg=3
-autocmd VimEnter,Colorscheme * highlight IndentGuidesEven guibg=#3c3c3c ctermbg=3
-
-" General» whitespace matching
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/        " Highlight trailing whitespace
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ " Disable highlight on insert
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/        " …but reenable it afterwards
-autocmd BufWinLeave * call clearmatches()                  " Apply matching to new buffers
-
-" Neovim-only settings
+" general» neovim»
 if has('nvim')
 
-    " Neovim» settings
+    " neovim» settings»
     set background=dark        " Use default colors for dark background
     colorscheme base16-monokai " Set the color scheme
 
-    " Neovim» variables
+    " neovim» vars»
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Enable 24bit colors when supported
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
 
-" Options not supported by Neovim
+" general» vim»
 else
 
-    " Vim» settings
+    " vim» settings»
     set encoding=utf-8 " make sure the encoding is the correct one
 
 endif
+
+"                                                                       :PLUGIN-SETTINGS
+"----------------------------------------------------------------------------------------
 
 " Plugin» Syntastic
 set statusline+=%#warningmsg#
@@ -139,28 +137,44 @@ let g:indent_guides_enable_on_vim_startup=1   " Enable plugin on startup
 let g:indent_guides_start_level=2             " In which indentation level begin marking
 let g:indent_guides_guide_size=1              " width of mark (only valid for spaces)
 let g:indent_guides_auto_colors=0             " Disable autocoloring, set'em manually
-let g:indent_guides_exclude_filetypes = []
-
+let g:indent_guides_exclude_filetypes=[]
 
 " Plugin» NerdTree
 let g:NERDTreeHighlightCursorLine=1 " Highlight the current line
 let g:NERDTreeQuitOnOpen=1          " Close buffer when opening a file
 
-" Plugin» NerdTree» Emulate SublimeText's keys
-map <C-k><C-b> :NERDTreeToggle<CR>
-map kb <Plug>(NERDTreeToggle)
-
-" Plugin» NerdTree» Close NerdTree whrn there's no other buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " Plugin» Markdown» Disable folding
-let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_disabled=1
 
 " Plugin» CtrlP
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/]\.(git|hg|svn)$',
-    \ 'file': ''
+    \'dir': '\v[\/]\.(git|hg|svn)$',
+    \'file': ''
 \}
 
 " Plugin» javascript-libraries-syntax
-let g:used_javascript_libs = 'underscore,react,chai'
+let g:used_javascript_libs='underscore,react,chai'
+
+
+"                                                                                :MAPPING
+"----------------------------------------------------------------------------------------
+
+" Mapping» normal mode
+nmap <leader>si :set list!<CR>
+nmap <leader>nt :NERDTreeToggle<CR>
+
+"                                                                          :AUTO-COMMANDS
+"----------------------------------------------------------------------------------------
+" Make NerdTree close when no other buffer exists
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Show Indentation Lines and ExtraWhitespace [TODO: Should be inside the colorscheme]
+autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd  guibg=#2c2c2c ctermbg=3
+autocmd VimEnter,Colorscheme * highlight IndentGuidesEven guibg=#3c3c3c ctermbg=3
+autocmd VimEnter,Colorscheme * highlight ExtraWhitespace  guibg=#ff0000 ctermbg=1
+
+" ExtraWhiteSpace Matching
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/        " Highlight trailing whitespace
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ " Disable highlight on insert
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/        " …but reenable it afterwards
+autocmd BufWinLeave * call clearmatches()                  " Apply matching to new buffers
