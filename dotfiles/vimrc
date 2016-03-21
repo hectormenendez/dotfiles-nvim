@@ -45,48 +45,57 @@ set autoread       " Detect when a file has changed
 set showmatch      " show match on parenthesis and curly braces
 set nobackup       " Don't create a backup file…
 set writebackup    " … unless you're currently editing.
-set number         " Enable line numbers
-set relativenumber " Enable relative line numbering
-set autoindent     " Enable auto indentation
-set smartindent    " Determine indentation level automatically
-set nowrap         " Disable line wrapping
+set number         " lines» Enable line numbers
+set relativenumber " lines» Enable relative line numbering
+set nowrap         " lines» Disable line wrapping
+set incsearch      " search» Search as you type
+set hlsearch       " search» Highlight search results
+set ignorecase     " search» Ignore case when searching…
+set smartcase      " search» … but not when an uppercase letter is present
+set autoindent     " indent» Enable auto indentation
+set smartindent    " indent» Determine indentation level automatically
+set expandtab      " indent» Inserts spaces rather than tabs
+set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
+set shiftround     " indent» round indent to a multiple of 'shiftwidth'
 
-" general» config
-set scrolloff=9999             " always maintain n lines of context
-set history=1000               " control the history length
-set textwidth=120              " maximum length of a line
-set colorcolumn=90             " draws a bar on given line "
-set laststatus=2               " draws a status bar on the bottom
+" General» settings
 set wildmode=list:longest      " autocomplete until longest word is filled
-set backspace=indent,eol,start " enable backspacing in these chartypes
-set foldcolumn=2               " makes the gutter a little wider
-set numberwidth=4              " sets the width of the line numbering column
+set scrolloff=9999             " buffer» Always maintain n lines of context
+set history=1000               " buffer» Control the history length
+set textwidth=100              " buffer» maximum length of a line
+set colorcolumn=90             " buffer» draws a bar on given line
+set laststatus=2               " buffer» draws a status bar on the bottom
+set foldcolumn=2               " gutter» Makes the gutter a little wider
+set numberwidth=3              " gutter» Sets the width of the line numbering column
+set backspace=indent,eol,start " indent» Make backspace behave the way you expect
+set tabstop=4                  " indent» Set tab length
+set softtabstop=4              " indent» Force softtabbing
+set shiftwidth=4               " indent» How many columns to indent on reindent operations
 
-" Tabs
-set expandtab      " Inserts spaces rather than tabs
-set smarttab       " tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
-set shiftround     " round indent to a multiple of 'shiftwidth'
-set tabstop=4      " Set tab length
-set softtabstop=4
-set shiftwidth=4
+" General» variables
+let mapleader=' ' " Use space as <Leader> key for plugins namespace
 
-" Search
-set incsearch   " search as you type
-set ignorecase  " ignore case when searching…
-set smartcase   " … but not when an uppercase letter is present
-set hlsearch    " highlight search results
-
+" General» Invisibles
+set listchars=tab:▸-,space:·,eol:¬,trail:·,nbsp:_
+nmap <leader>ti :set list!<CR>
 
 " Neovim-only settings
 if has('nvim')
+    
+    " Neovim» settings
+    set background=dark        " Use default colors for dark background
+    colorscheme base16-monokai " Set the color scheme
+    
+    " Neovim» variables
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Enable 24bit colors when supported
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
-    set background=dark                 " Use default colors for dark background
-    colorscheme base16-monokai          " Set the color scheme
 
 " Options not supported by Neovim
-else
+else 
+    
+    " Vim» settings
     set encoding=utf-8 " make sure the encoding is the correct one
+
 endif
 
 " Plugin» Syntastic
