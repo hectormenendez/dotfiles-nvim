@@ -17,16 +17,18 @@ Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
 Plug 'godlygeek/tabular'               " Enable spacing with regex
 Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 
-Plug 'plasticboy/vim-markdown'      , { 'for': 'markdown'        }
-Plug 'moll/vim-node'                , { 'for': 'javascript'      }
-Plug 'pangloss/vim-javascript'      , { 'for': 'javascript'      }
-Plug 'jelera/vim-javascript-syntax' , { 'for': 'javascript'      }
-Plug 'mattn/emmet-vim'              , { 'for': 'html'            }
-Plug 'othree/html5.vim'             , { 'for': 'html'            }
-Plug 'hail2u/vim-css3-syntax'       , { 'for': 'css'             }
-Plug 'digitaltoad/vim-jade'         , { 'for': 'jade'            }
-Plug 'wavded/vim-stylus'            , { 'for': 'stylus'          }
-Plug 'ap/vim-css-color'             , { 'for': ['css', 'stylus'] }
+Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
+Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
+Plug 'pangloss/vim-javascript'                , { 'for': 'javascript'      }
+Plug 'othree/yajs.vim'                        , { 'for': 'javascript'      }
+Plug 'othree/es.next.syntax.vim'              , { 'for': 'javascript'      }
+Plug 'othree/javascript-libraries-syntax.vim' , { 'for': 'javascript'      }
+Plug 'othree/html5.vim'                       , { 'for': 'html'            }
+Plug 'mattn/emmet-vim'                        , { 'for': 'html'            }
+Plug 'hail2u/vim-css3-syntax'                 , { 'for': 'css'             }
+Plug 'digitaltoad/vim-jade'                   , { 'for': 'jade'            }
+Plug 'wavded/vim-stylus'                      , { 'for': 'stylus'          }
+Plug 'ap/vim-css-color'                       , { 'for': ['css', 'stylus'] }
 
 "----------------------------------------------------------------------------------------
 call plug#end()                       " Stop plugin parsing
@@ -141,3 +143,6 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/]\.(git|hg|svn)$',
     \ 'file': ''
 \}
+
+" Plugin» javascript-libraries-syntax
+let g:used_javascript_libs = 'underscore,react,chai'
