@@ -5,17 +5,17 @@ Plug 'chriskempson/base16-vim'         " Enable theme sharing with xterm
 Plug 'vim-airline/vim-airline'         " Statusbar enhancements
 Plug 'vim-airline/vim-airline-themes'  " Enable themes for vim-airline
 Plug 'scrooloose/nerdtree'             " file manager for vim
-Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 Plug 'scrooloose/syntastic'            " Enable syntax checking on steroids
 Plug 'tpope/vim-fugitive'              " Commands for git
 Plug 'tpope/vim-commentary'            " Comments/uncomments
 Plug 'tpope/vim-sleuth'                " Auto-adjust tabbing settings according to file
 Plug 'tpope/vim-ragtag'                " Autocloses xml style tags
 Plug 'ctrlpvim/ctrlp.vim'              " Fuzzy file finder
-Plug 'Raimondi/delimitMate'            " Automatically closes quotes, parens, brackets
+Plug 'jiangmiao/auto-pairs'            " Insert or delete [, (, {, or ' in pairs
 Plug 'nathanaelkane/vim-indent-guides' " Indentation
 Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
 Plug 'godlygeek/tabular'               " Enable spacing with regex
+Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 
 Plug 'plasticboy/vim-markdown'      , { 'for': 'markdown'        }
 Plug 'moll/vim-node'                , { 'for': 'javascript'      }
@@ -91,10 +91,19 @@ endif
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
+let g:syntastic_always_populate_loc_list=1     " Make sure the error checklist is populated
+let g:syntastic_auto_loc_list=1                " Automatically open error checklist
+let g:syntastic_check_on_open=1                " Check errors on file open
+let g:syntastic_check_on_wq=0                  " Check errors on write, quit
+let g:syntastic_enable_signs=1                 " Make sure that signs are always shown
+let g:syntastic_enable_hightlighting=1         " Highlight errors
+let g:syntastic_enable_balloons=1              " Show errors on balloons when mouse passes over
+let g:syntastic_echo_current_error=1           " Show error con command window
+let g:syntastic_error_symbol='✘'               " Customize error symbol
+let g:syntastic_warning_symbol='➜'             " Customize warning symbol
+let g:syntastic_vim_checkers=['vint']          " Define the linter for vim
+let g:syntastic_javascript_checkers=['eslint'] " Define the linter for javascript
+
 
 " Plugin» Airline
 let g:airline#extensions#tabline#enabled=1  " Enables buffers bar on top
