@@ -19,6 +19,7 @@ Plug 'godlygeek/tabular'               " Enable spacing with regex
 Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 Plug 'esneider/YUNOcommit.vim'         " Shows a message if no commits are made in a while
 Plug 'ludovicchabant/vim-gutentags'    " Automated tag management
+Plug 'wakatime/vim-wakatime'           " Keep track of time spent on vim
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -42,11 +43,13 @@ filetype plugin indent on
 
 " general»flags»
 syntax on          " Enable color syntax for known files
+set nospell        " Disable spelling checking
 set title          " Vim will set the terminal title
 set magic          " Enables regex magic, no need for backslashes in some cases.
 set showcmd        " Shows the last command entered
 set wildmenu       " Enables extended features for completion
 set autoread       " Detect when a file has changed
+set hidden         " buffer» Dont unload buffer when closed"
 set showmatch      " show match on parenthesis and curly braces
 set nobackup       " Don't create a backup file…
 set writebackup    " … unless you're currently editing.
