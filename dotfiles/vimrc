@@ -20,6 +20,8 @@ Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
 Plug 'esneider/YUNOcommit.vim'         " Shows a message if no commits are made in a while
 Plug 'ludovicchabant/vim-gutentags'    " Automated tag management
 Plug 'wakatime/vim-wakatime'           " Keep track of time spent on vim
+Plug 'mbbill/undotree'                 " shows a visual representation of undo history
+Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actually learn
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -161,15 +163,60 @@ let g:used_javascript_libs='underscore,react,chai'
 
 " plugin» gutentag»
 let g:gutentags_exclude=['*/node_modules/*','*.min.js']
+
+" plugin» undotree»
+if has('persistent_undo')
+    set undofile
+    " if undodir doesnt' exist, create it
+    let tmp = expand($HOME . '/.nvim/cache/undodir')
+    if !isdirectory(tmp)
+        call mkdir(tmp, 'p')
+    endif
+    set undodir=tmp
+    unlet tmp
+endif
+
+" plugin» hardtime
+let g:hardtime_default_on=1                                           " This is how I Die
+let g:hardtime_showmsg=1                                              " Reminds death
+let g:hardtime_allow_different_key=1                                  " jjh: yup jjj: no
+let g:hardtime_maxcount=2                                             " jj: yup jjj: no
+let g:list_of_normal_keys=['h', 'j', 'k', 'l', '+', '-']              " normal mode
+let g:list_of_visual_keys=['h', 'j', 'k', 'l', '+', '-']              " visual mode
+let g:list_of_disabled_keys=['<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']   " all modes
+let g:hardtime_ignore_buffer_patterns=['NERD.*', 'help', 'gitcommit'] " Ignore these
+let g:hardtime_ignore_quickfix=1                                      " … and quickfix
+
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
-" Mapping» normal mode
-nnoremap <leader>si :set list!<CR>
-nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>gt :GutentagsUpdate<CR>
+" Enable magicmode on searches
+nnoremap / /\v
+vnoremap / /\v
+cnoremap %s/ %smagic/
+cnoremap >s/ >smagic/
+nnoremap :g/ :g/\v
+nnoremap :g// :g//
+
+" Mapping» normal mode (Pipe is used to allow inline comments)
+nnoremap <Esc> :nohlsearch<CR>|               " Clear search highlights
+nnoremap <Leader>si :set list!<CR>|           " Toggle Invisibles
+nnoremap <Leader>tn :NERDTreeToggle<CR>|      " Toggle Nerdtree
+nnoremap <Leader>tu :UndotreeToggle<CR>|      " Toggle Undotree
+nnoremap <Leader>rt :GutentagsUpdate<CR>|     " Reload Tags
+nnoremap <Leader>g+ :GitGutterStageHunk<CR>|  " Git» hunk Stage
+nnoremap <Leader>g- :GitGutterRevertHunk<CR>| " Git» hunk Revert
+nnoremap <Leader>gc :Gcommit<CR>|             " Git» Commit
+nnoremap <Leader>gs :Gstatus<CR>|             " Git» Status
+nnoremap <Leader>gw :Gwrite<CR>|              " Git» Write
+nnoremap <Leader>gd :Gdiff<CR>|               " Git» Diff
+nnoremap <Leader>g} :GitGutterNextHunk        " Git» hunk Next
+nnoremap <Leader>g{ :GitGutterPrevHunk        " Git» hunk Prev
 "                                                                          :AUTO-COMMANDS
 "----------------------------------------------------------------------------------------
+
+" Enable HardTime on Startup
+
 " Make NerdTree close when no other buffer exists
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
