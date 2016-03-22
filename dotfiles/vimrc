@@ -149,7 +149,6 @@ let g:indent_guides_enable_on_vim_startup=1   " Enable plugin on startup
 let g:indent_guides_start_level=2             " In which indentation level begin marking
 let g:indent_guides_guide_size=1              " width of mark (only valid for spaces)
 let g:indent_guides_auto_colors=0             " Disable autocoloring, set'em manually
-let g:indent_guides_exclude_filetypes=[]
 
 " Plugin» NerdTree
 let g:NERDTreeHighlightCursorLine=1 " Highlight the current line
@@ -205,23 +204,23 @@ nnoremap :g/ :g/\v
 nnoremap :g// :g//
 
 " Mapping» normal mode (Pipe is used to allow inline comments)
-nnoremap <Esc> :nohlsearch<CR>|               " Clear search highlights
+nnoremap <Esc> :nohlsearch<CR>| " Clear search highlights
+
 nnoremap <Leader>si :set list!<CR>|           " Toggle Invisibles
 nnoremap <Leader>tn :NERDTreeToggle<CR>|      " Toggle Nerdtree
 nnoremap <Leader>tu :UndotreeToggle<CR>|      " Toggle Undotree
 nnoremap <Leader>rt :GutentagsUpdate<CR>|     " Reload Tags
+nnoremap <Leader>+  :GitGutterNextHunk<CR>|   " Git» hunk Next
+nnoremap <Leader>-  :GitGutterPrevHunk<CR>|   " Git» hunk Prev
 nnoremap <Leader>g+ :GitGutterStageHunk<CR>|  " Git» hunk Stage
 nnoremap <Leader>g- :GitGutterRevertHunk<CR>| " Git» hunk Revert
 nnoremap <Leader>gc :Gcommit<CR>|             " Git» Commit
 nnoremap <Leader>gs :Gstatus<CR>|             " Git» Status
 nnoremap <Leader>gw :Gwrite<CR>|              " Git» Write
 nnoremap <Leader>gd :Gdiff<CR>|               " Git» Diff
-nnoremap <Leader>g} :GitGutterNextHunk        " Git» hunk Next
-nnoremap <Leader>g{ :GitGutterPrevHunk        " Git» hunk Prev
+
 "                                                                          :AUTO-COMMANDS
 "----------------------------------------------------------------------------------------
-
-" Enable HardTime on Startup
 
 " Make NerdTree close when no other buffer exists
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
