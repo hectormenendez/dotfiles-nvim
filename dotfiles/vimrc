@@ -90,7 +90,9 @@ set listchars=                 " indent» How invisibles will look when shown
     \space:·,
     \eol:¬,
     \trail:·,
-    \nbsp:_
+    \nbsp:×,
+    \extends:❯,
+    \precedes:❮
 
 " general» vars»
 let mapleader=' ' " Use space as <Leader> key for plugins namespace
