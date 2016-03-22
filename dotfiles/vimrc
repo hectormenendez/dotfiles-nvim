@@ -244,9 +244,9 @@ nnoremap <Leader>gd :Gdiff<CR>|               " Git» Diff
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Show Indentation Lines and ExtraWhitespace [TODO: Should be inside the colorscheme]
-autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd  guibg=#2c2c2c ctermbg=3
-autocmd VimEnter,Colorscheme * highlight IndentGuidesEven guibg=#3c3c3c ctermbg=3
-autocmd VimEnter,Colorscheme * highlight ExtraWhitespace  guibg=#ff0000 ctermbg=1
+autocmd VimEnter,Colorscheme             * highlight IndentGuidesOdd  guibg=#2c2c2c ctermbg=3
+autocmd VimEnter,Colorscheme             * highlight IndentGuidesEven guibg=#3c3c3c ctermbg=3
+autocmd VimEnter,Colorscheme,BufWinEnter * highlight ExtraWhitespace  guibg=#ff0000 ctermbg=1
 
 " ExtraWhiteSpace Matching
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/        " Highlight trailing whitespace
