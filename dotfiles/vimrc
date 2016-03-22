@@ -207,8 +207,7 @@ nnoremap :g/ :g/\v
 nnoremap :g// :g//
 
 " Mapping» normal mode (Pipe is used to allow inline comments)
-nnoremap <Esc> :nohlsearch<CR>| " Clear search highlights
-
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>| " Clear search highlights
 nnoremap <Leader>si :set list!<CR>|           " Toggle Invisibles
 nnoremap <Leader>tn :NERDTreeToggle<CR>|      " Toggle Nerdtree
 nnoremap <Leader>tu :UndotreeToggle<CR>|      " Toggle Undotree
