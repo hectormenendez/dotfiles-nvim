@@ -68,6 +68,7 @@ set smartindent    " indent» Determine indentation level automatically
 set expandtab      " indent» Inserts spaces rather than tabs
 set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
 set shiftround     " indent» round indent to a multiple of 'shiftwidth'
+set cursorline     " Show the current line"
 
 " general» settings»
 set directory=~/.nvim/cache/tmp
