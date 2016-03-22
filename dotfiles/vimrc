@@ -117,6 +117,9 @@ endif
 "                                                                       :PLUGIN-SETTINGS
 "----------------------------------------------------------------------------------------
 
+" plugin» fugitive»
+let g:fugitive_git_executable = 'LANG=en_US.UTF-8 git' " Fix https://github.com/tpope/vim-git/issues/12
+
 " Plugin» Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
