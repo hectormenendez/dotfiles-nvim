@@ -62,6 +62,7 @@ set incsearch      " search» Search as you type
 set hlsearch       " search» Highlight search results
 set ignorecase     " search» Ignore case when searching…
 set smartcase      " search» … but not when an uppercase letter is present
+set gdefault       " search» Assume always /g on replacements
 set autoindent     " indent» Enable auto indentation
 set smartindent    " indent» Determine indentation level automatically
 set expandtab      " indent» Inserts spaces rather than tabs
@@ -69,7 +70,10 @@ set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabst
 set shiftround     " indent» round indent to a multiple of 'shiftwidth'
 
 " general» settings»
+set directory=~/.nvim/cache/tmp
 set wildmode=list:longest      " autocomplete until longest word is filled
+set diffopt=vertical,filler    " Define window behaviour for diffs (horizontal split)
+set grepprg=ag                 " search» Use the_silver_searcher insteand of grep
 set scrolloff=9999             " buffer» Always maintain n lines of context
 set history=1000               " buffer» Control the history length
 set textwidth=100              " buffer» maximum length of a line
@@ -90,7 +94,6 @@ set listchars=                 " indent» How invisibles will look when shown
 
 " general» vars»
 let mapleader=' ' " Use space as <Leader> key for plugins namespace
-
 
 " general» neovim»
 if has('nvim')
