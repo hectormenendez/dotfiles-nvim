@@ -112,7 +112,6 @@ if has('nvim')
     let &t_SR="\<Esc>[3 q"              " cursor» blink underline on Replace
     let &t_EI="\<Esc>[2 q"              " cursor> restore on exit modes
 
-" general» vim»
 else
 
     " vim» settings»
@@ -234,7 +233,8 @@ nnoremap <Leader>g+ :GitGutterStageHunk<CR>|  " Git» hunk Stage
 nnoremap <Leader>g- :GitGutterRevertHunk<CR>| " Git» hunk Revert
 nnoremap <Leader>gc :Gcommit<CR>|             " Git» Commit
 nnoremap <Leader>gs :Gstatus<CR>|             " Git» Status
-nnoremap <Leader>gw :Gwrite<CR>|              " Git» Write
+nnoremap <Leader>gw :Gwrite<CR>|              " Git» Write (add|checkout)
+nnoremap <Leader>gr :Gread<CR>|               " Git» Read (checkout|add)
 nnoremap <Leader>gd :Gdiff<CR>|               " Git» Diff
 
 "                                                                          :AUTO-COMMANDS
