@@ -6,6 +6,7 @@ Plug 'chriskempson/base16-vim'         " Enable theme sharing with xterm
 Plug 'vim-airline/vim-airline'         " Statusbar enhancements
 Plug 'vim-airline/vim-airline-themes'  " Enable themes for vim-airline
 Plug 'scrooloose/nerdtree'             " file manager for vim
+Plug 'Xuyuanp/nerdtree-git-plugin'     " Enable git status flags on NerdTree
 Plug 'scrooloose/syntastic'            " Enable syntax checking on steroids
 Plug 'tpope/vim-fugitive'              " Commands for git
 Plug 'tpope/vim-commentary'            " Comments/uncomments
@@ -156,6 +157,19 @@ let g:indent_guides_auto_colors=0             " Disable autocoloring, set'em man
 " Plugin» NerdTree
 let g:NERDTreeHighlightCursorLine=1 " Highlight the current line
 let g:NERDTreeQuitOnOpen=1          " Close buffer when opening a file
+
+" plugin» nerdtree-git-pugin»
+let g:NERDTreeIndicatorMapCustom = {
+    \"Modified"  : "❯",
+    \"Staged"    : "✚",
+    \"Untracked" : "✦",
+    \"Renamed"   : "❖",
+    \"Unmerged"  : "☯",
+    \"Deleted"   : "✖",
+    \"Dirty"     : "✱",
+    \"Clean"     : "★",
+    \"Unknown"   : "?"
+\}
 
 " Plugin» Markdown» Disable folding
 let g:vim_markdown_folding_disabled=1
