@@ -23,6 +23,7 @@ Plug 'ludovicchabant/vim-gutentags'    " Automated tag management
 Plug 'wakatime/vim-wakatime'           " Keep track of time spent on vim
 Plug 'mbbill/undotree'                 " shows a visual representation of undo history
 Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actually learn
+Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -224,20 +225,27 @@ nnoremap :g// :g//
 
 " Mapping» normal mode (Pipe is used to allow inline comments)
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>| " Clear search highlights
-nnoremap <Leader>si :set list!<CR>|           " Toggle Invisibles
-nnoremap <Leader>tn :NERDTreeToggle<CR>|      " Toggle Nerdtree
-nnoremap <Leader>tu :UndotreeToggle<CR>|      " Toggle Undotree
-nnoremap <Leader>rt :GutentagsUpdate<CR>|     " Reload Tags
-nnoremap <Leader>+  :GitGutterNextHunk<CR>|   " Git» hunk Next
-nnoremap <Leader>-  :GitGutterPrevHunk<CR>|   " Git» hunk Prev
-nnoremap <Leader>g+ :GitGutterStageHunk<CR>|  " Git» hunk Stage
-nnoremap <Leader>g- :GitGutterRevertHunk<CR>| " Git» hunk Revert
-nnoremap <Leader>gc :Gcommit<CR>|             " Git» Commit
-nnoremap <Leader>gs :Gstatus<CR>|             " Git» Status
-nnoremap <Leader>gw :Gwrite<CR>|              " Git» Write (add|checkout)
-nnoremap <Leader>gr :Gread<CR>|               " Git» Read (checkout|add)
-nnoremap <Leader>gd :Gdiff<CR>|               " Git» Diff
-
+nnoremap <Leader>si :set list!<CR>|                  " Toggle Invisibles
+nnoremap <Leader>tn :NERDTreeToggle<CR>|             " Toggle Nerdtree
+nnoremap <Leader>tu :UndotreeToggle<CR>|             " Toggle Undotree
+nnoremap <Leader>rt :GutentagsUpdate<CR>|            " Reload Tags
+nnoremap <Leader>+  :GitGutterNextHunk<CR>|          " Git» hunk Next
+nnoremap <Leader>-  :GitGutterPrevHunk<CR>|          " Git» hunk Prev
+nnoremap <Leader>g+ :GitGutterStageHunk<CR>|         " Git» hunk Stage
+nnoremap <Leader>g- :GitGutterRevertHunk<CR>|        " Git» hunk Revert
+nnoremap <Leader>gc :Gcommit<CR>|                    " Git» Commit
+nnoremap <Leader>gs :Gstatus<CR>|                    " Git» Status
+nnoremap <Leader>gw :Gwrite<CR>|                     " Git» Write (add|checkout)
+nnoremap <Leader>gr :Gread<CR>|                      " Git» Read (checkout|add)
+nnoremap <Leader>gd :Gdiff<CR>|                      " Git» Diff
+map      <Leader>mC <Plug>(easymotion-bd-f)|         " move in buffer using single char, vo
+nmap     <Leader>mC <Plug>(easymotion-overwin-f)     " move in window using single char, n
+map      <Leader>mc <Plug>(easymotion-bd-f2)|        " move in buffer using two chars, vo
+nmap     <Leader>mc <Plug>(easymotion-overwin-f2)|   " move in window using two chars, n
+map      <Leader>ml <Plug>(easymotion-bd-jk)|        " move in buffer using lines, vo
+nmap     <Leader>ml <Plug>(easymotion-overwin-line)| " move in window window using lines, n
+map      <Leader>mw <Plug>(easymotion-bd-w)|         " move in buffer using words, vo
+nmap     <Leader>mw <Plug>(easymotion-overwin-w)|    " move in window using words, n
 "                                                                          :AUTO-COMMANDS
 "----------------------------------------------------------------------------------------
 
