@@ -24,6 +24,7 @@ Plug 'wakatime/vim-wakatime'           " Keep track of time spent on vim
 Plug 'mbbill/undotree'                 " shows a visual representation of undo history
 Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actually learn
 Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
+Plug 'rking/ag.vim'                    " enable search-for-text using the_silver_surfer
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -225,6 +226,7 @@ nnoremap :g// :g//
 
 " Mapping» normal mode (Pipe is used to allow inline comments)
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>| " Clear search highlights
+nnoremap <Leader>f :Ag<Space>|                       " Find text in project
 nnoremap <Leader>si :set list!<CR>|                  " Toggle Invisibles
 nnoremap <Leader>tn :NERDTreeToggle<CR>|             " Toggle Nerdtree
 nnoremap <Leader>tu :UndotreeToggle<CR>|             " Toggle Undotree
