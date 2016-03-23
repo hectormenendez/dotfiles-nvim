@@ -75,7 +75,6 @@ set cursorline     " Show the current line"
 set noswapfile     " disable swapfile creation
 
 " general» settings»
-set directory=~/.nvim/cache/tmp
 set wildmode=list:longest      " autocomplete until longest word is filled
 set diffopt=vertical,filler    " Define window behaviour for diffs (horizontal split)
 set grepprg=ag                 " search» Use the_silver_searcher insteand of grep
