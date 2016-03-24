@@ -42,6 +42,11 @@ Plug 'wavded/vim-stylus'                      , { 'for': 'stylus'          }
 Plug 'ap/vim-css-color'                       , { 'for': ['css', 'stylus'] }
 Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
 
+"plug» neovim-only»
+if has('nvim') && has('python3')
+    Plug 'Shougo/deoplete.nvim' " Neovim's alternative to YouCompleteMe
+endif
+
 "----------------------------------------------------------------------------------------
 call plug#end()
 filetype plugin indent on
@@ -226,6 +231,8 @@ let g:hardtime_ignore_quickfix=1                                      " … and 
 " plugin» rainbow»
 let g:rainbow_active = 1
 
+" plugin» deoplete»
+let g:deoplete#enable_at_startup = 1
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
