@@ -82,6 +82,7 @@ set background=dark            " Use default colors for dark background
 set wildmode=list:longest      " autocomplete until longest word is filled
 set diffopt=vertical,filler    " Define window behaviour for diffs (horizontal split)
 set grepprg=ag                 " search» Use the_silver_searcher insteand of grep
+set updatetime=250             " git» lower the time it takes to update gitgutter
 set scrolloff=9999             " buffer» Always maintain n lines of context
 set history=1000               " buffer» Control the history length
 set textwidth=100              " buffer» maximum length of a line
