@@ -49,7 +49,7 @@ filetype plugin indent on
 "                                                                                :GENERAL
 "----------------------------------------------------------------------------------------
 
-" general»flags»
+" general» flags»
 syntax on          " Enable color syntax for known files
 set nospell        " Disable spelling checking
 set title          " Vim will set the terminal title
@@ -78,6 +78,7 @@ set cursorline     " Show the current line"
 set noswapfile     " disable swapfile creation
 
 " general» settings»
+set background=dark            " Use default colors for dark background
 set wildmode=list:longest      " autocomplete until longest word is filled
 set diffopt=vertical,filler    " Define window behaviour for diffs (horizontal split)
 set grepprg=ag                 " search» Use the_silver_searcher insteand of grep
@@ -102,25 +103,28 @@ set listchars=                 " indent» How invisibles will look when shown
     \precedes:❮
 
 " general» vars»
-let mapleader=' ' " Use space as <Leader> key for plugins namespace
+let mapleader=' '      " Use space as <Leader> key for plugins namespace
+let &t_SI="\<Esc>[5 q" " Cursor» blink pipe on Insert
+let &t_SR="\<Esc>[3 q" " Cursor» blink underline on Replace
+let &t_EI="\<Esc>[2 q" " Cursor> restore on exit modes
 
 if has('nvim')
 
-    " neovim» settings»
-    set background=dark        " Use default colors for dark background
-    colorscheme base16-monokai " Set the color scheme
+    " general» nvim-only» flags»
+    colorscheme gruvbox
 
-    " neovim» vars»
+    " general» nvim-only» vars»
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Enable 24bit colors when supported
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
-    let &t_SI="\<Esc>[5 q"              " cursor» blink pipe on Insert
-    let &t_SR="\<Esc>[3 q"              " cursor» blink underline on Replace
-    let &t_EI="\<Esc>[2 q"              " cursor> restore on exit modes
 
 else
 
-    " vim» settings»
+    " general» vim-only» flags»
+    colorscheme noctu " Set the color scheme
+
+    " general» vim-only» settings»
     set encoding=utf-8 " make sure the encoding is the correct one
+    set t_Co=16
 
 endif
 
@@ -130,7 +134,7 @@ endif
 " plugin» fugitive»
 let g:fugitive_git_executable = 'LANG=en_US.UTF-8 git' " Fix https://github.com/tpope/vim-git/issues/12
 
-" Plugin» Syntastic
+" plugin» syntastic»
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -147,20 +151,18 @@ let g:syntastic_warning_symbol='➜'             " Customize warning symbol
 let g:syntastic_vim_checkers=['vint']          " Define the linter for vim
 let g:syntastic_javascript_checkers=['eslint'] " Define the linter for javascript
 
-" Plugin» Airline
+" plugin» airline»
 let g:airline#extensions#tabline#enabled=1  " Enables buffers bar on top
-if has('nvim')
-    let g:airline_powerline_fonts=1
-    set guifont=Hack:h12
-endif
+let g:airline_powerline_fonts=1             " Enables powerline fonts when available
+let g:airline_theme='gruvbox'               " Force theme
 
-" Plugin» vim-indent-plugin
+" plugin» vim-indent-plugin»
 let g:indent_guides_enable_on_vim_startup=1   " Enable plugin on startup
 let g:indent_guides_start_level=2             " In which indentation level begin marking
 let g:indent_guides_guide_size=1              " width of mark (only valid for spaces)
 let g:indent_guides_auto_colors=0             " Disable autocoloring, set'em manually
 
-" Plugin» NerdTree
+" plugin» nerdtree»
 let g:NERDTreeHighlightCursorLine=1 " Highlight the current line
 let g:NERDTreeQuitOnOpen=1          " Close buffer when opening a file
 let g:NERDTreeShowHidden=1          " Show hidden files by default
@@ -182,16 +184,16 @@ let g:NERDTreeIndicatorMapCustom = {
     \"Unknown"   : "?"
 \}
 
-" Plugin» Markdown» Disable folding
-let g:vim_markdown_folding_disabled=1
+" plugin» markdown»
+let g:vim_markdown_folding_disabled=1 " disable folding
 
-" Plugin» CtrlP
+" plugin» ctrlp»
 let g:ctrlp_custom_ignore = {
     \'dir': '\v[\/]\.(git|hg|svn)$',
     \'file': ''
 \}
 
-" Plugin» javascript-libraries-syntax
+" plugin» javascript-libraries-syntax»
 let g:used_javascript_libs='underscore,react,chai'
 
 " plugin» gutentag»
@@ -209,7 +211,7 @@ if has('persistent_undo')
     unlet tmp
 endif
 
-" plugin» hardtime
+" plugin» hardtime»
 let g:hardtime_default_on=1                                           " This is how I Die
 let g:hardtime_showmsg=1                                              " Reminds death
 let g:hardtime_allow_different_key=1                                  " jjh: yup jjj: no
@@ -258,6 +260,7 @@ map      <Leader>ml <Plug>(easymotion-bd-jk)|        " move in buffer using line
 nmap     <Leader>ml <Plug>(easymotion-overwin-line)| " move in window window using lines, n
 map      <Leader>mw <Plug>(easymotion-bd-w)|         " move in buffer using words, vo
 nmap     <Leader>mw <Plug>(easymotion-overwin-w)|    " move in window using words, n
+
 "                                                                          :AUTO-COMMANDS
 "----------------------------------------------------------------------------------------
 
@@ -265,8 +268,6 @@ nmap     <Leader>mw <Plug>(easymotion-overwin-w)|    " move in window using word
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Show Indentation Lines and ExtraWhitespace [TODO: Should be inside the colorscheme]
-autocmd VimEnter,Colorscheme             * highlight IndentGuidesOdd  guibg=#2c2c2c ctermbg=3
-autocmd VimEnter,Colorscheme             * highlight IndentGuidesEven guibg=#3c3c3c ctermbg=3
 autocmd VimEnter,Colorscheme,BufWinEnter * highlight ExtraWhitespace  guibg=#ff0000 ctermbg=1
 
 " ExtraWhiteSpace Matching
@@ -274,3 +275,4 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/        " Highlight trailing 
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ " Disable highlight on insert
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/        " …but reenable it afterwards
 autocmd BufWinLeave * call clearmatches()                  " Apply matching to new buffers
+
