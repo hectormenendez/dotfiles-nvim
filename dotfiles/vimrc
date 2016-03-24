@@ -42,19 +42,6 @@ Plug 'wavded/vim-stylus'                      , { 'for': 'stylus'          }
 Plug 'ap/vim-css-color'                       , { 'for': ['css', 'stylus'] }
 Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
 
-" Install You completeme (had to this like this because I had problems with brew)
-" Important: Node has to be installed and set on the system. Python3 doesn't seem
-" to work on OS.X so I forced the route of system's python(2)
-function! BuildYCM(info)
-    " info.status: 'installed', 'updated', 'unchanged'
-    " info.force : set on PlugInstall! or PlugUpdate!
-    if a:info.status == 'installed' || a:info.force
-        " --tern = javascript
-        !/usr/bin/python ./install.py --tern-completer
-    endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-
 "----------------------------------------------------------------------------------------
 call plug#end()
 filetype plugin indent on
