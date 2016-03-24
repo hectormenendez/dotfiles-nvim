@@ -25,6 +25,7 @@ Plug 'mbbill/undotree'                 " shows a visual representation of undo h
 Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actually learn
 Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
 Plug 'rking/ag.vim'                    " enable search-for-text using the_silver_surfer
+Plug 'octref/RootIgnore'               " Sets wildignore to whatever gitignore has
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -177,6 +178,7 @@ let g:NERDTreeShowHidden=1          " Show hidden files by default
 let g:NERDTreeChDirMode=1           " Change directory when selecting
 let g:NERDTreeMinimalUI=1           " Don't show neither bookmarks nor help message
 let g:NERDTreeAutoDeleteBuffer=1    " remove buffer when deleting or renaming a file
+let g:NERDTreeRespectWildIgnore=1   " respect wildgnore and thus, gitignore
 
 " plugin» nerdtree-git-pugin»
 let g:NERDTreeIndicatorMapCustom = {
