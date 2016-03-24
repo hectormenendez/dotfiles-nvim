@@ -28,6 +28,7 @@ Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actua
 Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
 Plug 'rking/ag.vim'                    " enable search-for-text using the_silver_surfer
 Plug 'octref/RootIgnore'               " Sets wildignore to whatever gitignore has
+Plug 'SirVer/ultisnips'                " Enable snippet management
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -229,10 +230,16 @@ let g:hardtime_ignore_buffer_patterns=['NERD.*', 'help', 'gitcommit'] " Ignore t
 let g:hardtime_ignore_quickfix=1                                      " … and quickfix
 
 " plugin» rainbow»
-let g:rainbow_active = 1
+let g:rainbow_active=1 " Enable rainbow on startup.
 
 " plugin» deoplete»
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup=1   " Enable deoplete at startup.
+let g:deoplete#enable_smart_case=1   " When an uppercase is written stoo being insensite
+
+" plugin» ultisnips»
+let g:UltiSnipsSnippetsDir = '~/.nvim/snippets/' " Determine snippets location
+
+
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
