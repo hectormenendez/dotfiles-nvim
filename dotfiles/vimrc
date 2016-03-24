@@ -2,7 +2,8 @@ call plug#begin('~/.vim/bundle')                                                
 "----------------------------------------------------------------------------------------
 
 " plug» on-load»
-Plug 'chriskempson/base16-vim'         " Enable theme sharing with xterm
+Plug 'morhetz/gruvbox'                 " A true-color enabled theme
+Plug 'noahfrederick/vim-noctu'         " A term16 theme (loaded only on vim)
 Plug 'vim-airline/vim-airline'         " Statusbar enhancements
 Plug 'vim-airline/vim-airline-themes'  " Enable themes for vim-airline
 Plug 'scrooloose/nerdtree'             " file manager for vim
@@ -14,6 +15,7 @@ Plug 'tpope/vim-sleuth'                " Auto-adjust tabbing settings according 
 Plug 'tpope/vim-ragtag'                " Autocloses xml style tags
 Plug 'ctrlpvim/ctrlp.vim'              " Fuzzy file finder
 Plug 'jiangmiao/auto-pairs'            " Insert or delete [, (, {, or ' in pairs
+Plug 'luochen1990/rainbow'             " Enable theme sharing with xterm
 Plug 'nathanaelkane/vim-indent-guides' " Indentation
 Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
 Plug 'godlygeek/tabular'               " Enable spacing with regex
@@ -230,6 +232,9 @@ let g:list_of_visual_keys=['h', 'j', 'k', 'l', '+', '-']              " visual m
 let g:list_of_disabled_keys=['<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']   " all modes
 let g:hardtime_ignore_buffer_patterns=['NERD.*', 'help', 'gitcommit'] " Ignore these
 let g:hardtime_ignore_quickfix=1                                      " … and quickfix
+
+" plugin» rainbow»
+let g:rainbow_active = 1
 
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
