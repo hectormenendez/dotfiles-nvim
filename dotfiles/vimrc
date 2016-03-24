@@ -243,8 +243,8 @@ nnoremap <Leader>si :set list!<CR>|                  " Toggle Invisibles
 nnoremap <Leader>tn :NERDTreeToggle<CR>|             " Toggle Nerdtree
 nnoremap <Leader>tu :UndotreeToggle<CR>|             " Toggle Undotree
 nnoremap <Leader>rt :GutentagsUpdate<CR>|            " Reload Tags
-nnoremap <Leader>+  :GitGutterNextHunk<CR>|          " Git» hunk Next
-nnoremap <Leader>-  :GitGutterPrevHunk<CR>|          " Git» hunk Prev
+nnoremap <Leader>gn :GitGutterNextHunk<CR>|          " Git» hunk Next
+nnoremap <Leader>gp :GitGutterPrevHunk<CR>|          " Git» hunk Prev
 nnoremap <Leader>g+ :GitGutterStageHunk<CR>|         " Git» hunk Stage
 nnoremap <Leader>g- :GitGutterRevertHunk<CR>|        " Git» hunk Revert
 nnoremap <Leader>gc :Gcommit<CR>|                    " Git» Commit
