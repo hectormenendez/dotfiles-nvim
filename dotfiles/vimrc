@@ -82,6 +82,8 @@ set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabst
 set shiftround     " indent» round indent to a multiple of 'shiftwidth'
 set cursorline     " Show the current line"
 set noswapfile     " disable swapfile creation
+set splitbelow     " Open splits below instead of above
+set splitright     " Open slits right instead of above
 
 " general» settings»
 set background=dark            " Use default colors for dark background
