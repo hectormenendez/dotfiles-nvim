@@ -28,6 +28,7 @@ Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actua
 Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
 Plug 'rking/ag.vim'                    " enable search-for-text using the_silver_surfer
 Plug 'octref/RootIgnore'               " Sets wildignore to whatever gitignore has
+Plug 'ternjs/tern_for_vim'             " Enable autocompletion for javascript
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -235,12 +236,17 @@ let g:hardtime_ignore_quickfix=1                                      " … and 
 let g:rainbow_active=1 " Enable rainbow on startup.
 
 " plugin» deoplete»
-let g:deoplete#enable_at_startup=1   " Enable deoplete at startup.
-let g:deoplete#enable_smart_case=1   " When an uppercase is written stoo being insensite
+let g:deoplete#enable_at_startup=1      " Enable deoplete at startup.
+let g:deoplete#enable_smart_case=1      " When an uppercase is written stoo being insensite
+let g:deoplete#omni#input_patterns = {} " Disable omnifunc
 
 " plugin» ultisnips»
 let g:UltiSnipsSnippetsDir='~/.nvim/snippets/' " Determine snippets location
 let g:UltiSnipsEditSplit='horizontal'            " Determine how to open snippet editor
+
+" plugin» tern_for_vim»
+let g:tern_show_argument_hints='on_hold'
+let g:tern_show_signature_in_pum=1
 
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
@@ -254,7 +260,8 @@ nnoremap :g/ :g/\v
 nnoremap :g// :g//
 
 " Mapping» normal mode (Pipe is used to allow inline comments)
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>| " Clear search highlights
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>|   " Clear search highlights
+nnoremap <Leader>w :w<CR>|                           " Save the file
 nnoremap <Leader>f :Ag<Space>|                       " Find text in project
 nnoremap <Leader>si :set list!<CR>|                  " Toggle Invisibles
 nnoremap <Leader>tn :NERDTreeToggle<CR>|             " Toggle Nerdtree
@@ -293,3 +300,16 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ " Disable highlight o
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/        " …but reenable it afterwards
 autocmd BufWinLeave * call clearmatches()                  " Apply matching to new buffers
 
+" auto» omnifunc»
+augroup omnifuncs
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+augroup end
+
+" auto» plugin» deoplete»
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " auto-close scratch
+
+" Enable tern for javascript files
+autocmd FileType javascript setlocal omnifunc=tern#Complete
