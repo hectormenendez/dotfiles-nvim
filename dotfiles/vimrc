@@ -242,7 +242,7 @@ let g:deoplete#omni#input_patterns = {} " Disable omnifunc
 
 " plugin» ultisnips»
 let g:UltiSnipsSnippetsDir='~/.nvim/snippets/' " Determine snippets location
-let g:UltiSnipsEditSplit='horizontal'            " Determine how to open snippet editor
+let g:UltiSnipsEditSplit='vertical'            " Determine how to open snippet editor
 
 " plugin» tern_for_vim»
 let g:tern_show_argument_hints='on_hold'
