@@ -264,7 +264,8 @@ nnoremap :g// :g//
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>|   " Clear search highlights
 nnoremap <Leader>w :w<CR>|                           " Save the file
 nnoremap <Leader>f :Ag<Space>|                       " Find text in project
-nnoremap <Leader>si :set list!<CR>|                  " Toggle Invisibles
+nnoremap <Leader>sb :ls!<CR>|                        " Show buffers
+nnoremap <Leader>ti :set list!<CR>|                  " Toggle Invisibles
 nnoremap <Leader>tn :NERDTreeToggle<CR>|             " Toggle Nerdtree
 nnoremap <Leader>tu :UndotreeToggle<CR>|             " Toggle Undotree
 nnoremap <Leader>rt :GutentagsUpdate<CR>|            " Reload Tags
