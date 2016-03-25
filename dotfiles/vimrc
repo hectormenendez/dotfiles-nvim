@@ -28,7 +28,6 @@ Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actua
 Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
 Plug 'rking/ag.vim'                    " enable search-for-text using the_silver_surfer
 Plug 'octref/RootIgnore'               " Sets wildignore to whatever gitignore has
-Plug 'SirVer/ultisnips'                " Enable snippet management
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -46,6 +45,7 @@ Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
 "plug» neovim-only»
 if has('nvim') && has('python3')
     Plug 'Shougo/deoplete.nvim' " Neovim's alternative to YouCompleteMe
+    Plug 'SirVer/ultisnips'     " Enable snippet management
 endif
 
 "----------------------------------------------------------------------------------------
@@ -237,8 +237,8 @@ let g:deoplete#enable_at_startup=1   " Enable deoplete at startup.
 let g:deoplete#enable_smart_case=1   " When an uppercase is written stoo being insensite
 
 " plugin» ultisnips»
-let g:UltiSnipsSnippetsDir = '~/.nvim/snippets/' " Determine snippets location
-
+let g:UltiSnipsSnippetsDir='~/.nvim/snippets/' " Determine snippets location
+let g:UltiSnipsEditSplit='horizontal'            " Determine how to open snippet editor
 
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
