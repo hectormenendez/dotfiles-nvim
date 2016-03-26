@@ -113,6 +113,11 @@ set listchars=                 " indent» How invisibles will look when shown
     \extends:❯,
     \precedes:❮
 
+" general» tmpdir»
+let $TMPDIR='~/.vim/tmp' " Set the global tmpdir (avoids creating tmps all over)
+set directory=$TMPDIR
+set backupdir=$TMPDIR
+
 " general» vars»
 let mapleader=' '      " Use space as <Leader> key for plugins namespace
 let &t_SI="\<Esc>[5 q" " Cursor» blink pipe on Insert
