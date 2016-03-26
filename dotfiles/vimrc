@@ -65,7 +65,7 @@ set magic          " Enables regex magic, no need for backslashes in some cases.
 set showcmd        " Shows the last command entered
 set wildmenu       " Enables extended features for completion
 set autoread       " Detect when a file has changed
-set hidden         " buffer» Dont unload buffer when closed"
+set hidden         " buffer» Dont unload buffer when closed
 set showmatch      " show match on parenthesis and curly braces
 set writebackup    " … unless you're currently editing.
 set number         " lines» Enable line numbers
@@ -81,7 +81,7 @@ set smartindent    " indent» Determine indentation level automatically
 set expandtab      " indent» Inserts spaces rather than tabs
 set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
 set shiftround     " indent» round indent to a multiple of 'shiftwidth'
-set cursorline     " Show the current line"
+set cursorline     " Show the current line
 set splitbelow     " Open splits below instead of above
 set splitright     " Open slits right instead of above
 set backup         " Enable backup file crea
@@ -89,26 +89,26 @@ set swapfile       " Enable swapfile creation
 set undofile       " Enable undo management
 
 " general» settings»
-set background=dark            " Use default colors for dark background
-set wildmode=list:longest      " autocomplete until longest word is filled
-set diffopt=vertical,filler    " Define window behaviour for diffs (horizontal split)
-set grepprg=ag                 " search» Use the_silver_searcher insteand of grep
-set updatetime=250             " git» lower the time it takes to update gitgutter
-set scrolloff=9999             " buffer» Always maintain n lines of context
-set history=1000               " buffer» Control the history length
-set textwidth=100              " buffer» maximum length of a line
-set colorcolumn=90             " buffer» draws a bar on given line
-set laststatus=2               " buffer» draws a status bar on the bottom
-set foldcolumn=2               " gutter» Makes the gutter a little wider
-set numberwidth=4              " gutter» Sets the width of the line numbering column
-set backspace=indent,eol,start " indent» Make backspace behave the way you expect
-set tabstop=4                  " indent» Set tab length
-set softtabstop=4              " indent» Force softtabbing
-set shiftwidth=4               " indent» How many columns to indent on reindent operations
-set directory=$HOME/.vim/cache/swap/
-set backupdir=$HOME/.vim/cache/backup/
-set undodir=$HOME/.vim/cache/undo/
-set listchars=                 " indent» How invisibles will look when shown
+set background=dark                  " Use default colors for dark background
+set wildmode=list:longest            " autocomplete until longest word is filled
+set diffopt=vertical,filler          " Define window behaviour for diffs (horizontal split)
+set grepprg=ag                       " search» Use the_silver_searcher insteand of grep
+set updatetime=250                   " git» lower the time it takes to update gitgutter
+set scrolloff=9999                   " buffer» Always maintain n lines of context
+set history=1000                     " buffer» Control the history length
+set textwidth=100                    " buffer» maximum length of a line
+set colorcolumn=90                   " buffer» draws a bar on given line
+set laststatus=2                     " buffer» draws a status bar on the bottom
+set foldcolumn=2                     " gutter» Makes the gutter a little wider
+set numberwidth=4                    " gutter» Sets the width of the line numbering column
+set backspace=indent,eol,start       " indent» Make backspace behave the way you expect
+set tabstop=4                        " indent» Set tab length
+set softtabstop=4                    " indent» Force softtabbing
+set shiftwidth=4                     " indent» How many cols to indent on reindent
+set directory=$HOME/.vim/cache/swap/ " cache» Set dir for swapfiles
+set backupdir=$HOME/.vim/cache/back/ " cache» Set dir for backups
+set undodir=$HOME/.vim/cache/undo/   " cache» Set dir for undos
+set listchars=                       " indent» How invisibles will look when shown
     \tab:▸-,
     \space:·,
     \eol:¬,
