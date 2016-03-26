@@ -244,13 +244,9 @@ let g:tern_show_signature_in_pum=1
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
-" Enable magicmode on searches
-nnoremap / /\v
-vnoremap / /\v
-cnoremap %s/ %smagic/
-cnoremap >s/ >smagic/
-nnoremap :g/ :g/\v
-nnoremap :g// :g//
+" mapping» search»
+nnoremap / /\v|    " Enable magic for search
+cnoremap %s %s/\v| " Enable magic for replace
 
 " Mapping» normal mode (Pipe is used to allow inline comments)
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>|   " Clear search highlights
