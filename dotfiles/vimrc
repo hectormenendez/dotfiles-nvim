@@ -67,7 +67,6 @@ set wildmenu       " Enables extended features for completion
 set autoread       " Detect when a file has changed
 set hidden         " buffer» Dont unload buffer when closed"
 set showmatch      " show match on parenthesis and curly braces
-set nobackup       " Don't create a backup file…
 set writebackup    " … unless you're currently editing.
 set number         " lines» Enable line numbers
 set relativenumber " lines» Enable relative line numbering
@@ -83,9 +82,11 @@ set expandtab      " indent» Inserts spaces rather than tabs
 set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
 set shiftround     " indent» round indent to a multiple of 'shiftwidth'
 set cursorline     " Show the current line"
-set noswapfile     " disable swapfile creation
 set splitbelow     " Open splits below instead of above
 set splitright     " Open slits right instead of above
+set backup         " Enable backup file crea
+set swapfile       " Enable swapfile creation
+set undofile       " Enable undo management
 
 " general» settings»
 set background=dark            " Use default colors for dark background
@@ -104,6 +105,9 @@ set backspace=indent,eol,start " indent» Make backspace behave the way you expe
 set tabstop=4                  " indent» Set tab length
 set softtabstop=4              " indent» Force softtabbing
 set shiftwidth=4               " indent» How many columns to indent on reindent operations
+set directory=$HOME/.vim/cache/swap/
+set backupdir=$HOME/.vim/cache/backup/
+set undodir=$HOME/.vim/cache/undo/
 set listchars=                 " indent» How invisibles will look when shown
     \tab:▸-,
     \space:·,
@@ -112,11 +116,6 @@ set listchars=                 " indent» How invisibles will look when shown
     \nbsp:×,
     \extends:❯,
     \precedes:❮
-
-" general» tmpdir»
-let $TMPDIR='~/.vim/tmp' " Set the global tmpdir (avoids creating tmps all over)
-set directory=$TMPDIR
-set backupdir=$TMPDIR
 
 " general» vars»
 let mapleader=' '      " Use space as <Leader> key for plugins namespace
@@ -214,18 +213,6 @@ let g:used_javascript_libs='underscore,react,chai'
 
 " plugin» gutentag»
 let g:gutentags_exclude=['*/node_modules/*','*.min.js']
-
-" plugin» undotree»
-if has('persistent_undo')
-    set undofile
-    " if undodir doesnt' exist, create it
-    let tmp = expand($HOME . '/.nvim/cache/undodir')
-    if !isdirectory(tmp)
-        call mkdir(tmp, 'p')
-    endif
-    set undodir=tmp
-    unlet tmp
-endif
 
 " plugin» hardtime»
 let g:hardtime_default_on=1                                           " This is how I Die
