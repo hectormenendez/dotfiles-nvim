@@ -29,6 +29,7 @@ Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actua
 Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
 Plug 'rking/ag.vim'                    " enable search-for-text using the_silver_surfer
 Plug 'octref/RootIgnore'               " Sets wildignore to whatever gitignore has
+Plug 'terryma/vim-multiple-cursors'    " True ST3 style multiple selections
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
