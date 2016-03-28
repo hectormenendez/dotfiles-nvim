@@ -128,11 +128,10 @@ let &t_EI="\<Esc>[2 q" " Cursor> restore on exit modes
 if has('nvim')
 
     " general» nvim-only» flags»
-    colorscheme gruvbox
-
-    " general» nvim-only» vars»
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Enable 24bit colors when supported
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
+    let g:gruvbox_italic=1              " Force gruvbox to use italics (configured on install)
+    colorscheme gruvbox
 
 else
 
