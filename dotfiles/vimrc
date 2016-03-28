@@ -282,7 +282,7 @@ nmap     <Leader>mw <Plug>(easymotion-overwin-w)|    " move in window using word
 " Make NerdTree close when no other buffer exists
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Show Indentation Lines and ExtraWhitespace [TODO: Should be inside the colorscheme]
+" Show ExtraWhitespace [TODO: Should be inside the colorscheme]
 autocmd VimEnter,Colorscheme,BufWinEnter * highlight ExtraWhitespace  guibg=#ff0000 ctermbg=1
 
 " ExtraWhiteSpace Matching
