@@ -31,6 +31,7 @@ Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
 Plug 'rking/ag.vim'                    " enable search-for-text using the_silver_surfer
 Plug 'octref/RootIgnore'               " Sets wildignore to whatever gitignore has
 Plug 'terryma/vim-multiple-cursors'    " True ST3 style multiple selections
+Plug 'wesQ3/vim-windowswap'            " Swap between panes with ease
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -242,41 +243,43 @@ let g:UltiSnipsEditSplit='vertical'            " Determine how to open snippet e
 let g:tern_show_argument_hints='on_hold'
 let g:tern_show_signature_in_pum=1
 
+" plugin» windowswap»
+let g:windowswap_map_keys=0 " Prevent default key-mappings
+
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
+
+" mapping» all modes
+map <Leader>mm <Plug>(easymotion-overwin-f)|    " move» between windows using a char
+map <Leader>mc <Plug>(easymotion-overwin-f2)|   " move» between windows using 2 chars
+map <Leader>mw <Plug>(easymotion-overwin-w)|    " move» between windows using a word
+map <Leader>ml <Plug>(easymotion-overwin-line)| " move» between windows using a line
 
 " mapping» search»
 nnoremap / /\v|    " Enable magic for search
 cnoremap %s %s/\v| " Enable magic for replace
 
 " Mapping» normal mode (Pipe is used to allow inline comments)
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>|   " Clear search highlights
-nnoremap <Leader>w :w<CR>|                           " Save the file
-nnoremap <Leader>f :Ag<Space>|                       " Find text in project
-nnoremap <Leader>sb :ls!<CR>|                        " Show buffers
-nnoremap <Leader>ti :set list!<CR>|                  " Toggle Invisibles
-nnoremap <Leader>tn :NERDTreeToggle<CR>|             " Toggle Nerdtree
-nnoremap <Leader>tu :UndotreeToggle<CR>|             " Toggle Undotree
-nnoremap <Leader>rt :GutentagsUpdate<CR>|            " Reload Tags
-nnoremap <Leader>gn :GitGutterNextHunk<CR>|          " Git» hunk Next
-nnoremap <Leader>gp :GitGutterPrevHunk<CR>|          " Git» hunk Prev
-nnoremap <Leader>g+ :GitGutterStageHunk<CR>|         " Git» hunk Stage
-nnoremap <Leader>g- :GitGutterRevertHunk<CR>|        " Git» hunk Revert
-nnoremap <Leader>gc :Gcommit<CR>|                    " Git» Commit
-nnoremap <Leader>gs :Gstatus<CR>|                    " Git» Status
-nnoremap <Leader>gw :Gwrite<CR>|                     " Git» Write (add|checkout)
-nnoremap <Leader>gr :Gread<CR>|                      " Git» Read (checkout|add)
-nnoremap <Leader>gd :Gdiff<CR>|                      " Git» Diff
-map      <Leader>mC <Plug>(easymotion-bd-f)|         " move in buffer using single char, vo
-nmap     <Leader>mC <Plug>(easymotion-overwin-f)     " move in window using single char, n
-map      <Leader>mc <Plug>(easymotion-bd-f2)|        " move in buffer using two chars, vo
-nmap     <Leader>mc <Plug>(easymotion-overwin-f2)|   " move in window using two chars, n
-map      <Leader>ml <Plug>(easymotion-bd-jk)|        " move in buffer using lines, vo
-nmap     <Leader>ml <Plug>(easymotion-overwin-line)| " move in window window using lines, n
-map      <Leader>mw <Plug>(easymotion-bd-w)|         " move in buffer using words, vo
-nmap     <Leader>mw <Plug>(easymotion-overwin-w)|    " move in window using words, n
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>|         " Clear search highlights
+nnoremap <Leader>w :w<CR>|                                 " Save the file
+nnoremap <Leader>f :Ag<Space>|                             " Find text in project
+nnoremap <Leader>sb :ls!<CR>|                              " Show buffers
+nnoremap <Leader>ti :set list!<CR>|                        " Toggle Invisibles
+nnoremap <Leader>tn :NERDTreeToggle<CR>|                   " Toggle Nerdtree
+nnoremap <Leader>tu :UndotreeToggle<CR>|                   " Toggle Undotree
+nnoremap <Leader>rt :GutentagsUpdate<CR>|                  " Reload Tags
+nnoremap <Leader>gn :GitGutterNextHunk<CR>|                " Git» hunk Next
+nnoremap <Leader>gp :GitGutterPrevHunk<CR>|                " Git» hunk Prev
+nnoremap <Leader>g+ :GitGutterStageHunk<CR>|               " Git» hunk Stage
+nnoremap <Leader>g- :GitGutterRevertHunk<CR>|              " Git» hunk Revert
+nnoremap <Leader>gc :Gcommit<CR>|                          " Git» Commit
+nnoremap <Leader>gs :Gstatus<CR>|                          " Git» Status
+nnoremap <Leader>gw :Gwrite<CR>|                           " Git» Write (add|checkout)
+nnoremap <Leader>gr :Gread<CR>|                            " Git» Read (checkout|add)
+nnoremap <Leader>gd :Gdiff<CR>|                            " Git» Diff
+nnoremap <Leader>wy :call WindowSwap#MarkWindowSwap()<CR>| " window» yank (for swap)
+nnoremap <Leader>wp :call WindowSwap#DoWindowSwap()<CR>|   " window» paste (swap)
 
-"                                                                          :AUTO-COMMANDS
 "----------------------------------------------------------------------------------------
 
 " Make NerdTree close when no other buffer exists
