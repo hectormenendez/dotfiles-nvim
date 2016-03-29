@@ -45,6 +45,7 @@ Plug 'digitaltoad/vim-jade'                   , { 'for': 'jade'            }
 Plug 'wavded/vim-stylus'                      , { 'for': 'stylus'          }
 Plug 'ap/vim-css-color'                       , { 'for': ['css', 'stylus'] }
 Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
+Plug 'tmux-plugins/vim-tmux'                  , { 'for': 'tmux'            }
 
 "plug» neovim-only»
 if has('nvim') && has('python3')
