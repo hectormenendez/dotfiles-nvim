@@ -208,6 +208,7 @@ let g:vim_markdown_folding_disabled=1 " disable folding
 
 " plugin» ctrlp» Make the plugin gitignore-aware
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_follow_symlinks=1 "  Follow symlinks, but avoid recursion
 
 " plugin» javascript-libraries-syntax»
 let g:used_javascript_libs='underscore,react,chai'
