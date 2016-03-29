@@ -2,36 +2,37 @@ call plug#begin('~/.vim/bundle')                                                
 "----------------------------------------------------------------------------------------
 
 " plug» on-load»
-Plug 'morhetz/gruvbox'                 " A true-color enabled theme
-Plug 'noahfrederick/vim-noctu'         " A term16 theme (loaded only on vim)
-Plug 'vim-airline/vim-airline'         " Statusbar enhancements
-Plug 'vim-airline/vim-airline-themes'  " Enable themes for vim-airline
-Plug 'scrooloose/nerdtree'             " file manager for vim
-Plug 'Xuyuanp/nerdtree-git-plugin'     " Enable git status flags on NerdTree
-Plug 'scrooloose/syntastic'            " Enable syntax checking on steroids
-Plug 'tpope/vim-fugitive'              " Commands for git
-Plug 'tpope/vim-commentary'            " Comments/uncomments
-Plug 'tpope/vim-sleuth'                " Auto-adjust tabbing settings according to file
-Plug 'tpope/vim-ragtag'                " Autocloses xml style tags
-Plug 'tpope/vim-surround'              " Operate on surrounding stuff
-Plug 'tpope/vim-obsession'             " Session auto capture
-Plug 'ctrlpvim/ctrlp.vim'              " Fuzzy file finder
-Plug 'jiangmiao/auto-pairs'            " Insert or delete [, (, {, or ' in pairs
-Plug 'luochen1990/rainbow'             " Enable theme sharing with xterm
-Plug 'nathanaelkane/vim-indent-guides' " Indentation
-Plug 'airblade/vim-gitgutter'          " Enable Git diff on gutter
-Plug 'godlygeek/tabular'               " Enable spacing with regex
-Plug 'EvanDotPro/nerdtree-chmod'       " Enable chmoding from nerdtree
-Plug 'esneider/YUNOcommit.vim'         " Shows a message if no commits are made in a while
-Plug 'ludovicchabant/vim-gutentags'    " Automated tag management
-Plug 'wakatime/vim-wakatime'           " Keep track of time spent on vim
-Plug 'mbbill/undotree'                 " shows a visual representation of undo history
-Plug 'takac/vim-hardtime'              " Sets timeout for movement keys to actually learn
-Plug 'easymotion/vim-easymotion'       " Allow jumping the file using letters
-Plug 'rking/ag.vim'                    " enable search-for-text using the_silver_surfer
-Plug 'octref/RootIgnore'               " Sets wildignore to whatever gitignore has
-Plug 'terryma/vim-multiple-cursors'    " True ST3 style multiple selections
-Plug 'wesQ3/vim-windowswap'            " Swap between panes with ease
+Plug 'morhetz/gruvbox'                    " A true-color enabled theme
+Plug 'noahfrederick/vim-noctu'            " A term16 theme (loaded only on vim)
+Plug 'vim-airline/vim-airline'            " Statusbar enhancements
+Plug 'vim-airline/vim-airline-themes'     " Enable themes for vim-airline
+Plug 'scrooloose/nerdtree'                " file manager for vim
+Plug 'Xuyuanp/nerdtree-git-plugin'        " Enable git status flags on NerdTree
+Plug 'scrooloose/syntastic'               " Enable syntax checking on steroids
+Plug 'tpope/vim-fugitive'                 " Commands for git
+Plug 'tpope/vim-commentary'               " Comments/uncomments
+Plug 'tpope/vim-sleuth'                   " Auto-adjust tabbing settings according to file
+Plug 'tpope/vim-ragtag'                   " Autocloses xml style tags
+Plug 'tpope/vim-surround'                 " Operate on surrounding stuff
+Plug 'tpope/vim-obsession'                " Session auto capture
+Plug 'ctrlpvim/ctrlp.vim'                 " Fuzzy file finder
+Plug 'jiangmiao/auto-pairs'               " Insert or delete [, (, {, or ' in pairs
+Plug 'luochen1990/rainbow'                " Enable theme sharing with xterm
+Plug 'nathanaelkane/vim-indent-guides'    " Indentation
+Plug 'airblade/vim-gitgutter'             " Enable Git diff on gutter
+Plug 'godlygeek/tabular'                  " Enable spacing with regex
+Plug 'EvanDotPro/nerdtree-chmod'          " Enable chmoding from nerdtree
+Plug 'esneider/YUNOcommit.vim'            " Shows a message if no commits are made in a while
+Plug 'ludovicchabant/vim-gutentags'       " Automated tag management
+Plug 'wakatime/vim-wakatime'              " Keep track of time spent on vim
+Plug 'mbbill/undotree'                    " shows a visual representation of undo history
+Plug 'takac/vim-hardtime'                 " Sets timeout for movement keys to actually learn
+Plug 'easymotion/vim-easymotion'          " Allow jumping the file using letters
+Plug 'rking/ag.vim'                       " enable search-for-text using the_silver_surfer
+Plug 'octref/RootIgnore'                  " Sets wildignore to whatever gitignore has
+Plug 'terryma/vim-multiple-cursors'       " True ST3 style multiple selections
+Plug 'wesQ3/vim-windowswap'               " Swap between panes with ease
+Plug 'tmux-plugins/vim-tmux-focus-events' " Enable Focus[Gained/Lost] on terminal
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
