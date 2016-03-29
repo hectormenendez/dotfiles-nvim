@@ -252,7 +252,7 @@ let g:windowswap_map_keys=0 " Prevent default key-mappings
 " mapping» file»
 nnoremap % :w!<CR>:source %<CR>|                            " Reload current file
 nnoremap <Leader>w :w!<CR>|                                 " Write the file
-nnoremap <Leader>wq :wq!<CR>|                               " Write and quit
+nnoremap <Leader>wq :wq!<CR><CR>|                           " Write and quit
 
 " mapping» info»
 nnoremap <Leader>ib :ls!<CR>|                               " Active buffers
