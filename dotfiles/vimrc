@@ -276,6 +276,7 @@ nnoremap <Leader>gs :Gstatus<CR>|                          " Git» Status
 nnoremap <Leader>gw :Gwrite<CR>|                           " Git» Write (add|checkout)
 nnoremap <Leader>gr :Gread<CR>|                            " Git» Read (checkout|add)
 nnoremap <Leader>gd :Gdiff<CR>|                            " Git» Diff
+nnoremap <Leader>gp :Gpush<CR>|                            " Git» Push
 nnoremap <Leader>wy :call WindowSwap#MarkWindowSwap()<CR>| " window» yank (for swap)
 nnoremap <Leader>wp :call WindowSwap#DoWindowSwap()<CR>|   " window» paste (swap)
 
