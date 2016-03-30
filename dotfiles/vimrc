@@ -94,6 +94,7 @@ set swapfile       " Enable swapfile creation
 set undofile       " Enable undo management
 
 " general» settings»
+set synmaxcol=200                    " Only render syntax for first 200 cols
 set background=dark                  " Use default colors for dark background
 set wildmode=list:longest            " autocomplete until longest word is filled
 set diffopt=vertical,filler          " Define window behaviour for diffs (horizontal split)
@@ -249,18 +250,23 @@ let g:windowswap_map_keys=0 " Prevent default key-mappings
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
-" mapping» general»
-tnoremap <Esc> <C-\><C-n>|                                 " Exit the terminal easily
-nnoremap <Leader>y :call WindowSwap#MarkWindowSwap()<CR>|  " window» yank (for swap)
-nnoremap <Leader>p :call WindowSwap#DoWindowSwap()<CR>|    " window» paste (swap)
-nnoremap <Leader>h <C-w>h|                                 " window» move to pane left
-nnoremap <Leader>j <C-w>j|                                 " window» move to pane below
-nnoremap <Leader>k <C-w>k|                                 " window» move to pane above
-nnoremap <Leader>l <C-w>l|                                 " window» move to pane right
+" mapping» visual
+vnoremap <Leader>t :Tabularize /\v/<left>| " Just saving effort
 
-nnoremap % :w!<CR>:source %<CR>|                           " Reload current file
-nnoremap <Leader>w :w!<CR>|                                " Write the file
-nnoremap <Leader>wq :wq!<CR><CR>|                          " Write and quit
+" mapping» general»
+tnoremap <Esc> <C-\><C-n>|                                " Exit the terminal easily
+nnoremap <Leader>y :call WindowSwap#MarkWindowSwap()<CR>| " window» yank (for swap)
+nnoremap <Leader>p :call WindowSwap#DoWindowSwap()<CR>|   " window» paste (swap)
+nnoremap <Leader>h <C-w>h|                                " window» move to pane left
+nnoremap <Leader>j <C-w>j|                                " window» move to pane below
+nnoremap <Leader>k <C-w>k|                                " window» move to pane above
+nnoremap <Leader>l <C-w>l|                                " window» move to pane right
+nnoremap <Leader>\| :vnew<CR>|                            " window» new vert. split
+nnoremap <Leader>- :new<CR>|                              " window» new ho. split
+nnoremap <Leader><Left> :vertical resize +1<CR>|          " window» resize left
+nnoremap <Leader><Right> :vertical resize -1<CR>|         " window» resize right
+map <Leader><Up> :resize +1<CR>|                          " window» resize up
+map <Leader><Down> :resize -1 <CR>|                       " window» resize down
 
 " mapping» info»
 nnoremap <Leader>ib :ls!<CR>|                              " Active buffers
@@ -278,13 +284,11 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>|         " Clear search highli
 nnoremap <silent> <Esc><Esc><Esc> :/^❌ 💩 /<CR>|            " Forget current search
 nnoremap <Leader>/ :Ag<Space>|                             " search text in project
 
-vnoremap <Leader>t :Tabularize /\v/<left>|
-
 " mapping» motion»
-map      <Leader>mm <Plug>(easymotion-overwin-f)|          " using a char
-map      <Leader>mc <Plug>(easymotion-overwin-f2)|         " using 2 chars
-map      <Leader>mw <Plug>(easymotion-overwin-w)|          " using a word
-map      <Leader>ml <Plug>(easymotion-overwin-line)|       " using a line
+map <Leader>mm <Plug>(easymotion-overwin-f)|               " using a char
+map <Leader>mc <Plug>(easymotion-overwin-f2)|              " using 2 chars
+map <Leader>mw <Plug>(easymotion-overwin-w)|               " using a word
+map <Leader>ml <Plug>(easymotion-overwin-line)|            " using a line
 nnoremap <Leader>mn :GitGutterNextHunk<CR>|                " Git» hunk Next
 nnoremap <Leader>mp :GitGutterPrevHunk<CR>|                " Git» hunk Prev
 
