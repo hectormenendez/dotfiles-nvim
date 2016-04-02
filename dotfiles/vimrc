@@ -129,6 +129,7 @@ if has('nvim')
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Enable 24bit colors when supported
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
     let g:gruvbox_italic=1              " Force gruvbox to use italics (configured on install)
+    let g:gruvbox_color_column='bg2'
     colorscheme gruvbox
 
 else
@@ -250,6 +251,7 @@ vnoremap <Leader>t :Tabularize /\v/<left>| " Just saving effort
 
 " mapping» general»
 tnoremap <Esc> <C-\><C-n>|                                " Exit the terminal easily
+nnoremap <Leader>% :source $MYVIMRC<CR>|                  " reload vimrc settings
 nnoremap <Leader>y :call WindowSwap#MarkWindowSwap()<CR>| " window» yank (for swap)
 nnoremap <Leader>p :call WindowSwap#DoWindowSwap()<CR>|   " window» paste (swap)
 nnoremap <Leader>h <C-w>h|                                " window» move to pane left
@@ -327,8 +329,3 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " auto-
 " Enable tern for javascript files
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 
-" Autoload vimrc file after every change
-augroup reload_vimrc
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END
