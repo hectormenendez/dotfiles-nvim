@@ -38,7 +38,7 @@ Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
 Plug 'othree/yajs.vim'                        , { 'for': 'javascript'      } " JS syntax
 Plug 'othree/es.next.syntax.vim'              , { 'for': 'javascript'      }
 Plug 'othree/javascript-libraries-syntax.vim' , { 'for': 'javascript'      }
-Plug 'Shutnik/jshint2.vim'                    , { 'for': 'javascript', 'do': 'npm install -g jshint' }
+Plug 'Shutnik/jshint2.vim'                    , { 'for': 'javascript', 'do': 'npm i -g jshint' }
 Plug 'othree/html5.vim'                       , { 'for': 'html'            }
 Plug 'mattn/emmet-vim'                        , { 'for': 'html'            }
 Plug 'hail2u/vim-css3-syntax'                 , { 'for': 'css'             }
@@ -50,9 +50,9 @@ Plug 'tmux-plugins/vim-tmux'                  , { 'for': 'tmux'            }
 
 "plug» neovim-only»
 if has('nvim') && has('python3')
-    Plug 'Shougo/deoplete.nvim'                             " Enable autocompletion
-    Plug 'SirVer/ultisnips'                                 " Enable snippet management
-    Plug 'ternjs/tern_for_vim', { 'do':'npm install tern' } " autocomplete for javascript
+    Plug 'Shougo/deoplete.nvim'                                        " Autocompletion
+    Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm i' } " …for javascript
+    Plug 'SirVer/ultisnips'                                            " Enable Snippets
 endif
 
 "----------------------------------------------------------------------------------------
