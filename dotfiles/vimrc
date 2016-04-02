@@ -4,8 +4,6 @@ call plug#begin('~/.vim/bundle')                                                
 " plug» on-load»
 Plug 'morhetz/gruvbox'                    " A true-color enabled theme
 Plug 'noahfrederick/vim-noctu'            " A term16 theme (loaded only on vim)
-Plug 'vim-airline/vim-airline'            " Statusbar enhancements
-Plug 'vim-airline/vim-airline-themes'     " Enable themes for vim-airline
 Plug 'scrooloose/nerdtree'                " file manager for vim
 Plug 'Xuyuanp/nerdtree-git-plugin'        " Enable git status flags on NerdTree
 Plug 'tpope/vim-fugitive'                 " Commands for git
@@ -169,11 +167,6 @@ let g:syntastic_error_symbol='✘'               " Customize error symbol
 let g:syntastic_warning_symbol='➜'             " Customize warning symbol
 let g:syntastic_vim_checkers=['vint']          " Define the linter for vim
 let g:syntastic_javascript_checkers=['jshint'] " Define the linter for javascript
-
-" plugin» airline»
-let g:airline#extensions#tabline#enabled=1  " Enables buffers bar on top
-let g:airline_powerline_fonts=1             " Enables powerline fonts when available
-let g:airline_theme='gruvbox'               " Force theme
 
 " plugin» vim-indent-plugin»
 let g:indent_guides_enable_on_vim_startup=1   " Enable plugin on startup
