@@ -23,7 +23,6 @@ Plug 'airblade/vim-gitgutter'             " Enable Git diff on gutter
 Plug 'godlygeek/tabular'                  " Enable spacing with regex
 Plug 'EvanDotPro/nerdtree-chmod'          " Enable chmoding from nerdtree
 Plug 'esneider/YUNOcommit.vim'            " Shows a message if no commits are made in a while
-Plug 'ludovicchabant/vim-gutentags'       " Automated tag management
 Plug 'wakatime/vim-wakatime'              " Keep track of time spent on vim
 Plug 'mbbill/undotree'                    " shows a visual representation of undo history
 Plug 'takac/vim-hardtime'                 " Sets timeout for movement keys to actually learn
@@ -212,9 +211,6 @@ let g:ctrlp_follow_symlinks=1 "  Follow symlinks, but avoid recursion
 
 " plugin» javascript-libraries-syntax»
 let g:used_javascript_libs='underscore,react,chai'
-
-" plugin» gutentag»
-let g:gutentags_exclude=['*/node_modules/*','*.min.js']
 
 " plugin» hardtime»
 let g:hardtime_default_on=1                                           " This is how I Die
