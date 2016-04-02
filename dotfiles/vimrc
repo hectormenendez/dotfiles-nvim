@@ -330,3 +330,6 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " auto-
 " Enable tern for javascript files
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 
+" Automatically enter InsertMode when focusing a Terminal
+autocmd TermOpen * autocmd BufEnter <buffer> call feedkeys('i')
+
