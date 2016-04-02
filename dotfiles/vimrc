@@ -114,14 +114,7 @@ set backspace=indent,eol,start       " indent» Make backspace behave the way yo
 set tabstop=8                        " indent» Set tab length
 set softtabstop=0                    " indent» Force softtabbing
 set shiftwidth=4                     " indent» How many cols to indent on reindent
-set listchars=                       " indent» How invisibles will look when shown
-    \tab:▸-,
-    \space:·,
-    \eol:¬,
-    \trail:·,
-    \nbsp:×,
-    \extends:❯,
-    \precedes:❮
+set listchars=tab:▸-,space:·,eol:¬,trail:·,nbsp:×,extends:❯,precedes:❮ " Invisibles
 
 " general» vars»
 let mapleader=' '      " Use space as <Leader> key for plugins namespace
