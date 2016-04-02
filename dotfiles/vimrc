@@ -115,6 +115,7 @@ set backspace=indent,eol,start       " indent» Make backspace behave the way yo
 set tabstop=8                        " indent» Set tab length
 set softtabstop=0                    " indent» Force softtabbing
 set shiftwidth=4                     " indent» How many cols to indent on reindent
+set clipboard^=unnamed               " system-wide clipboard supprt
 set listchars=tab:▸-,space:·,eol:¬,trail:·,nbsp:×,extends:❯,precedes:❮ " Invisibles
 
 " general» vars»
