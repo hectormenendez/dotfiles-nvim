@@ -88,6 +88,7 @@ set expandtab      " indent» Inserts spaces rather than tabs
 set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
 set shiftround     " indent» round indent to a multiple of 'shiftwidth'
 set cursorline     " Show the current line
+set cursorcolumn   " Show the current column
 set splitbelow     " Open splits below instead of above
 set splitright     " Open slits right instead of above
 set backup         " Enable backup file crea
