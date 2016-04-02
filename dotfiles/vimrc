@@ -166,6 +166,10 @@ let g:syntastic_warning_symbol='➜'             " Customize warning symbol
 let g:syntastic_vim_checkers=['vint']          " Define the linter for vim
 let g:syntastic_javascript_checkers=['eslint'] " Define the linter for javascript
 
+" plugin» jshint2»
+let g:jshint2_read=1                           " Parse JS files on read
+let g:jshint2_save=1                           " Parse JS files on write
+
 " plugin» airline»
 let g:airline#extensions#tabline#enabled=1  " Enables buffers bar on top
 let g:airline_powerline_fonts=1             " Enables powerline fonts when available
