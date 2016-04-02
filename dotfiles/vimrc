@@ -39,6 +39,7 @@ Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
 Plug 'othree/yajs.vim'                        , { 'for': 'javascript'      } " JS syntax
 Plug 'othree/es.next.syntax.vim'              , { 'for': 'javascript'      }
 Plug 'othree/javascript-libraries-syntax.vim' , { 'for': 'javascript'      }
+Plug 'Shutnik/jshint2.vim'                    , { 'for': 'javascript', 'do': 'npm install -g jshint' }
 Plug 'othree/html5.vim'                       , { 'for': 'html'            }
 Plug 'mattn/emmet-vim'                        , { 'for': 'html'            }
 Plug 'hail2u/vim-css3-syntax'                 , { 'for': 'css'             }
