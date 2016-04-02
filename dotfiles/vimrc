@@ -129,8 +129,10 @@ if has('nvim')
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Enable 24bit colors when supported
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
     let g:gruvbox_italic=1              " Force gruvbox to use italics (configured on install)
-    let g:gruvbox_color_column='bg2'
+    let &colorcolumn=join(range(91,999), ',') " Show different color aftter line 90
     colorscheme gruvbox
+    hi CursorLine  guibg='#202020'
+    hi ColorColumn guibg='#303030'
 
 else
 
