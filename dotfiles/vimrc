@@ -330,3 +330,9 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " auto-
 
 " Enable tern for javascript files
 autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+" Autoload vimrc file after every change
+augroup reload_vimrc
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
