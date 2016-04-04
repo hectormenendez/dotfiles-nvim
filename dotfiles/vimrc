@@ -29,6 +29,7 @@ Plug 'octref/RootIgnore'                  " Sets wildignore to whatever gitignor
 Plug 'terryma/vim-multiple-cursors'       " True ST3 style multiple selections
 Plug 'wesQ3/vim-windowswap'               " Swap between panes with ease
 Plug 'tmux-plugins/vim-tmux-focus-events' " Enable Focus[Gained/Lost] on terminal
+Plug 'itchyny/lightline.vim'              " Like airline, but lighter
 
 " plug» with-startup-script»
 Plug 'scrooloose/syntastic', {'do': 'npm i -g jshint'} " Enable syntax check
@@ -237,6 +238,22 @@ let g:tern_show_signature_in_pum=1
 " plugin» windowswap»
 let g:windowswap_map_keys=0 " Prevent default key-mappings
 
+" plugin» lightline»
+let g:lightline = {
+\   'colorscheme': 'gruvbox',
+\   'active': {
+\       'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+\       'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+\   },
+\   'component': {
+\       'readonly': '%{&readonly?"":""}',
+\       'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+\   },
+\   'separator': { 'left': '', 'right': '' },
+\   'subseparator': { 'left': '', 'right': '' }
+\   }
+
+" TODO: Follow guide in: https://github.com/itchyny/lightline.vim
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
@@ -244,6 +261,9 @@ let g:windowswap_map_keys=0 " Prevent default key-mappings
 vnoremap <Leader>t :Tabularize /\v/<left>| " Just saving effort
 
 " mapping» general»
+inoremap <C-a> <Esc>
+nnoremap <Leader>w :update<CR>
+tnoremap <C-a> <C-\><C-n>
 tnoremap <Esc> <C-\><C-n>|                                " Exit the terminal easily
 nnoremap <Leader>% :source $MYVIMRC<CR>|                  " reload vimrc settings
 nnoremap <Leader>y :call WindowSwap#MarkWindowSwap()<CR>| " window» yank (for swap)
@@ -326,3 +346,8 @@ autocmd FileType javascript setlocal omnifunc=tern#Complete
 " Automatically enter InsertMode when focusing a Terminal
 autocmd TermOpen * autocmd BufEnter <buffer> call feedkeys('i')
 
+" auto» lightline»
+augroup reload_vimrc
+    autocmd!
+    autocmd bufwritepost $MYVIMRC nested source $MYVIMRC " Reload lightline along .vimrc
+augroup END
