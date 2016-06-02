@@ -112,7 +112,7 @@ set laststatus=2                     " buffer» draws a status bar on the bottom
 set foldcolumn=2                     " gutter» Makes the gutter a little wider
 set numberwidth=4                    " gutter» Sets the width of the line numbering column
 set backspace=indent,eol,start       " indent» Make backspace behave the way you expect
-set tabstop=8                        " indent» Set tab length
+set tabstop=4                        " indent» Set tab length
 set softtabstop=0                    " indent» Force softtabbing
 set shiftwidth=4                     " indent» How many cols to indent on reindent
 set clipboard^=unnamed               " system-wide clipboard supprt
@@ -254,6 +254,7 @@ let g:lightline = {
 \   }
 
 " TODO: Follow guide in: https://github.com/itchyny/lightline.vim
+
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
@@ -278,6 +279,9 @@ nnoremap <Leader><Left> :vertical resize +1<CR>|          " window» resize left
 nnoremap <Leader><Right> :vertical resize -1<CR>|         " window» resize right
 map <Leader><Up> :resize +1<CR>|                          " window» resize up
 map <Leader><Down> :resize -1 <CR>|                       " window» resize down
+
+" mapping» sets»
+nnoremap <Leader>si :set tabstop=4 shiftwidth=4 expandtab<bar>retab<CR>|
 
 " mapping» info»
 nnoremap <Leader>ib :ls!<CR>|                              " Active buffers
