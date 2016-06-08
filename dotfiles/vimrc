@@ -32,7 +32,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Enable Focus[Gained/Lost] on termina
 Plug 'itchyny/lightline.vim'              " Like airline, but lighter
 
 " plug» with-startup-script»
-Plug 'scrooloose/syntastic', {'do': 'npm i -g jshint'} " Enable syntax check
+Plug 'scrooloose/syntastic', {'do': 'npm i -g eslint babel-eslint' } " Enable syntax check
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
@@ -167,7 +167,7 @@ let g:syntastic_echo_current_error=1           " Show error con command window
 let g:syntastic_error_symbol='✘'               " Customize error symbol
 let g:syntastic_warning_symbol='➜'             " Customize warning symbol
 let g:syntastic_vim_checkers=['vint']          " Define the linter for vim
-let g:syntastic_javascript_checkers=['jshint'] " Define the linter for javascript
+let g:syntastic_javascript_checkers=['eslint'] " Define the linter for javascript
 
 " plugin» vim-indent-plugin»
 let g:indent_guides_enable_on_vim_startup=1   " Enable plugin on startup
