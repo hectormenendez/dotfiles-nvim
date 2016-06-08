@@ -290,6 +290,7 @@ nnoremap <Leader>ib :ls!<CR>|                              " Active buffers
 nnoremap <Leader>ti :set list!<CR>|                        " Invisible chars
 nnoremap <Leader>tn :NERDTreeToggle<CR>|                   " Nerdtree
 nnoremap <Leader>tu :UndotreeToggle<CR>|                   " Undotree
+nnoremap <Leader>tc :Commentary<CR>|                       " Comments
 
 " mapping» search»
 nnoremap / /\v|                                            " search magically
