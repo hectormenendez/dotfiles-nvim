@@ -316,7 +316,7 @@ nnoremap <Leader>mp :GitGutterPrevHunk<CR>|                " Git» hunk Prev
 
 " mapping» git»
 nnoremap <Leader>g+ :GitGutterStageHunk<CR>|               " Git» hunk Stage
-nnoremap <Leader>g- :GitGutterRevertHunk<CR>|              " Git» hunk Revert
+nnoremap <Leader>g- :GitGutterUndoHunk<CR>|                " Git» hunk Revert
 nnoremap <Leader>gc :Gcommit<CR>|                          " Git» Commit
 nnoremap <Leader>gs :Gstatus<CR>|                          " Git» Status
 nnoremap <Leader>gw :Gwrite<CR>|                           " Git» Write (add|checkout)
