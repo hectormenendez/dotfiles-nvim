@@ -43,7 +43,7 @@ Plug 'othree/yajs.vim'                        , { 'for': 'javascript'      } " J
 Plug 'othree/html5.vim'                       , { 'for': 'html'            }
 Plug 'mattn/emmet-vim'                        , { 'for': 'html'            }
 Plug 'hail2u/vim-css3-syntax'                 , { 'for': 'css'             }
-Plug 'digitaltoad/vim-jade'                   , { 'for': 'jade'            }
+Plug 'digitaltoad/vim-pug'                    , { 'for': 'pug'             } " Jade syntax"
 Plug 'wavded/vim-stylus'                      , { 'for': 'stylus'          }
 Plug 'ap/vim-css-color'                       , { 'for': ['css', 'stylus'] }
 Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
