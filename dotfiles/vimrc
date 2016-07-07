@@ -36,9 +36,10 @@ Plug 'scrooloose/syntastic', {'do': 'npm i -g eslint babel-eslint' } " Enable sy
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
+Plug 'mxw/vim-jsx'                            , { 'for': 'javascript'      } " JSX syntax
+Plug 'gavocanov/vim-js-indent'                , { 'for': 'javascript'      } " JS indent
+Plug 'othree/javascript-libraries-syntax.vim' , { 'for': 'javascript'      } " Libs syntax
 Plug 'othree/yajs.vim'                        , { 'for': 'javascript'      } " JS syntax
-Plug 'othree/es.next.syntax.vim'              , { 'for': 'javascript'      }
-Plug 'othree/javascript-libraries-syntax.vim' , { 'for': 'javascript'      }
 Plug 'othree/html5.vim'                       , { 'for': 'html'            }
 Plug 'mattn/emmet-vim'                        , { 'for': 'html'            }
 Plug 'hail2u/vim-css3-syntax'                 , { 'for': 'css'             }
@@ -254,6 +255,12 @@ let g:lightline = {
 \   }
 
 " TODO: Follow guide in: https://github.com/itchyny/lightline.vim
+
+" plugin» vim-jsx»
+let g:jsx_ext_required=1 " Enable plugin on *.js as well
+
+"plugin» ack.vim
+let g:ackprg = 'ag --vimgrep'
 
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
