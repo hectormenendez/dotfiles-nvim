@@ -297,7 +297,6 @@ nnoremap <Leader>ib :ls!<CR>|                              " Active buffers
 nnoremap <Leader>ti :set list!<CR>|                        " Invisible chars
 nnoremap <Leader>tn :NERDTreeToggle<CR>|                   " Nerdtree
 nnoremap <Leader>tu :UndotreeToggle<CR>|                   " Undotree
-nnoremap <Leader>tc :Commentary<CR>|                       " Comments
 
 " mapping» search»
 nnoremap / /\v|                                            " search magically
@@ -305,7 +304,7 @@ cnoremap %s %s/\v|                                         " replace magically
 nnoremap // :%s/\v                                         " replace shortcut
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>|         " Clear search highlights
 nnoremap <silent> <Esc><Esc><Esc> :/^❌ 💩 /<CR>|            " Forget current search
-nnoremap <Leader>/ :Ag<Space>|                             " search text in project
+nnoremap <Leader>/ :Ack!<Space>|                           " search text in project
 
 " mapping» motion»
 map <Leader>mm <Plug>(easymotion-overwin-f)|               " using a char
