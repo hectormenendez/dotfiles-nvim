@@ -289,8 +289,9 @@ let g:lightline = {
 \   'separator'    : { 'left' : '', 'right' : '' },
 \   'subseparator' : { 'left' : '', 'right' : '' }
 \}
-let g:bufferline_active_buffer_left = '«'
-let g:bufferline_active_buffer_right = '»'
+
+let g:bufferline_active_buffer_left = '» '
+let g:bufferline_active_buffer_right = ''
 
 function! LightlineBufferline()
     call bufferline#refresh_status()
