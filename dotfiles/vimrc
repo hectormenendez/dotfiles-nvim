@@ -374,6 +374,9 @@ nnoremap <Leader>gp :Gpush<CR>|                            " Git» Push
 nnoremap <Leader>rt :GutentagsUpdate<CR>|                  " Reload Tags
 "----------------------------------------------------------------------------------------
 
+" Force .eslintrc files to be hihglighted as JSON
+autocmd BufNewFile,BufRead *.eslintrc set syntax=json
+
 " Make NerdTree close when no other buffer exists
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
