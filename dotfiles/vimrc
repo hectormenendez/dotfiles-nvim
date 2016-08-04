@@ -208,12 +208,6 @@ let g:vim_markdown_folding_disabled=1 " disable folding
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_follow_symlinks=1 "  Follow symlinks, but avoid recursion
 
-" Integrate with lightline (functions declared below)
-let g:ctrlp_status_func = {
-\   'main': 'CtrlPStatusFunc_1',
-\   'prog': 'CtrlPStatusFunc_2',
-\}
-
 " plugin» javascript-libraries-syntax»
 let g:used_javascript_libs='underscore,react,chai'
 
@@ -263,6 +257,7 @@ let g:lightline = {
 \           ['fileformat','fileencoding']
 \       ]
 \   },
+\   'statusline': {},
 \   'tabline':{
 \       'left':[
 \           ['bufferline']
@@ -279,7 +274,6 @@ let g:lightline = {
 \       'bufferline' : 'LightlineBufferline'
 \   },
 \   'component_function':{
-\       'ctrlpmark'  : 'CtrlPMark'
 \   },
 \   'component_visible_condition': {
 \       'readonly': '(&filetype!="help"&& &readonly)',
@@ -290,6 +284,8 @@ let g:lightline = {
 \   'subseparator' : { 'left' : '', 'right' : '' }
 \}
 
+let g:bufferline_active_highlight = 'LightlineBufferline'
+let g:bufferline_echo = 0
 let g:bufferline_active_buffer_left = '» '
 let g:bufferline_active_buffer_right = ''
 
@@ -299,31 +295,6 @@ function! LightlineBufferline()
         \g:bufferline_status_info.before,
         \g:bufferline_status_info.current,
         \g:bufferline_status_info.after]
-endfunction
-
-function! CtrlPMark()
-    if expand('%:t') =~ 'ControlP' && has_key(g:lightline, 'ctrlp_item')
-        call lightline#link('iR'[g:lightline.ctrlp_regex])
-        return lightline#concatenate([
-            \g:lightline.ctrlp_prev,
-            \g:lightline.ctrlp_item,
-            \g:lightline.ctrlp_next], 0)
-    else
-        return ''
-    endif
-endfunction
-
-" Defined on CtrlP configuration
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-    let g:lightline.ctrlp_regex = a:regex
-    let g:lightline.ctrlp_prev = a:prev
-    let g:lightline.ctrlp_item = a:item
-    let g:lightline.ctrlp_next = a:next
-    return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-    return lightline#statusline(0)
 endfunction
 
 " plugin» vim-jsx»
