@@ -329,14 +329,28 @@ autocmd Filetype javascript setlocal foldmethod=marker foldlevel=0 foldmarker=/*
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
-" mapping» visual
-vnoremap <Leader>t :Tabularize /\v/<left>| " Just saving effort
+" mapping» all»
+map <Leader><Up> :resize +1<CR>|                          " window» resize up
+map <Leader><Down> :resize -1 <CR>|                       " window» resize down
+" mapping» all» movement»
+map <Leader>mm <Plug>(easymotion-overwin-f)|               " using a char
+map <Leader>mc <Plug>(easymotion-overwin-f2)|              " using 2 chars
+map <Leader>mw <Plug>(easymotion-overwin-w)|               " using a word
+map <Leader>ml <Plug>(easymotion-overwin-line)|            " using a line
 
-" mapping» general»
+" mapping» visual»
+vnoremap <Leader>t :Tabularize /\v/<left>|                " Tabularize regex
+
+" mapping» insert»
 inoremap <C-a> <Esc>
-nnoremap <Leader>w :update<CR>
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"|  " Use tab for deoplete
+
+" mapping» terminal»
 tnoremap <C-a> <C-\><C-n>
 tnoremap <Esc> <C-\><C-n>|                                " Exit the terminal easily
+
+" mapping» normal»
+nnoremap <Leader>w :update<CR>
 nnoremap <Leader>% :source $MYVIMRC<CR>|                  " reload vimrc settings
 nnoremap <Leader>y :call WindowSwap#MarkWindowSwap()<CR>| " window» yank (for swap)
 nnoremap <Leader>p :call WindowSwap#DoWindowSwap()<CR>|   " window» paste (swap)
@@ -348,37 +362,28 @@ nnoremap <Leader>\| :vnew<CR>|                            " window» new vert. s
 nnoremap <Leader>- :new<CR>|                              " window» new ho. split
 nnoremap <Leader><Left> :vertical resize +1<CR>|          " window» resize left
 nnoremap <Leader><Right> :vertical resize -1<CR>|         " window» resize right
-map <Leader><Up> :resize +1<CR>|                          " window» resize up
-map <Leader><Down> :resize -1 <CR>|                       " window» resize down
-
-" mapping» sets»
+" mapping» normal» sets»
 nnoremap <Leader>si :set tabstop=4 shiftwidth=4 expandtab<bar>retab<CR>|
-
-" mapping» info»
-nnoremap <Leader>ib :ls!<CR>|                              " Active buffers
-
-" mapping» toggle»
+" mapping» normal» buffers»
+nnoremap <Leader>bi :ls!<CR>|                              " Active buffers
+nnoremap <Leader>bd :bufdo bd<CR>                          " Remove all buffers
+" mapping» normal» toggle»
 nnoremap <Leader>ti :set list!<CR>|                        " Invisible chars
 nnoremap <Leader>tn :NERDTreeToggle<CR>|                   " Nerdtree
 nnoremap <Leader>tu :UndotreeToggle<CR>|                   " Undotree
-
-" mapping» search»
+" mapping» normal» search»
 nnoremap / /\v|                                            " search magically
 cnoremap %s %s/\v|                                         " replace magically
 nnoremap // :%s/\v                                         " replace shortcut
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>|         " Clear search highlights
 nnoremap <silent> <Esc><Esc><Esc> :/^❌ 💩 /<CR>|            " Forget current search
 nnoremap <Leader>/ :Ack!<Space>|                           " search text in project
-
-" mapping» motion»
-map <Leader>mm <Plug>(easymotion-overwin-f)|               " using a char
-map <Leader>mc <Plug>(easymotion-overwin-f2)|              " using 2 chars
-map <Leader>mw <Plug>(easymotion-overwin-w)|               " using a word
-map <Leader>ml <Plug>(easymotion-overwin-line)|            " using a line
+" mapping» normal» motion»
 nnoremap <Leader>mn :GitGutterNextHunk<CR>|                " Git» hunk Next
 nnoremap <Leader>mp :GitGutterPrevHunk<CR>|                " Git» hunk Prev
-
-" mapping» git»
+" mapping» normal» motion» filetype-specific»
+autocmd Filetype javascript nnoremap <Leader>md :TernDef<CR>| " Move to definition
+" mapping» normal» git»
 nnoremap <Leader>g+ :GitGutterStageHunk<CR>|               " Git» hunk Stage
 nnoremap <Leader>g- :GitGutterUndoHunk<CR>|                " Git» hunk Revert
 nnoremap <Leader>gc :Gcommit<CR>|                          " Git» Commit
@@ -387,9 +392,11 @@ nnoremap <Leader>gw :Gwrite<CR>|                           " Git» Write (add|ch
 nnoremap <Leader>gr :Gread<CR>|                            " Git» Read (checkout|add)
 nnoremap <Leader>gd :Gdiff<CR>|                            " Git» Diff
 nnoremap <Leader>gp :Gpush<CR>|                            " Git» Push
-
-" mapping» tags»
-nnoremap <Leader>rt :GutentagsUpdate<CR>|                  " Reload Tags
+" mapping» normal» tags»
+nnoremap <Leader>T :GutentagsUpdate<CR>|                   " Reload Tags
+" mapping» normal» format»
+nnoremap <Leader>ff :Autoformat<CR>|                       " Autoformat code
+nnoremap <Leader>fw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>| " Format whitespace (remove)
 "----------------------------------------------------------------------------------------
 
 " Force .eslintrc files to be hihglighted as JSON
