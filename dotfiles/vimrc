@@ -57,6 +57,7 @@ if has('nvim') && has('python3')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }      " Autocomplete
     Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm i' } " …for javascript
     Plug 'SirVer/ultisnips'                                            " Enable Snippets
+    Plug 'Chiel92/vim-autoformat', { 'do': 'npm i -g js-beautify' }    " JS,JSON,HTML,CSS
 endif
 
 "----------------------------------------------------------------------------------------
