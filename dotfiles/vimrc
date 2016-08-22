@@ -405,27 +405,17 @@ autocmd BufNewFile,BufRead *.eslintrc set syntax=json
 " Make NerdTree close when no other buffer exists
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Show ExtraWhitespace [TODO: Should be inside the colorscheme]
 if has('nvim')
+    " Show ExtraWhitespace
+    " NOTE: This might be causing a slowdown when in insert mode
     autocmd VimEnter,Colorscheme,BufWinEnter * highlight ExtraWhitespace  guibg=#ff0000 ctermbg=1
+
+    " ExtraWhiteSpace Matching
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/        " Highlight trailing whitespace
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ " Disable highlight on insert
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/        " …but reenable it afterwards
+    autocmd BufWinLeave * call clearmatches()                  " Apply matching to new buffers
 endif
-
-" ExtraWhiteSpace Matching
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/        " Highlight trailing whitespace
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ " Disable highlight on insert
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/        " …but reenable it afterwards
-autocmd BufWinLeave * call clearmatches()                  " Apply matching to new buffers
-
-" auto» omnifunc»
-augroup omnifuncs
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-augroup end
-
-" auto» plugin» deoplete»
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " auto-close scratch
 
 
 " Automatically enter InsertMode when focusing a Terminal
