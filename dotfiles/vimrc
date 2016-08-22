@@ -56,7 +56,8 @@ Plug 'tmux-plugins/vim-tmux'                  , { 'for': 'tmux'            }
 "plug» neovim-only»
 if has('nvim') && has('python3')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }      " Autocomplete
-    Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm i' } " …for javascript
+    Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm i -g tern' } " …for javascript
+    Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
     Plug 'SirVer/ultisnips'                                            " Enable Snippets
     Plug 'Chiel92/vim-autoformat', { 'do': 'npm i -g js-beautify' }    " JS,JSON,HTML,CSS
 endif
@@ -242,15 +243,23 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 "                                                                                    :tern
 "
-" let g:tern_map_keys=1
+let g:AutoPairsMapCR=0 " Fixes a bug with auto-pairs plugin
+let g:tern_map_keys=0  " Don't map keys (I'm doing that manually)
 let g:tern_show_argument_hints='on_hold'
-let g:tern_show_signature_in_pum=1
+let g:tern_show_signature_in_pum=1 " Shows where the function is comming from
+" deoplete-ternjs
+let g:tern_request_timeout = 1
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
 
 " plugin» ultisnips»
-let g:did_UltiSnips_vim = 1
-let g:did_UltiSnips_vim_after = 1
-let g:UltiSnipsSnippetsDir='~/.nvim/snippets/' " Determine snippets location
+let g:UltiSnipsSnippetsDir=expand('~/.nvim/snips') " Determine snippets location
+let g:UltiSnipsSnippetDirectories=[expand('~/.nvim/snips')]
 let g:UltiSnipsEditSplit='vertical'            " Determine how to open snippet editor
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+let g:UltiSnipsUsePythonVersion=3
 
 " plugin» windowswap»
 let g:windowswap_map_keys=0 " Prevent default key-mappings
@@ -358,9 +367,9 @@ vnoremap <Leader>t :Tabularize /\v/<left>|                " Tabularize regex
 
 " mapping» insert»
 inoremap <C-a> <Esc>
-inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"|  " Use tab for deoplete
-inoremap <expr><S-Tab> pumvisible() ? "\<c-p>" : "\<S-Tab>"
-inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
+imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"|  " Use tab for deoplete
+imap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<S-tab>"
+imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
 " mapping» terminal»
 tnoremap <C-a> <C-\><C-n>
