@@ -33,8 +33,8 @@ Plug 'itchyny/lightline.vim'              " Like airline, but lighter
 Plug 'bling/vim-bufferline'               " enable bufferline on commandline
 Plug 'Konfekt/FastFold'                   " Make folding faster
 
-" plug» with-startup-script»
-Plug 'scrooloose/syntastic', {'do': 'npm i -g eslint babel-eslint' } " Enable syntax check
+" Async :make (used for syntax checking)
+Plug 'neomake/neomake', {'do': 'npm i -g eslint ' }
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
