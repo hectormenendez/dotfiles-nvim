@@ -155,25 +155,28 @@ endif
 "                                                                       :PLUGIN-SETTINGS
 "----------------------------------------------------------------------------------------
 
+"                                                                                 :neomake
+let g:neomake_verbose=0
+let g:neomake_open_list=2 " Auto open error list, but without moving cursor.
+let g:neomake_error_sign={'text':'✖', 'texthl':'NeomakeErr'}    " Customize error symbol
+let g:neomake_warning_sign={'text':'➜', 'texthl':'NeomakeWrn'}  " Customize warning symbol
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_maker = {
+\   'args': ['--no-color', '--format', 'compact'],
+\   'errorformat': '%f: line %l\, col %c\, Error - %m,' .
+\                  '%W%f: line %l\, col %c\, Warning - %m'
+\}
+" Run on every write
+autocmd! BufWritePost,BufWinEnter *.js Neomake
+" Set the colors of the icons on the gutter
+if has('nvim')
+    autocmd VimEnter,Colorscheme,BufWinEnter * highlight NeomakeWrn guifg=#fabd2f guibg=#3c3836
+    autocmd VimEnter,Colorscheme,BufWinEnter * highlight NeomakeErr guifg=#fb4934 guibg=#3c3836
+endif
+
 " plugin» fugitive»
 let g:fugitive_git_executable = 'LANG=en_US.UTF-8 git' " Fix https://github.com/tpope/vim-git/issues/12
-
-" plugin» syntastic»
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list=1     " Make sure the error checklist is populated
-let g:syntastic_auto_loc_list=0                " Automatically open error checklist
-let g:syntastic_check_on_open=1                " Check errors on file open
-let g:syntastic_check_on_wq=1                  " Check errors on write, quit
-let g:syntastic_enable_signs=1                 " Make sure that signs are always shown
-let g:syntastic_enable_highlighting=1          " Highlight errors
-let g:syntastic_enable_balloons=1              " Show errors on balloons when mouse passes over
-let g:syntastic_echo_current_error=1           " Show error con command window
-let g:syntastic_error_symbol='✘'               " Customize error symbol
-let g:syntastic_warning_symbol='➜'             " Customize warning symbol
-let g:syntastic_vim_checkers=['vint']          " Define the linter for vim
-let g:syntastic_javascript_checkers=['eslint'] " Define the linter for javascript
 
 " plugin» vim-indent-plugin»
 let g:indent_guides_enable_on_vim_startup=1   " Enable plugin on startup
