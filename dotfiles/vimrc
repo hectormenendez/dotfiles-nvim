@@ -54,7 +54,7 @@ Plug 'tmux-plugins/vim-tmux'                  , { 'for': 'tmux'            }
 
 "plug» neovim-only»
 if has('nvim') && has('python3')
-    Plug 'Shougo/deoplete.nvim'                                        " Autocompletion
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }      " Autocomplete
     Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm i' } " …for javascript
     Plug 'SirVer/ultisnips'                                            " Enable Snippets
 endif
