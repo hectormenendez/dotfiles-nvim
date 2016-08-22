@@ -31,6 +31,7 @@ Plug 'wesQ3/vim-windowswap'               " Swap between panes with ease
 Plug 'tmux-plugins/vim-tmux-focus-events' " Enable Focus[Gained/Lost] on terminal
 Plug 'itchyny/lightline.vim'              " Like airline, but lighter
 Plug 'bling/vim-bufferline'               " enable bufferline on commandline
+Plug 'Konfekt/FastFold'                   " Make folding faster
 
 " plug» with-startup-script»
 Plug 'scrooloose/syntastic', {'do': 'npm i -g eslint babel-eslint' } " Enable syntax check
@@ -308,6 +309,11 @@ let g:user_emmet_mode='n'
 let g:user_emmet_install_global=0
 autocmd FileType html EmmetInstall
 
+"------------------------------------------------------------------------------- :FOLDING
+
+let g:javascript_fold = 1
+autocmd Filetype javascript setlocal foldmethod=marker foldlevel=0 foldmarker=/**,*/
+
 "                                                                                :MAPPING
 "----------------------------------------------------------------------------------------
 
@@ -402,8 +408,6 @@ augroup end
 " auto» plugin» deoplete»
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " auto-close scratch
 
-" Enable tern for javascript files
-autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 " Automatically enter InsertMode when focusing a Terminal
 autocmd TermOpen * autocmd BufEnter <buffer> call feedkeys('i')
