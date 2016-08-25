@@ -376,6 +376,7 @@ tnoremap <C-a> <C-\><C-n>
 tnoremap <Esc> <C-\><C-n>|                                " Exit the terminal easily
 
 " mapping» normal»
+nnoremap <Enter> @@|                                      " Repeats the last macro
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>% :source $MYVIMRC<CR>|                  " reload vimrc settings
 nnoremap <Leader>y :call WindowSwap#MarkWindowSwap()<CR>| " window» yank (for swap)
