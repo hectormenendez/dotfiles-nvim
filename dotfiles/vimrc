@@ -275,7 +275,7 @@ let g:lightline = {
 \       'left': [
 \           ['mode','paste'],
 \           ['fugitive'],
-\           ['ctrlpmark']
+\           ['obsession']
 \        ],
 \       'right': [
 \           ['neomake','lineinfo'],
@@ -294,7 +294,8 @@ let g:lightline = {
 \   'component': {
 \       'readonly': '%{&readonly?"":""}',
 \       'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-\       'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}'
+\       'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}',
+\       'obsession': '%{ObsessionStatus()}'
 \   },
 \   'component_expand':{
 \       'bufferline' : 'LightlineBufferline'
