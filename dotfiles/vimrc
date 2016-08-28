@@ -32,7 +32,6 @@ Plug 'octref/RootIgnore'                  " Sets wildignore to whatever gitignor
 Plug 'terryma/vim-multiple-cursors'       " True ST3 style multiple selections
 Plug 'wesQ3/vim-windowswap'               " Swap between panes with ease
 Plug 'tmux-plugins/vim-tmux-focus-events' " Enable Focus[Gained/Lost] on terminal
-Plug 'itchyny/lightline.vim'              " Like airline, but lighter
 Plug 'bling/vim-bufferline'               " enable bufferline on commandline
 Plug 'Konfekt/FastFold'                   " Make folding faster
 
@@ -49,7 +48,7 @@ Plug 'othree/html5.vim'                       , { 'for': 'html'            }
 Plug 'mattn/emmet-vim'                        , { 'for': 'html'            }
 Plug 'kchmck/vim-coffee-script'               , { 'for': 'coffee'          }
 Plug 'hail2u/vim-css3-syntax'                 , { 'for': 'css'             }
-Plug 'digitaltoad/vim-pug'                    , { 'for': 'pug'             } " Jade syntax"
+Plug 'digitaltoad/vim-pug'                    , { 'for': 'pug'             } " Jade syntax
 Plug 'wavded/vim-stylus'                      , { 'for': 'stylus'          }
 Plug 'ap/vim-css-color'                       , { 'for': ['css', 'stylus'] }
 Plug 'plasticboy/vim-markdown'                , { 'for': 'markdown'        }
@@ -57,11 +56,13 @@ Plug 'tmux-plugins/vim-tmux'                  , { 'for': 'tmux'            }
 
 "plug» neovim-only»
 if has('nvim') && has('python3')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }      " Autocomplete
-    Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm i -g tern' } " …for javascript
+    Plug 'itchyny/lightline.vim'                                                    " Like airline but lighter
+    Plug 'Shougo/deoplete.nvim'    , { 'do' : ':UpdateRemotePlugins' }              " Autocomplete
+    Plug 'ternjs/tern_for_vim'     , { 'for': 'javascript', 'do': 'npm i -g tern' } " …for javascript
     Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
-    Plug 'SirVer/ultisnips'                                            " Enable Snippets
-    Plug 'Chiel92/vim-autoformat', { 'do': 'npm i -g js-beautify' }    " JS,JSON,HTML,CSS
+    Plug 'SirVer/ultisnips'                                                         " Enable Snippets
+    Plug 'honza/vim-snippets'
+    Plug 'Chiel92/vim-autoformat'  , { 'do': 'npm i -g js-beautify' }               " for JS HTML CSS JSX
 endif
 
 "----------------------------------------------------------------------------------------
@@ -374,8 +375,10 @@ imap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<S-tab>"
 imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
 " mapping» terminal»
-tnoremap <C-a> <C-\><C-n>
-tnoremap <Esc> <C-\><C-n>|                                " Exit the terminal easily
+if has('nvim')
+    tnoremap <C-a> <C-\><C-n>
+    tnoremap <Esc> <C-\><C-n>|                                " Exit the terminal easily
+endif
 
 " mapping» normal»
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR'>      " repeat las macro
@@ -448,7 +451,9 @@ endif
 
 
 " Automatically enter InsertMode when focusing a Terminal
-autocmd TermOpen * autocmd BufEnter <buffer> call feedkeys('i')
+if has('nvim')
+    autocmd TermOpen * autocmd BufEnter <buffer> call feedkeys('i')
+endif
 
 " auto» lightline»
 augroup reload_vimrc
