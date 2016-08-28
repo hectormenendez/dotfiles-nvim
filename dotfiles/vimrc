@@ -372,8 +372,6 @@ vnoremap <Leader>t :Tabularize /\v/<left>|                " Tabularize regex
 
 " mapping» insert»
 inoremap <C-a> <Esc>
-imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"|  " Use tab for deoplete
-imap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<S-tab>"
 imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
 " mapping» terminal»
