@@ -381,7 +381,12 @@ if has('nvim')
 endif
 
 " mapping» normal»
-nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR'>      " repeat las macro
+nmap <BS> :CtrlPBuffer<CR>|                               " open buffer list with backspace
+nmap Q q|                                                 " Avoid unintentional exMode
+noremap Y y$                                              " Yank to the end of the line
+noremap vv V                                              " be consistent with mappings
+noremap V v$
+nnoremap <CR> @@|                                         " repeat las macro
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>% :source $MYVIMRC<CR>|                  " reload vimrc settings
 nnoremap <Leader>y :call WindowSwap#MarkWindowSwap()<CR>| " window» yank (for swap)
