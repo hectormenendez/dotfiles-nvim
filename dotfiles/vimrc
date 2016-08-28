@@ -131,6 +131,7 @@ set showtabline=2                    " Always show the tabline
 
 " general» vars»
 let mapleader=' '      " Use space as <Leader> key for plugins namespace
+let maplocalleader=','
 let &t_SI="\<Esc>[5 q" " Cursor» blink pipe on Insert
 let &t_SR="\<Esc>[3 q" " Cursor» blink underline on Replace
 let &t_EI="\<Esc>[2 q" " Cursor> restore on exit modes
@@ -429,7 +430,13 @@ nnoremap <Leader>T :GutentagsUpdate<CR>|                   " Reload Tags
 " mapping» normal» format»
 nnoremap <Leader>ff :Autoformat<CR>|                       " Autoformat code
 nnoremap <Leader>fw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>| " Format whitespace (remove)
-"----------------------------------------------------------------------------------------
+
+" --------------------------------------------------------------------------------- macros
+
+" block comment unindent
+nnoremap <LocalLeader>c< ^v/*\/=:let @/=""<CR>
+
+"-------------------------------------------------------------------------- auto-execution
 
 " Force .eslintrc files to be hihglighted as JSON
 autocmd BufNewFile,BufRead *.eslintrc set syntax=json
