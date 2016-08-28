@@ -423,6 +423,7 @@ autocmd Filetype javascript nnoremap <Leader>md :TernDef<CR>| " Move to definiti
 " mapping» normal» git»
 nnoremap <Leader>g+ :GitGutterStageHunk<CR>|               " Git» hunk Stage
 nnoremap <Leader>g- :GitGutterUndoHunk<CR>|                " Git» hunk Revert
+nnoremap <Leader>gC :Gcommit --no-verify<CR>|              " Git» Commit without hooks
 nnoremap <Leader>gc :Gcommit<CR>|                          " Git» Commit
 nnoremap <Leader>gs :Gstatus<CR>|                          " Git» Status
 nnoremap <Leader>gw :Gwrite<CR>|                           " Git» Write (add|checkout)
