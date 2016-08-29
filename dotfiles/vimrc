@@ -435,7 +435,7 @@ nnoremap <Leader>T :GutentagsUpdate<CR>|                   " Reload Tags
 nnoremap <Leader>ff :Autoformat<CR>|                       " Autoformat code
 nnoremap <Leader>fw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>| " Format whitespace (remove)
 " mapping» normal» vim»
-nnoremap <silent><Leader>vcd :cd %:p:h<CR>
+nnoremap <Leader>vc :NERDTreeFind<CR>:bd<CR>
 nnoremap <Leader>vs :CtrlPObsession<CR>
 
 " --------------------------------------------------------------------------------- macros
