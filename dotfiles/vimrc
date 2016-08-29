@@ -15,6 +15,7 @@ Plug 'tpope/vim-obsession'                " Session auto capture
 Plug 'tpope/vim-unimpaired'               " Mappings
 Plug 'tpope/vim-repeat'                   " Fix mapping repeating
 Plug 'dhruvasagar/vim-prosession'         " Adds global session management (uses obsession)
+Plug 'gikmx/ctrlp-obsession'              " Allows easy switching between sessions
 Plug 'ctrlpvim/ctrlp.vim'                 " Fuzzy file finder
 Plug 'jiangmiao/auto-pairs'               " Insert or delete [, (, {, or ' in pairs
 Plug 'luochen1990/rainbow'                " Enable theme sharing with xterm
@@ -435,6 +436,9 @@ nnoremap <Leader>T :GutentagsUpdate<CR>|                   " Reload Tags
 " mapping» normal» format»
 nnoremap <Leader>ff :Autoformat<CR>|                       " Autoformat code
 nnoremap <Leader>fw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>| " Format whitespace (remove)
+" mapping» normal» vim»
+nnoremap <silent><Leader>vcd :cd %:p:h<CR>
+nnoremap <Leader>vs :CtrlPObsession<CR>
 
 " --------------------------------------------------------------------------------- macros
 
