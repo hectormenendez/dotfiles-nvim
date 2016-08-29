@@ -385,8 +385,6 @@ endif
 nmap <BS> :CtrlPBuffer<CR>|                               " open buffer list with backspace
 nmap Q q|                                                 " Avoid unintentional exMode
 noremap Y y$                                              " Yank to the end of the line
-noremap vv V                                              " be consistent with mappings
-noremap V v$
 nnoremap <CR> @@|                                         " repeat las macro
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>% :source $MYVIMRC<CR>|                  " reload vimrc settings
@@ -464,7 +462,6 @@ if has('nvim')
     autocmd InsertLeave * match ExtraWhitespace /\s\+$/        " …but reenable it afterwards
     autocmd BufWinLeave * call clearmatches()                  " Apply matching to new buffers
 endif
-
 
 " Automatically enter InsertMode when focusing a Terminal
 if has('nvim')
