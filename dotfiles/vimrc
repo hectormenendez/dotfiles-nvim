@@ -452,8 +452,8 @@ nnoremap <LocalLeader>c< ^v/*\/=:let @/=""<CR>
 
 "-------------------------------------------------------------------------- auto-execution
 
-" Force .eslintrc files to be hihglighted as JSON
-autocmd BufNewFile,BufRead *.eslintrc set syntax=json
+autocmd BufNewFile,BufRead *.eslintrc set syntax=json " read eslint as json
+autocmd BufNewFile,BufRead *.ejs set syntax=html      " reas ejs files as html
 
 " Make NerdTree close when no other buffer exists
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
