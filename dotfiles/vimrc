@@ -65,6 +65,7 @@ if has('nvim') && has('python3')
     Plug 'SirVer/ultisnips'                                                         " Enable Snippets
     Plug 'honza/vim-snippets'
     Plug 'Chiel92/vim-autoformat'  , { 'do': 'npm i -g js-beautify' }               " for JS HTML CSS JSX
+    Plug 'maksimr/vim-jsbeautify'                                                   " also depends on js-beautify
 endif
 
 "----------------------------------------------------------------------------------------
@@ -433,8 +434,13 @@ nnoremap <Leader>gp :Gpush<CR>|                            " Git» Push
 " mapping» normal» tags»
 nnoremap <Leader>T :GutentagsUpdate<CR>|                   " Reload Tags
 " mapping» normal» format»
-nnoremap <Leader>ff :Autoformat<CR>|                       " Autoformat code
 nnoremap <Leader>fw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>| " Format whitespace (remove)
+nnoremap <Leader>ff :Autoformat<CR>|                       " Autoformat code (whole file)
+autocmd FileType javascript vnoremap <buffer> <Leader>ff :call RangeJsBeautify()<CR>
+autocmd FileType json       vnoremap <buffer> <Leader>ff :call RangeJsonBeautify()<CR>
+autocmd FileType jsx        vnoremap <buffer> <Leader>ff :call RangeJsxBeautify()<CR>
+autocmd FileType html       vnoremap <buffer> <Leader>ff :call RangeHtmlBeautify()<CR>
+autocmd FileType css        vnoremap <buffer> <Leader>ff :call RangeCSSBeautify()<CR>
 " mapping» normal» vim»
 nnoremap <Leader>vc :NERDTreeFind<CR>:bd<CR>
 nnoremap <Leader>vs :CtrlPObsession<CR>
