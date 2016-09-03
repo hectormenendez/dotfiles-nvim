@@ -377,12 +377,6 @@ vnoremap <Leader>t :Tabularize /\v/<left>|                " Tabularize regex
 inoremap <C-a> <Esc>
 imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
-" mapping» terminal»
-if has('nvim')
-    tnoremap <C-a> <C-\><C-n>
-    tnoremap <Esc> <C-\><C-n>|                                " Exit the terminal easily
-endif
-
 " mapping» normal»
 nmap <BS> :CtrlPBuffer<CR>|                               " open buffer list with backspace
 nmap Q q|                                                 " Avoid unintentional exMode
@@ -442,8 +436,16 @@ autocmd FileType jsx        vnoremap <buffer> <Leader>ff :call RangeJsxBeautify(
 autocmd FileType html       vnoremap <buffer> <Leader>ff :call RangeHtmlBeautify()<CR>
 autocmd FileType css        vnoremap <buffer> <Leader>ff :call RangeCSSBeautify()<CR>
 " mapping» normal» vim»
-nnoremap <Leader>vc :NERDTreeFind<CR>:bd<CR>
-nnoremap <Leader>vs :CtrlPObsession<CR>
+nnoremap <Leader>vcd :NERDTreeFind<CR>:bd<CR>| " set the current directory as current
+nnoremap <Leader>vs :CtrlPObsession<CR>|       " open session switcher
+nnoremap <silent> <Leader>vr :silent !osascript -e "tell application \"Google Chrome\" to reload active tab of window 1"<CR>
+
+" mapping» terminal»
+if has('nvim')
+    nnoremap <Leader>vt :new<CR>:terminal<CR>|            " open terminal in a split.
+    tnoremap <C-a> <C-\><C-n>
+    tnoremap <silent> <Esc> <C-\><C-n>:bd!<CR>|           " Exit the terminal easily
+endif
 
 " --------------------------------------------------------------------------------- macros
 
