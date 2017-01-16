@@ -35,13 +35,14 @@ Plug 'wesQ3/vim-windowswap'               " Swap between panes with ease
 Plug 'tmux-plugins/vim-tmux-focus-events' " Enable Focus[Gained/Lost] on terminal
 Plug 'bling/vim-bufferline'               " enable bufferline on commandline
 Plug 'Konfekt/FastFold'                   " Make folding faster
+Plug 'editorconfig/editorconfig-vim'      " Maintains consistency for editors
 
 " Async :make (used for syntax checking)
 Plug 'neomake/neomake', {'do': 'npm i -g eslint ' }
 
 " plug» on-filetype»
 Plug 'moll/vim-node'                          , { 'for': 'javascript'      }
-Plug 'mxw/vim-jsx'                            , { 'for': 'javascript'      } " JSX syntax
+Plug 'mxw/vim-jsx'                            , { 'for': 'javascript.jsx'      } " JSX syntax
 Plug 'gavocanov/vim-js-indent'                , { 'for': 'javascript'      } " JS indent
 Plug 'othree/javascript-libraries-syntax.vim' , { 'for': 'javascript'      } " Libs syntax
 Plug 'othree/yajs.vim'                        , { 'for': 'javascript'      } " JS syntax
@@ -330,7 +331,7 @@ function! LightlineBufferline()
 endfunction
 
 " plugin» vim-jsx»
-let g:jsx_ext_required=1 " Enable plugin on *.js as well
+let g:jsx_ext_required=0 " Enable plugin on *.js as well
 
 "plugin» ack.vim
 let g:ackprg = 'ag --vimgrep'
