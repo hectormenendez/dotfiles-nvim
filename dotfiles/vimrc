@@ -279,10 +279,9 @@ let g:lightline = {
 \       'left': [
 \           ['mode','paste'],
 \           ['fugitive'],
-\           ['obsession']
+\           ['readonly', 'filename']
 \        ],
 \       'right': [
-\           ['neomake','lineinfo'],
 \           ['filetype'],
 \           ['fileformat','fileencoding']
 \       ]
@@ -293,7 +292,7 @@ let g:lightline = {
 \           ['bufferline']
 \       ],
 \       'right':[
-\           ['cwd']
+\           ['cwd','obsession'],
 \       ]
 \   },
 \   'component': {
@@ -301,12 +300,13 @@ let g:lightline = {
 \       'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
 \       'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}',
 \       'obsession': '%{ObsessionStatus()}',
-\       'cwd'      : '%{fnamemodify(getcwd(), ":t")}'
+\       'cwd': '%{fnamemodify(getcwd(), ":t")}'
 \   },
 \   'component_expand':{
-\       'bufferline' : 'LightlineBufferline'
+\       'bufferline' : 'LightlineBufferline',
 \   },
 \   'component_function':{
+\       'filename': 'LightlineFilename'
 \   },
 \   'component_visible_condition': {
 \       'readonly': '(&filetype!="help"&& &readonly)',
@@ -319,19 +319,33 @@ let g:lightline = {
 
 let g:bufferline_active_highlight = 'LightlineBufferline'
 let g:bufferline_echo = 0
-let g:bufferline_active_buffer_left = '» '
-let g:bufferline_active_buffer_right = ''
+let g:bufferline_fname_mod = ':.'
+let g:bufferline_pathshorten = 1
+
+" let g:bufferline_active_buffer_left = '['
+" let g:bufferline_active_buffer_right = ']'
+
+function! LightlineModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineFilename()
+  let fname = expand('%F')
+  return
+  \ ('' != LightlineModified() ? LightlineModified() : '') .
+  \ ('' != fname ? fname : '[No Name]')
+endfunction
 
 function! LightlineBufferline()
-    call bufferline#refresh_status()
-    return [
-        \g:bufferline_status_info.before,
-        \g:bufferline_status_info.current,
-        \g:bufferline_status_info.after]
+  call bufferline#refresh_status()
+  return [
+  \ g:bufferline_status_info.before,
+  \ g:bufferline_status_info.after
+  \]
 endfunction
 
 " plugin» vim-jsx»
-let g:jsx_ext_required=0 " Enable plugin on *.js as well
+let g:jsx_ext_required=1 " Enable plugin on *.js as well
 
 "plugin» ack.vim
 let g:ackprg = 'ag --vimgrep'
@@ -340,6 +354,9 @@ let g:ackprg = 'ag --vimgrep'
 let g:user_emmet_mode='n'
 let g:user_emmet_install_global=0
 autocmd FileType html EmmetInstall
+
+" plugin» editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "------------------------------------------------------------------------------- :FOLDING
 
