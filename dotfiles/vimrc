@@ -292,7 +292,7 @@ let g:lightline = {
 \           ['bufferline']
 \       ],
 \       'right':[
-\           ['cwd','obsession'],
+\           ['obsession', 'cwd', 'bufnr'],
 \       ]
 \   },
 \   'component': {
@@ -300,7 +300,8 @@ let g:lightline = {
 \       'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
 \       'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}',
 \       'obsession': '%{ObsessionStatus()}',
-\       'cwd': '%{fnamemodify(getcwd(), ":t")}'
+\       'cwd': '%{fnamemodify(getcwd(), ":t")}',
+\       'bufnr': '%{bufnr("")}'
 \   },
 \   'component_expand':{
 \       'bufferline' : 'LightlineBufferline',
