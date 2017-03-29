@@ -15,8 +15,6 @@ Plug 'tpope/vim-obsession'                " Session auto capture
 Plug 'tpope/vim-unimpaired'               " Mappings
 Plug 'tpope/vim-repeat'                   " Fix mapping repeating
 Plug 'dhruvasagar/vim-prosession'         " Adds global session management (uses obsession)
-Plug 'gikmx/ctrlp-obsession'              " Allows easy switching between sessions
-Plug 'ctrlpvim/ctrlp.vim'                 " Fuzzy file finder
 Plug 'jiangmiao/auto-pairs'               " Insert or delete [, (, {, or ' in pairs
 Plug 'luochen1990/rainbow'                " Enable theme sharing with xterm
 Plug 'nathanaelkane/vim-indent-guides'    " Indentation
@@ -36,6 +34,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Enable Focus[Gained/Lost] on termina
 Plug 'bling/vim-bufferline'               " enable bufferline on commandline
 Plug 'Konfekt/FastFold'                   " Make folding faster
 Plug 'editorconfig/editorconfig-vim'      " Maintains consistency for editors
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " Async :make (used for syntax checking)
 Plug 'neomake/neomake', {'do': 'npm i -g eslint ' }
@@ -359,6 +358,19 @@ autocmd FileType html EmmetInstall
 " plugin» editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+" plugin» fzf
+let g:fzf_action = {
+\   'ctrl-t': 'tab split',
+\   'ctrl-x': 'split',
+\   'ctrl-v': 'vsplit',
+\}
+let g:fzf_layout = { 'down': '~25%' } " down, up, left, right or: { 'window': 'enew' }
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_buffers_jump = 1 " [BUffers] jumps to existing window, if possible.
+let g:fzf_commits_log_options = '--graph --color=always'
+let g:fzf_tags_command = 'ctags -R'
+let g:fzf_command_prefix = 'Fzf'
+
 "------------------------------------------------------------------------------- :FOLDING
 
 let g:javascript_fold = 1
@@ -399,7 +411,6 @@ inoremap <C-a> <Esc>
 imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
 " mapping» normal»
-nmap <BS> :CtrlPBuffer<CR>|                               " open buffer list with backspace
 nmap Q q|                                                 " Avoid unintentional exMode
 noremap Y y$                                              " Yank to the end of the line
 nnoremap <CR> @@|                                         " repeat las macro
@@ -467,6 +478,27 @@ if has('nvim')
     tnoremap <C-a> <C-\><C-n>
     tnoremap <silent> <Esc> <C-\><C-n>:bd!<CR>|           " Exit the terminal easily
 endif
+
+" mapping» fzf
+nnoremap <tab><tab> :FzfFiles<CR>
+nnoremap <tab>b :FzfBuffers<CR>
+nnoremap <tab>bl :FzfBLines<CR>
+nnoremap <tab>bc :FzfBCommits<CR>
+nnoremap <tab>g :FzfGFiles<CR>
+nnoremap <tab>c :FzfCommits<CR>
+nnoremap <tab>a :FzfAg<CR>
+nnoremap <tab>m :FzfMaps<CR>
+nnoremap <tab>l :FzfLines<CR>
+nnoremap <tab>: :FzfHistory:<CR>
+nnoremap <tab>/ :FzfHistory/<CR>
+nnoremap <tab>C :FzfCommands<CR>
+nnoremap <tab>t :FzfTags<CR>
+nnoremap <tab>s :FzfSnippets<CR>
+
+imap <C-f><C-w> <plug>(fzf-complete-word)
+imap <C-f><C-p> <plug>(fzf-complete-file-ag)
+imap <C-f><C-l> <plug>(fzf-complete-line)
+
 
 " --------------------------------------------------------------------------------- macros
 
