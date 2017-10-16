@@ -24,7 +24,6 @@ Plug 'EvanDotPro/nerdtree-chmod'          " Enable chmoding from nerdtree
 Plug 'esneider/YUNOcommit.vim'            " Shows a message if no commits are made in a while
 Plug 'wakatime/vim-wakatime'              " Keep track of time spent on vim
 Plug 'mbbill/undotree'                    " shows a visual representation of undo history
-Plug 'takac/vim-hardtime'                 " Sets timeout for movement keys to actually learn
 Plug 'easymotion/vim-easymotion'          " Allow jumping the file using letters
 Plug 'mileszs/ack.vim'                    " enable search-for-text using the_silver_surfer
 Plug 'octref/RootIgnore'                  " Sets wildignore to whatever gitignore has
@@ -103,7 +102,7 @@ set cursorline     " Show the current line
 set cursorcolumn   " Show the current column
 set splitbelow     " Open splits below instead of above
 set splitright     " Open slits right instead of above
-set backup         " Enable backup file crea
+set backup         " Enable backup file creation
 set swapfile       " Enable swapfile creation
 set undofile       " Enable undo management
 
@@ -113,9 +112,9 @@ set background=dark                  " Use default colors for dark background
 set wildmode=list:longest            " autocomplete until longest word is filled
 set diffopt=vertical,filler          " Define window behaviour for diffs (horizontal split)
 set grepprg=ag                       " search» Use the_silver_searcher insteand of grep
-set directory=$HOME/.vim/cache/swap/ " cache» Set dir for swapfiles
-set backupdir=$HOME/.vim/cache/back/ " cache» Set dir for backups
-set undodir=$HOME/.vim/cache/undo/   " cache» Set dir for undos
+set directory=$HOME/.config/nvim/cache/swap/ " cache» Set dir for swapfiles
+set backupdir=$HOME/.config/nvim/cache/back/ " cache» Set dir for backups
+set undodir=$HOME/.config/nvim/cache/undo/   " cache» Set dir for undos
 set updatetime=50                    " git» lower the time it takes to update gitgutter
 set scrolloff=9999                   " buffer» Always maintain n lines of context
 set history=1000                     " buffer» Control the history length
@@ -146,6 +145,7 @@ if has('nvim')
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
     let g:gruvbox_italic=1              " Force gruvbox to use italics (configured on install)
     let &colorcolumn=join(range(91,999), ',') " Show different color aftter line 90
+    set termguicolors
     colorscheme gruvbox
     hi CursorLine  guibg='#202020'
     hi ColorColumn guibg='#303030'
@@ -224,16 +224,6 @@ let g:ctrlp_follow_symlinks=1 "  Follow symlinks, but avoid recursion
 
 " plugin» javascript-libraries-syntax»
 let g:used_javascript_libs='underscore,react,chai'
-
-" plugin» hardtime»
-let g:hardtime_default_on=1                                           " This is how I Die
-let g:hardtime_showmsg=1                                              " Reminds death
-let g:hardtime_allow_different_key=1                                  " jjh: yup jjj: no
-let g:hardtime_maxcount=2                                             " jj: yup jjj: no
-let g:list_of_normal_keys=['h', 'j', 'k', 'l', '+', '-']              " normal mode
-let g:list_of_visual_keys=['h', 'j', 'k', 'l', '+', '-']              " visual mode
-let g:hardtime_ignore_buffer_patterns=['NERD.*', 'help', 'gitcommit'] " Ignore these
-let g:hardtime_ignore_quickfix=1                                      " … and quickfix
 
 " plugin» rainbow»
 let g:rainbow_active=1 " Enable rainbow on startup.
