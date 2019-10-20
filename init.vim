@@ -26,7 +26,7 @@ Plug 'wakatime/vim-wakatime'              " Keep track of time spent on vim
 Plug 'mbbill/undotree'                    " shows a visual representation of undo history
 Plug 'easymotion/vim-easymotion'          " Allow jumping the file using letters
 Plug 'mileszs/ack.vim'                    " enable search-for-text using the_silver_surfer
-Plug 'octref/RootIgnore'                  " Sets wildignore to whatever gitignore has
+" Plug 'octref/RootIgnore'                  " Sets wildignore to whatever gitignore has
 Plug 'terryma/vim-multiple-cursors'       " True ST3 style multiple selections
 Plug 'wesQ3/vim-windowswap'               " Swap between panes with ease
 Plug 'tmux-plugins/vim-tmux-focus-events' " Enable Focus[Gained/Lost] on terminal
