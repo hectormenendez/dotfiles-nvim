@@ -1,1 +1,3 @@
-print("hello world");
+-- Initialize my personal configs
+require("etor");
+
