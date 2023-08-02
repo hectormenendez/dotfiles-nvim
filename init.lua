@@ -37,5 +37,9 @@ vim.opt.rtp:prepend(path_lazy)
 
 require("lazy").setup({{ import = "plugins" }});
 
-local onLoad = require("etor").onLoad;
-vim.api.nvim_create_autocmd("User", { pattern = "VeryLazy", callback = onLoad })
+------------------------------------------------------------ MY SETTINGS
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = require("etor").onLoad,
+})
