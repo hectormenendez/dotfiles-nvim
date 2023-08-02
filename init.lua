@@ -1,8 +1,5 @@
--- Initialize my personal configs
-require("etor");
+------------------------------------------------------------ PACKAGE MANAGER
 
--- Install package-manager if not available already
---
 local path_lazy = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(path_lazy) then
     vim.fn.system({
@@ -16,8 +13,32 @@ if not vim.loop.fs_stat(path_lazy) then
 end
 vim.opt.rtp:prepend(path_lazy)
 
--- Configure package manager
--- Manage plugins using the `:Lazy` command
--- create a new file in the `./plugins` folder to load your plugin config.
+
+------------------------------------------------------------ KEYBINDINGS
+---------------------- These are the minimal keybindings needed for Lazy
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- removes the original space keybinding
+vim.api.nvim_set_keymap(
+    "",
+    "<Space>",
+    "<Nop>",
+    { noremap = true, silent = true }
+);
+
+-- adds lazy keybinding
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>l",
+    ":Lazy<cr>",
+    { noremap = true, silent = true }
+);
+
+
+------------------------------------------------------------ INIT
 --
-require("lazy").setup("plugins")
+require("lazy").setup({
+    { import = "plugins" },
+});
