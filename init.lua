@@ -1,8 +1,8 @@
 ------------------------------------------------------------ KEYBINDINGS
 ---------------------- These are the minimal keybindings needed for Lazy
 
-vim.g.mapleader = [[ ]]
-vim.g.maplocalleader = [[ ]]
+vim.g.mapleader = [[ ]];
+vim.g.maplocalleader = [[ ]];
 
 -- removes the original space keybinding
 vim.api.nvim_set_keymap(
@@ -20,7 +20,6 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true }
 );
 
-
 ------------------------------------------------------------ PACKAGE MANAGER
 
 local path_lazy = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -37,3 +36,6 @@ end
 vim.opt.rtp:prepend(path_lazy)
 
 require("lazy").setup({{ import = "plugins" }});
+
+local onLoad = require("etor").onLoad;
+vim.api.nvim_create_autocmd("User", { pattern = "VeryLazy", callback = onLoad })
