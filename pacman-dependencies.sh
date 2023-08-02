@@ -1,1 +1,4 @@
-pacman -S ripgrep tree-sitter-cli
+pacman -S \
+	ripgrep\
+	tree-sitter-cli\
+	lazygit
