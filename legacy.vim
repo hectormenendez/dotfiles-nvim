@@ -71,66 +71,6 @@ endif
 call plug#end()
 filetype plugin indent on
 
-"                                                                                :GENERAL
-"----------------------------------------------------------------------------------------
-
-" general» flags»
-syntax on          " Enable color syntax for known files
-set nospell        " Disable spelling checking
-set title          " Vim will set the terminal title
-set magic          " Enables regex magic, no need for backslashes in some cases.
-set showcmd        " Shows the last command entered
-set wildmenu       " Enables extended features for completion
-set autoread       " Detect when a file has changed
-set hidden         " buffer» Dont unload buffer when closed
-set showmatch      " show match on parenthesis and curly braces
-set writebackup    " … unless you're currently editing.
-set number         " lines» Enable line numbers
-set relativenumber " lines» Enable relative line numbering
-set nowrap         " lines» Disable line wrapping
-set incsearch      " search» Search as you type
-set hlsearch       " search» Highlight search results
-set ignorecase     " search» Ignore case when searching…
-set smartcase      " search» … but not when an uppercase letter is present
-set gdefault       " search» Assume always /g on replacements
-set autoindent     " indent» Enable auto indentation
-set smartindent    " indent» Determine indentation level automatically
-set expandtab      " indent» Inserts spaces rather than tabs
-set smarttab       " indent» tab respects 'tabstop' 'shiftwidth' and 'softtabstop'
-set shiftround     " indent» round indent to a multiple of 'shiftwidth'
-set cursorline     " Show the current line
-set cursorcolumn   " Show the current column
-set splitbelow     " Open splits below instead of above
-set splitright     " Open slits right instead of above
-set backup         " Enable backup file creation
-set swapfile       " Enable swapfile creation
-set undofile       " Enable undo management
-
-" general» settings»
-set synmaxcol=200                    " Only render syntax for first 200 cols
-set background=dark                  " Use default colors for dark background
-set wildmode=list:longest            " autocomplete until longest word is filled
-set diffopt=vertical,filler          " Define window behaviour for diffs (horizontal split)
-set grepprg=ag                       " search» Use the_silver_searcher insteand of grep
-set directory=$HOME/.config/nvim/cache/swap/ " cache» Set dir for swapfiles
-set backupdir=$HOME/.config/nvim/cache/back/ " cache» Set dir for backups
-set undodir=$HOME/.config/nvim/cache/undo/   " cache» Set dir for undos
-set updatetime=50                    " git» lower the time it takes to update gitgutter
-set scrolloff=9999                   " buffer» Always maintain n lines of context
-set history=1000                     " buffer» Control the history length
-set textwidth=100                    " buffer» maximum length of a line
-set colorcolumn=90                   " buffer» draws a bar on given line
-set laststatus=2                     " buffer» draws a status bar on the bottom
-set foldcolumn=2                     " gutter» Makes the gutter a little wider
-set numberwidth=4                    " gutter» Sets the width of the line numbering column
-set backspace=indent,eol,start       " indent» Make backspace behave the way you expect
-set tabstop=4                        " indent» Set tab length
-set softtabstop=0                    " indent» Force softtabbing
-set shiftwidth=4                     " indent» How many cols to indent on reindent
-set clipboard^=unnamed               " system-wide clipboard supprt
-set listchars=tab:▸-,space:·,eol:¬,trail:·,nbsp:×,extends:❯,precedes:❮ " Invisibles
-set showtabline=2                    " Always show the tabline
-
 " general» vars»
 let mapleader=' '      " Use space as <Leader> key for plugins namespace
 let maplocalleader=','
@@ -145,8 +85,6 @@ if has('nvim')
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Change the cursor when entering insert mode
     let g:gruvbox_italic=1              " Force gruvbox to use italics (configured on install)
     let &colorcolumn=join(range(91,999), ',') " Show different color aftter line 90
-    set termguicolors
-    colorscheme gruvbox
     hi CursorLine  guibg='#202020'
     hi ColorColumn guibg='#303030'
 
