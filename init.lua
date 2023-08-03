@@ -1,24 +1,15 @@
------------------------------------------------------------- KEYBINDINGS
----------------------- These are the minimal keybindings needed for Lazy
+------------------------------------------------------------ MINIMAL CONF
 
-vim.g.mapleader = [[ ]];
-vim.g.maplocalleader = [[ ]];
+vim.g.mapleader = " ";
+vim.g.maplocalleader = " ";
+
+local o = { noremap = true, silent = true };
 
 -- removes the original space keybinding
-vim.api.nvim_set_keymap(
-    "",
-    "<Space>",
-    "<Nop>",
-    { noremap = true, silent = true }
-);
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", o);
 
 -- adds lazy keybinding
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>l",
-    ":Lazy<cr>",
-    { noremap = true, silent = true }
-);
+vim.api.nvim_set_keymap("n", "<leader>l", ":Lazy<cr>", o);
 
 ------------------------------------------------------------ PACKAGE MANAGER
 
@@ -39,7 +30,4 @@ require("lazy").setup({{ import = "plugins" }});
 
 ------------------------------------------------------------ MY SETTINGS
 
-vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = require("etor").onLoad,
-})
+require("etor");

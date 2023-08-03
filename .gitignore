@@ -1,5 +1,2 @@
-/autoload
-/bundle
-/cache
-/nvim
-/session
+/autoload/
+/cache/
