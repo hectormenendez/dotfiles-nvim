@@ -13,17 +13,17 @@ return {
 	    {
 	        "<C-p>",
 		"<cmd>Telescope git_files<cr>",
-		"Telescope: Find Files"
+		desc = "Find: Git Files"
 	    },
 	    {
 	        "<leader>ff",
 		"<cmd>Telescope find_files<cr>",
-		"Telescope: Find Files"
+		desc = "Find: All Files"
 	    },
             {
 	        "<leader>fg",
 		"<cmd>Telescope live_grep<cr>",
-		"Telescope: Live Grep"
+		desc = "Find: Grep [Live]"
 	    },
 	    {
 		"<leader>fG",
@@ -31,17 +31,17 @@ return {
                     local builtin = require("telescope.builtin");
 		    builtin.grep_string({ search = vim.fn.input("Grep > ") });
 		end,
-		"Telescope: Grep"
+		desc = "Find: Grep [Expr]"
 	    },
             {
 	        "<leader>fb",
 		"<cmd>Telescope buffers<cr>",
-		"Telescope: Find Buffers"
+		desc = "Find: Buffers"
 	    },
             {
 	        "<leader>ft",
 		"<cmd>Telescope help_tags<cr>",
-		"Telescope: Help Tags",
+		desc = "Find: Tags",
 	    },
 	},
     },
