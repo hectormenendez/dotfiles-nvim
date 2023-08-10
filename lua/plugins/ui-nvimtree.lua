@@ -1,28 +1,31 @@
 -- @see :help nvim-tree-setup
+local utils = require("etor.utils")
+local remap_le = require("etor.remaps.leader-explore")
+
 return {
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false, -- recomended by the docs
     dependencies = {},
-    keys = {
-        { "<C-w>e", "<cmd>NvimTreeToggle<cr>", "Window: Exporer" },
-    },
+    keys = utils.merge(remap_le.files),
     opts = {
         auto_reload_on_write = false,
-        hijack_cursor = false,
-        hijack_unnamed_buffer_when_opening = false,
+        hijack_cursor = true,
+        hijack_unnamed_buffer_when_opening = true,
         prefer_startup_root = false,
         sync_root_with_cwd = true,
         reload_on_bufenter = false,
         respect_buf_cwd = false,
+
         sort = {
             sorter = "case_sensitive",
             folders_first = true,
         },
+
         view = {
             width = 40,
-            centralize_selection = false,
-            cursorline = true,
+            centralize_selection = true,
+            cursorline = false,
             hide_root_folder = false,
             side = "right",
             mappings = {
@@ -32,6 +35,7 @@ return {
                 }
             }
         },
+
         filters = {
             dotfiles = true,
             git_ignored = false,
@@ -41,11 +45,13 @@ return {
                 "node_modules$",
             },
         },
+
         actions = {
             open_file = {
                 quit_on_open = true,
             },
         },
+
         renderer = {
             group_empty = true,
             highlight_git = true,

@@ -3,16 +3,16 @@ return {
     build = ":TSUpdate",
     opts = {
         ensure_installed = {
-	    "help",
-	    "lua",
-	    "javascript",
-	    "typescript",
-	    "rust",
-	    "python",
-	    "c",
-	    "vim",
-	    "vimdoc",
-	    "query",
+            "help",
+            "lua",
+            "javascript",
+            "typescript",
+            "rust",
+            "python",
+            "c",
+            "vim",
+            "vimdoc",
+            "query",
         },
         
         -- Install parsers synchronously (only applied to `ensure_installed`)

@@ -4,11 +4,16 @@ return {
     priority = 1000,
     opts = {
         transparent = true,
-	terminal_colors = true,
-	-- sets different background for special buffers
-	sidebars = { "qf", "help", "terminal" },
-	dim_inactive = true,
-	-- make telescope borderless
+        terminal_colors = true,
+        dim_inactive = true,
+
+        sidebars = { -- different background for some buffers
+            "qf",
+            "help",
+            "terminal"
+        }, 
+
+        -- make telescope borderless
         on_highlights = function(hl, c)
             local prompt = "#2d3149"
             local indicator = "#191A26"
