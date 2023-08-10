@@ -1,6 +1,14 @@
 require("etor.utils").onload(function()
     require("which-key").register({ ["<leader>e"] = { name= "+explore" } })
     require("which-key").register({ ["<leader>et"] = { name= "+term" } })
+
+    -- adds lazy keybinding
+    vim.api.nvim_set_keymap(
+        "n",
+        "<leader>el",
+        ":Lazy<cr>",
+        { noremap = true, silent = true, desc = "explore: lazy plugins" }
+    );
 end)
 
 local M = {}
