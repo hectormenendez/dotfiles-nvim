@@ -1,8 +1,4 @@
 ------------------------------------------------------------ MINIMAL CONF
-
-vim.g.mapleader = " ";
-vim.g.maplocalleader = " ";
-
 local o = { noremap = true, silent = true };
 
 -- removes the original space keybinding
@@ -10,6 +6,10 @@ vim.api.nvim_set_keymap("", "<Space>", "<Nop>", o);
 
 -- adds lazy keybinding
 vim.api.nvim_set_keymap("n", "<leader>l", ":Lazy<cr>", o);
+
+-- this has to be setup before lazy
+vim.g.mapleader = " ";
+vim.g.maplocalleader = " ";
 
 ------------------------------------------------------------ PACKAGE MANAGER
 
@@ -26,10 +26,14 @@ if not vim.loop.fs_stat(path_lazy) then
 end
 vim.opt.rtp:prepend(path_lazy)
 
-require("lazy").setup("plugins", {
+require("lazy").setup({
+    -- where to look for plugins?
+    spec = "plugins",
+
     change_detection = {
         notify = false,
     },
+
     performance = {
         rtp = {
             disabled_plugins = {
@@ -42,7 +46,24 @@ require("lazy").setup("plugins", {
                 "zipPlugin",
             }
         }
-    }
+    },
+
+    ui = {
+        icons = {
+            cmd = "⚡",
+            config = "⚙️a",
+            event = "📅",
+            ft = "📂",
+            init = "⚙",
+            keys = "🗝",
+            plugin = "🔌",
+            runtime = "💻",
+            source = "📄",
+            start = "🚀",
+            task = "🪪",
+            lazy = "💤 ",
+        }
+    },
 });
 
 ------------------------------------------------------------ MY SETTINGS

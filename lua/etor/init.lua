@@ -1,15 +1,7 @@
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    -- execute this when finish loading plugins.
-    callback = function()
-	-- TODO: I don't think this is necessary anymore
-	vim.cmd("syntax on");
-
-        print("Welcome et0r.");
-    end,
-});
+require("etor.utils").onload(function()
+    vim.cmd("syntax on"); -- TODO: I don't think this is necessary anymore
+    print("Welcome et0r.");
+end)
 
 require("etor.theme");
 require("etor.settings");
-require("etor.remaps");

@@ -23,7 +23,7 @@ vim.opt.undofile = false  -- Undo management
 --
 vim.opt.termguicolors = true -- we like good colors
 vim.opt.cursorline = true  -- Show the current line
-vim.opt.synmaxcol = 110  -- render syntax only for first n characters in a line
+--vim.opt.synmaxcol = 110  -- render syntax only for first n characters in a line
 vim.opt.showtabline = 2  -- Whether to show the tabline (upper side filename)
 vim.opt.laststatus = 2  -- draws a status bar on the bottom
 
