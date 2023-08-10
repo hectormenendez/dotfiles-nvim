@@ -9,17 +9,30 @@ return {
     dependencies = {},
     keys = utils.merge(remap_le.files),
     opts = {
+        reload_on_bufenter = true,
         auto_reload_on_write = false,
+        sync_root_with_cwd = true,
+        prefer_startup_root = false,
+        respect_buf_cwd = false,
+        disable_netrw = true,
+        hijack_netrw = true,
         hijack_cursor = true,
         hijack_unnamed_buffer_when_opening = true,
-        prefer_startup_root = false,
-        sync_root_with_cwd = true,
-        reload_on_bufenter = false,
-        respect_buf_cwd = false,
+
+        hijack_directories = {
+            enable = true,
+            auto_open = true,
+        },
 
         sort = {
             sorter = "case_sensitive",
             folders_first = true,
+        },
+
+        update_focused_file = {
+            enable = true,
+            update_root = true,
+            ignore_list = {}
         },
 
         view = {
@@ -47,9 +60,18 @@ return {
         },
 
         actions = {
+            change_dir = {
+                enable = true
+            },
             open_file = {
                 quit_on_open = true,
+                resize_window = true,
             },
+        },
+
+        git = {
+            enable = true,
+            ignore = true,
         },
 
         renderer = {
@@ -57,7 +79,9 @@ return {
             highlight_git = true,
             indent_width = 4,
             symlink_destination = true,
-            special_files = {},
+            full_name = false,
+            highlight_opened_files = "name",
+
             indent_markers = {
                 enable = true,
                 inline_arrows = true,
@@ -69,10 +93,12 @@ return {
                     none = " ",
                 },
             },
+
             special_files = {
                 "README.md",
                 "package.json",
             },
+
             icons = {
                 webdev_colors = true,
                 git_placement = "after",
