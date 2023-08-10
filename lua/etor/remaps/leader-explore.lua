@@ -1,6 +1,6 @@
 require("etor.utils").onload(function()
     require("which-key").register({ ["<leader>e"] = { name= "+explore" } })
-    require("which-key").register({ ["<leader>et"] = { name= "+term" } })
+    require("which-key").register({ ["<leader>et"] = { name= "explore: term" } })
 
     -- adds lazy keybinding
     vim.api.nvim_set_keymap(
