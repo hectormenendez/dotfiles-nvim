@@ -9,44 +9,103 @@ return {
     dependencies = {},
     keys = utils.merge(remap_le.files),
     opts = {
-        reload_on_bufenter = true,
-        auto_reload_on_write = false,
-        sync_root_with_cwd = true,
-        prefer_startup_root = false,
-        respect_buf_cwd = false,
-        disable_netrw = true,
-        hijack_netrw = true,
-        hijack_cursor = true,
+        -- default: false; not really needed, because I killed it at load. 
+        disable_netrw = true, 
+
+        -- default: true; reload explored when a write happens. 
+        auto_reload_on_write = true, 
+
+        -- default: false; open nvimtree in place of unnamed buffer
         hijack_unnamed_buffer_when_opening = true,
 
+        -- default: false; keeps the cursor on the first letter of each item
+        hijack_cursor = true,
+
+        -- default: {}; only relevant when `update_focused_file.update_root = true`
+        --              preferred root directories
+        root_dirs = {},
+
+        -- default: false; only relevant when `update_focused_file.update_root = true`
+        --              prefer `root_dirs` when updating root directory of the tree.
+        prefer_startup_root = false,
+
+        -- default: false; changes the tree root directory whevenver `DirChanged`
+        --                 and refreshes the tree.
+        sync_root_with_cwd = false,
+
+        -- default: false; whenever entering a new buffer, reload the tree.
+        reload_on_bufenter = false,
+
+        -- default: false; when opening tree, it will change cwd to curren't buyffer path
+        respect_buf_cwd = true,
+
+        -- default: {}; take control when a dir buffer is opened
         hijack_directories = {
+            -- disable this if using: vim-dirvish or dirbuf.nvim
             enable = true,
             auto_open = true,
         },
 
-        sort = {
-            sorter = "case_sensitive",
-            folders_first = true,
-        },
-
+        -- default: {}; update focused file on tree on BufEnter.
+        --              uncollapses the folders recursively until it finds the file
         update_focused_file = {
             enable = true,
-            update_root = true,
+            -- default: false; if the file is not under current root directory
+            --                 sets the new root, falls back the containing folder.
+            update_root = true, -- related to prefer_startup_root
             ignore_list = {}
         },
 
+        -- handles opening a file with a dedicated app.
+        system_open = {
+            -- default: "";
+            cmd = "spacefm",
+            args = {},
+        },
+
+        -- depends on: `renderer.icons.show.git` or `renderer.highlight_git`
+        git = {
+            enable = true,
+            -- show status icons on directories
+            show_on_dirs = true,
+            show_on_open_dirs = true,
+            -- disable the functionality for these dirs
+            disable_for_dirs = {},
+        },
+
+        -- sorting for files and folders
+        sort = {
+            -- default: name; available: modification_time, extension, suffix, filetype
+            sorter = "case_sensitive",
+            -- default: true;
+            folders_first = true,
+        },
+
+        -- shows whether files have modifications
+        -- dependes on `renderer.icons.show.modified` or `renderer.highlight_modified`
+        modified = {
+            -- default: false;
+            enable = true,
+            show_on_dirs = true;
+            show_on_open_dirs = true;
+        },
+
+        -- modify the window behaviour
         view = {
-            width = 40,
+            -- default: false; the initial node will be the one in the middle
             centralize_selection = true,
-            cursorline = false,
-            hide_root_folder = false,
+            -- default: true; enable the cursor line in the tree
+            cursorline = true,
+            width = {
+                min = 40,
+                max = "40%",
+                padding = 1,
+            },
             side = "right",
-            mappings = {
-                custom_only = false,
-                list = {
-                    -- custom mappings go here
-                }
-            }
+            preserve_window_proportions = false,
+            -- enable line numbers
+            number = false,
+            relativenumber = false,
         },
 
         filters = {
@@ -69,19 +128,23 @@ return {
             },
         },
 
-        git = {
-            enable = true,
-            ignore = true,
-        },
-
         renderer = {
-            group_empty = true,
-            highlight_git = true,
-            indent_width = 4,
+            -- default: true; resolve the link?
             symlink_destination = true,
+            -- default: false; adds a trailing slahs to dirs
+            add_trailing = true,
+            -- default: false; make empty dirs compact
+            group_empty = true,
+            -- if the name is wider than the window, show it ina float
             full_name = false,
-            highlight_opened_files = "name",
-
+            -- depends on `git` setting
+            highlight_git = true,
+            -- default: none; available: "icon", "name", "all".
+            highlight_opened_files = "all",
+            -- depends on `modified` setting
+            highlight_modified = true,
+            -- default: 2;
+            indent_width = 4,
             indent_markers = {
                 enable = true,
                 inline_arrows = true,
