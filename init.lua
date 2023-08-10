@@ -26,7 +26,24 @@ if not vim.loop.fs_stat(path_lazy) then
 end
 vim.opt.rtp:prepend(path_lazy)
 
-require("lazy").setup({{ import = "plugins" }});
+require("lazy").setup("plugins", {
+    change_detection = {
+        notify = false,
+    },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "netrwPlugin", -- using nvim-tree instead
+                -- stolen these, hehe.
+                "tohtml",
+                "tutor",
+                "gzip",
+                "tarPlugin",
+                "zipPlugin",
+            }
+        }
+    }
+});
 
 ------------------------------------------------------------ MY SETTINGS
 
