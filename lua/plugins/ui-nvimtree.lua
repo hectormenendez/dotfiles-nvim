@@ -142,7 +142,7 @@ return {
             -- default: none; available: "icon", "name", "all".
             highlight_opened_files = "all",
             -- depends on `modified` setting
-            highlight_modified = true,
+            highlight_modified = "icon",
             -- default: 2;
             indent_width = 4,
             indent_markers = {
