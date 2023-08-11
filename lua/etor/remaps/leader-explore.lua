@@ -13,6 +13,10 @@ end)
 
 local M = {}
 
+M.checkups = {
+    { "<leader>ec", "<cmd>TroubleToggle<cr>", desc="explore: checkups" },
+}
+
 M.files = {
     { "<leader>ef", "<cmd>NvimTreeToggle<cr>", desc="explore: files" },
 }
