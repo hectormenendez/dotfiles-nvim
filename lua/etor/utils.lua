@@ -36,4 +36,15 @@ end
 
 M.tableprint = tableprint;
 
+M.highlighter = function(highlights)
+    for group, attributes in pairs(highlights) do
+        local cmd = {"highlight", group}
+        for attr, value in pairs(attributes) do
+            table.insert(cmd, attr .. "=" .. value)
+        end
+        table.insert(cmd, "gui=nocombine")
+        vim.cmd(table.concat(cmd, " "))
+    end
+end
+
 return M;
