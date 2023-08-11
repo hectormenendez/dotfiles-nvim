@@ -1,7 +1,16 @@
-require("etor.theme");
+local theme_set = require("etor.theme").theme_set;
+
+-- TODO: Make a theme switcher
+theme_set("tokyonight-night");
+--theme_set("tokyonight-storm");
+--theme_set("tokyonight-day");
+--theme_set("tokyonight-moon");
+
 require("etor.settings");
 
 require("etor.utils").onload(function()
+    -- hide the command area
+    vim.opt.cmdheight = 0
     -- temporary fix while I choose a session changer.
     -- r:are u:you ~:home? a.k.a. is this the root of your project, bitch?
     vim.api.nvim_set_keymap(

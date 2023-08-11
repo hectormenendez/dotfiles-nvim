@@ -1,8 +1,15 @@
--- TODO: Make a theme switcher
+local M = {};
 
-local theme_set = function(t)
+M.theme_colors = {
+    fg_brightest = "#EEEFEF",
+    darkest = "#10121A",
+    darker = "#262A3D",
+}
+
+M.theme_set = function(t)
     vim.opt.termguicolors = true
     vim.cmd.colorscheme(t or "tokyonight");
+
 
     -- set window transparency
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" });
@@ -12,8 +19,4 @@ local theme_set = function(t)
     -- vim.o.colorcolumn = table.concat(vim.fn.range(91, 999), ',')
 end;
 
-theme_set("tokyonight-night");
---theme_set("tokyonight-storm");
---theme_set("tokyonight-day");
---theme_set("tokyonight-moon");
-
+return M;
