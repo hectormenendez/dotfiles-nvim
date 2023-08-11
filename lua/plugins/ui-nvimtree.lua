@@ -7,13 +7,13 @@ return {
     version = "*",
     lazy = false, -- recomended by the docs
     dependencies = {},
-    keys = utils.merge(remap_le.files),
+    keys = utils.tablemerge(remap_le.files),
     opts = {
-        -- default: false; not really needed, because I killed it at load. 
-        disable_netrw = true, 
+        -- default: false; not really needed, because I killed it at load.
+        disable_netrw = true,
 
-        -- default: true; reload explored when a write happens. 
-        auto_reload_on_write = true, 
+        -- default: true; reload explored when a write happens.
+        auto_reload_on_write = true,
 
         -- default: false; open nvimtree in place of unnamed buffer
         hijack_unnamed_buffer_when_opening = true,

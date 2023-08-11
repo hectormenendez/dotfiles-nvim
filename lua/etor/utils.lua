@@ -8,7 +8,7 @@ M.onload = function(callback)
 end
 
 -- Merges N lists together
-M.merge = function(...)
+M.tablemerge = function(...)
     local result = {}
     for _, t in ipairs({...}) do
         for _, v in ipairs(t) do

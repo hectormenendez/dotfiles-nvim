@@ -2,8 +2,6 @@ require("etor.theme");
 require("etor.settings");
 
 require("etor.utils").onload(function()
-    -- vim.cmd("syntax on"); 
-
     -- temporary fix while I choose a session changer.
     -- r:are u:you ~:home? a.k.a. is this the root of your project, bitch?
     vim.api.nvim_set_keymap(
@@ -33,16 +31,16 @@ require("etor.utils").onload(function()
     vim.api.nvim_set_keymap('n', 'Q', '<Nop>', o)
     vim.api.nvim_set_keymap('n', 'q', '<Nop>', o)
 
-    vim.api.nvim_set_keymap('n', '<Leader>bi', ':ls!<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<Leader>bd', ':bufdo bd<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<Leader>bi', ':ls!<CR>', o)
+    vim.api.nvim_set_keymap('n', '<Leader>bd', ':bufdo bd<CR>', o)
 
     -- mapping» normal» toggle»
-    vim.api.nvim_set_keymap('n', '<Leader>ti', ':set list!<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<Leader>ti', ':set list!<CR>', o)
 
     -- mapping» normal» search»
-    vim.api.nvim_set_keymap('n', '/', '/\\v', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('c', '%s', '%s/\\v', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '//', ':%s/\\v', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohlsearch<CR><Esc>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<Esc><Esc><Esc>', ':/^❌ 💩 /<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '/', '/\\v', o)
+    vim.api.nvim_set_keymap('c', '%s', '%s/\\v', o)
+    vim.api.nvim_set_keymap('n', '//', ':%s/\\v', o)
+    vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohlsearch<CR><Esc>', o)
+    vim.api.nvim_set_keymap('n', '<Esc><Esc><Esc>', ':/^❌ 💩 /<CR>', o)
 end)

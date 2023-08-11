@@ -46,4 +46,8 @@ M.git = {
     }
 }
 
+M.undo = {
+    { "<leader>eu", "<cmd>UndotreeToggle<cr>", desc="explore: undo-tree" },
+}
+
 return M;
