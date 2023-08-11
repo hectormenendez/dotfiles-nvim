@@ -193,7 +193,6 @@ return {
                         arrow_closed = "►",
                         arrow_open = "▼",
                         default = "📁",
-                        symlink = "🔗",
                         symlink = "*🔗",
                         open = "📂",
                         empty = "📁",
