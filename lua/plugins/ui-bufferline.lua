@@ -1,3 +1,5 @@
+local theme_colors = require("etor.theme").theme_colors;
+
 return {
     "akinsho/bufferline.nvim",
     version = "*",
@@ -25,33 +27,36 @@ return {
         highlights = {
             fill = {
                 fg = "None",
-                bg = "#10121A",
+                bg = theme_colors.darkest,
             },
             separator = {
-                fg = '#10121A',
-                bg = '#10121A',
+                fg = theme_colors.darkest,
+                bg = theme_colors.darkest,
             },
             separator_selected = {
-                fg = "#10121A",
+                fg = theme_colors.darkest,
                 bg = "None",
             },
             separator_visible = {
-                fg = '#10121A',
-                bg = '#10121A',
+                fg = theme_colors.darkest,
+                bg = theme_colors.darkest,
             },
             background = {
-                fg = '#262A3D',
-                bg = '#10121A',
+                fg = theme_colors.darker,
+                bg = theme_colors.darkest,
             },
             buffer_selected = {
-                fg = '#EEEFEF',
+                fg = theme_colors.fg_brightest,
                 bg = 'None',
                 bold = true,
                 italic = false,
             },
             buffer_visible = {
-                fg = '#262A3D',
-                bg = '#10121A',
+                fg = theme_colors.darker,
+                bg = theme_colors.darkest,
+            },
+            modified_visible = {
+                bg = theme_colors.darkest,
             },
         };
 
