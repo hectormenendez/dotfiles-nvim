@@ -5,7 +5,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
 
-	-- this is the time is going to take to open the plugin
+    -- this is the time is going to take to open the plugin
     init = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 500
@@ -56,15 +56,15 @@ return {
             -- used in the command line area, shows your active key combo
             breadcrumb = "»",
             -- used between a key and it's label
-            separator = "", 
+            separator = "",
             -- symbol prepended to a group
-            group = "+", 
+            group = "+",
         },
 
         -- hides mappings
         hidden = {
             -- "<silent>",
-        }, 
+        },
         -- on the following, the plugin will showup immediately
         triggers_nowait = {
             -- marks
