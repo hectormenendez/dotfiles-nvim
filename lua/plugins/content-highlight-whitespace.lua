@@ -15,7 +15,6 @@ return {
             other = {
                 tws = 'PaleVioletRed',
                 ['\\(\\S\\)\\@<=\\s\\(,\\)\\@='] = 'coral1',
-                ['\\(\\S\\)\\@<= \\{2,\\}\\(\\S\\)\\@='] = 'LightGoldenrod3',
                 ['\\t\\+'] = 'plum4',
             }
         }
