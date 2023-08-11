@@ -1,3 +1,4 @@
+local utils = require("etor.utils");
 local theme_set = require("etor.theme").theme_set;
 
 -- TODO: Make a theme switcher
@@ -8,9 +9,22 @@ theme_set("tokyonight-night");
 
 require("etor.settings");
 
-require("etor.utils").onload(function()
-    -- hide the command area
+utils.onload(function()
+    -- hide command area, but allow toggling.
     vim.opt.cmdheight = 0
+    vim.api.nvim_set_keymap(
+        "n",
+        "<leader>;",
+        utils.fn_cmd(function()
+            local v = vim.opt.cmdheight._value; -- TODO: seems hacky
+            if v == 0 then
+                vim.opt.cmdheight = 3
+            else
+                vim.opt.cmdheight = 0
+            end
+        end),
+        { noremap = true, silent = true, desc = "$>" })
+
     -- temporary fix while I choose a session changer.
     -- r:are u:you ~:home? a.k.a. is this the root of your project, bitch?
     vim.api.nvim_set_keymap(
@@ -38,7 +52,7 @@ require("etor.utils").onload(function()
 
     -- Avoid unintentional exMode
     vim.api.nvim_set_keymap('n', 'Q', '<Nop>', o)
-    vim.api.nvim_set_keymap('n', 'q', '<Nop>', o)
+    vim.api.nvim_set_keymap('c', ':q', '<Nop>', o)
 
     vim.api.nvim_set_keymap('n', '<Leader>bi', ':ls!<CR>', o)
     vim.api.nvim_set_keymap('n', '<Leader>bd', ':bufdo bd<CR>', o)
@@ -53,3 +67,6 @@ require("etor.utils").onload(function()
     vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohlsearch<CR><Esc>', o)
     vim.api.nvim_set_keymap('n', '<Esc><Esc><Esc>', ':/^❌ 💩 /<CR>', o)
 end)
+
+
+
