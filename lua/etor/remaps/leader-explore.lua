@@ -17,6 +17,11 @@ M.checkups = {
     { "<leader>ec", "<cmd>TroubleToggle<cr>", desc="explore: checkups" },
 }
 
+M.todos = {
+    { "<leader>ed", "<cmd>TodoTelescope<cr>", desc="explore: to-dos" },
+}
+
+
 M.files = {
     { "<leader>ef", "<cmd>NvimTreeToggle<cr>", desc="explore: files" },
 }

@@ -6,6 +6,7 @@ local remaps_lf = require("etor.remaps.leader-find");
 return {
     "nvim-telescope/telescope.nvim",
     branch = "master",
+    lazy = false,
     dependencies = {
         "nvim-lua/plenary.nvim", -- utilities
         "nvim-treesitter/nvim-treesitter",
