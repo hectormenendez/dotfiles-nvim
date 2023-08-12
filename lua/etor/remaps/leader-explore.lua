@@ -13,8 +13,15 @@ end)
 
 local M = {}
 
-M.checkups = {
-    { "<leader>ec", "<cmd>TroubleToggle<cr>", desc="explore: checkups" },
+M.alerts = {
+    { "<leader>ea", "<cmd>TroubleToggle<cr>", desc="explore: alerts" },
+}
+
+M.content = {
+    {
+        "<leader>e/",
+        "<cmd>lua require('spectre').toggle()",
+        desc="explore: search & replace" },
 }
 
 M.todos = {
