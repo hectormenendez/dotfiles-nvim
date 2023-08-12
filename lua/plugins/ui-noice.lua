@@ -7,6 +7,7 @@ utils.onload(function()
         NoiceCmdlinePopup = { guifg = c.mode_c_fg, guibg = c.darkst },
         NoiceCmdlinePopupBorder = { guifg = c.mode_c_bg, guibg = "None" },
         NoiceCmdlinePopupTitle = { guifg = c.mode_c_bg, guibg = "None" },
+        NotifyBackground = { guibg = c.darkst },
     })
 end)
 
@@ -18,6 +19,7 @@ return {
         "rcarriga/nvim-notify",
     },
     config = function()
+        local notify_render_base = require("notify.render.base");
         require("noice").setup({
             cmdline = {
                 enabled = true,
@@ -37,7 +39,9 @@ return {
                     ["cmp.entry.get_documentation"] = true,
                 },
             },
-            presets = {},
+            presets = {
+                long_message_to_split = true
+            },
             routes = {
                 -- show change mode messages, but ignore certain ones.
                 {
@@ -50,7 +54,10 @@ return {
                                 local content = v:content();
                                 local has_insert = content:find("-- INSERT") ~= nil
                                 local has_visual = content:find("-- VISUAL") ~= nil
-                                if has_insert or has_visual then return false end
+                                local has_terminal = content:find("-- TERMINAL") ~= nil
+                                if has_insert or has_visual or has_terminal then
+                                    return false
+                                end
                             end
                             return true
                         end
@@ -60,6 +67,33 @@ return {
             views = {
                 -- customize notifications
                 notify = {
+                    stages = "slide",
+                    fps = 60,
+                    timeout = 3000,
+                    top_down = false,
+                    icons = {
+                        ERROR = "E",
+                        WARN = "W",
+                        INFO = "I",
+                        DEBUG = "D",
+                        TRACE = "T"
+                    },
+                    -- @see https://github.com/rcarriga/nvim-notify/blob/master/lua/notify/render/minimal.lua
+                    render = function(id_bu, notification, highlights)
+                        -- prepend a space so notification text have a little more room
+                        local message = vim.tbl_map(
+                            function(line) return " " .. line end,
+                            notification.message
+                        )
+                        vim.api.nvim_buf_set_lines(id_bu, 0, -1, false, message)
+                        local id_ns = notify_render_base.namespace()
+                        vim.api.nvim_buf_set_extmark(id_bu, id_ns, 0, 0, {
+                            hl_group = highlights.icon,
+                            end_line = #notification.message - 1,
+                            end_col = #notification.message[#notification.message],
+                            priority = 50,
+                        })
+                    end,
                 },
                 -- make the cmdline and popupmenu appear together
                 cmdline_popup = {
