@@ -27,36 +27,36 @@ return {
         highlights = {
             fill = {
                 fg = "None",
-                bg = theme_colors.darkest,
+                bg = theme_colors.darkst,
             },
             separator = {
-                fg = theme_colors.darkest,
-                bg = theme_colors.darkest,
+                fg = theme_colors.darkst,
+                bg = theme_colors.darkst,
             },
             separator_selected = {
-                fg = theme_colors.darkest,
+                fg = theme_colors.darkst,
                 bg = "None",
             },
             separator_visible = {
-                fg = theme_colors.darkest,
-                bg = theme_colors.darkest,
+                fg = theme_colors.darkst,
+                bg = theme_colors.darkst,
             },
             background = {
                 fg = theme_colors.darker,
-                bg = theme_colors.darkest,
+                bg = theme_colors.darkst,
             },
             buffer_selected = {
-                fg = theme_colors.fg_brightest,
+                fg = theme_colors.litest,
                 bg = 'None',
                 bold = true,
                 italic = false,
             },
             buffer_visible = {
                 fg = theme_colors.darker,
-                bg = theme_colors.darkest,
+                bg = theme_colors.darkst,
             },
             modified_visible = {
-                bg = theme_colors.darkest,
+                bg = theme_colors.darkst,
             },
         };
 

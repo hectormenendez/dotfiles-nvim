@@ -1,15 +1,21 @@
 local M = {};
 
 M.theme_colors = {
-    fg_brightest = "#EEEFEF",
-    darkest = "#10121A",
+    litest = "#EEEFEF",
+    liter = "slategray",
+    darkst = "#10121A",
     darker = "#262A3D",
+    mode_c_fg = "orange",
+    mode_c_bg = "crimson",
+    mode_v_fg = "midnightblue",
+    mode_v_bg = "deepskyblue",
+    mode_i_fg = "pink",
+    mode_i_bg = "deeppink",
 }
 
 M.theme_set = function(t)
     vim.opt.termguicolors = true
     vim.cmd.colorscheme(t or "tokyonight");
-
 
     -- set window transparency
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" });

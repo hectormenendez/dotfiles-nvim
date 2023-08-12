@@ -6,19 +6,19 @@ return {
     config = function()
         local theme = {
             normal = {
-                a = { fg = theme_colors.darker, bg = theme_colors.darkest },
-                b = { fg = "slategray", bg = theme_colors.darker },
-                c = { fg = theme_colors.darker, bg = theme_colors.darkest },
-                z = { fg = "slategray", bg = theme_colors.darker },
+                a = { fg = theme_colors.darker, bg = theme_colors.darkst },
+                b = { fg = theme_colors.liter,  bg = theme_colors.darker },
+                c = { fg = theme_colors.darker, bg = theme_colors.darkst },
+                z = { fg = theme_colors.liter,  bg = theme_colors.darker },
             },
             insert = {
-                a = { fg = "pink", bg = "deeppink" },
+                a = { fg = theme_colors.mode_i_fg, bg = theme_colors.mode_i_bg },
             },
             visual = {
-                a = { fg = "midnightblue", bg = "deepskyblue" },
+                a = { fg = theme_colors.mode_v_fg, bg = theme_colors.mode_v_bg },
             },
             command = {
-                a = { fg = "orange", bg = "crimson" },
+                a = { fg = theme_colors.mode_c_fg, bg = theme_colors.mode_c_bg },
             },
         }
         -- Put proper separators and gaps between components in sections
