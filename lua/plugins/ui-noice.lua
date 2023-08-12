@@ -39,10 +39,28 @@ return {
             },
             presets = {},
             routes = {
-                -- show @recording messages
-                { view = "notify", filter = { event = "msg_showmode" } },
+                -- show change mode messages, but ignore certain ones.
+                {
+                    view = "notify",
+                    filter = {
+                        event = "msg_showmode",
+                        cond = function(message)
+                            if (message.event ~= "msg_showmode") then return false end
+                            for _k, v in pairs(message._lines) do
+                                local content = v:content();
+                                local has_insert = content:find("-- INSERT") ~= nil
+                                local has_visual = content:find("-- VISUAL") ~= nil
+                                if has_insert or has_visual then return false end
+                            end
+                            return true
+                        end
+                    }
+                },
             },
             views = {
+                -- customize notifications
+                notify = {
+                },
                 -- make the cmdline and popupmenu appear together
                 cmdline_popup = {
                     position = { row = -2, col = 0 },
@@ -59,7 +77,7 @@ return {
                 popupmenu = {
                     relative = "editor",
                     position = { row = -5, col = 0 },
-                    size = { width = "100%", height =  "auto" },
+                    size = { width = "100%", height = "auto" },
                     border = {
                         style = "none",
                         padding = { 1, 2 }
