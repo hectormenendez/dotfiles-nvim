@@ -10,29 +10,8 @@ theme_set("tokyonight-night");
 require("etor.settings");
 
 utils.onload(function()
-    -- hide command area, but allow toggling.
+    -- hide command area.
     vim.opt.cmdheight = 0
-    vim.api.nvim_set_keymap(
-        "n",
-        "<leader>;",
-        utils.fn_cmd(function()
-            local v = vim.opt.cmdheight._value; -- TODO: seems hacky
-            if v == 0 then
-                vim.opt.cmdheight = 3
-            else
-                vim.opt.cmdheight = 0
-            end
-        end),
-        { noremap = true, silent = true, desc = "$>" })
-
-    -- temporary fix while I choose a session changer.
-    -- r:are u:you ~:home? a.k.a. is this the root of your project, bitch?
-    vim.api.nvim_set_keymap(
-        "n",
-        "<leader>.",
-        ":lcd %:p:h<cr>",
-        { noremap = true, silent = true, desc = "ru~?" }
-    );
 
     local o = { noremap = true, silent = true };
 
@@ -67,6 +46,3 @@ utils.onload(function()
     vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohlsearch<CR><Esc>', o)
     vim.api.nvim_set_keymap('n', '<Esc><Esc><Esc>', ':/^❌ 💩 /<CR>', o)
 end)
-
-
-
