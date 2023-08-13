@@ -24,19 +24,19 @@ return {
             cmdline = {
                 enabled = true,
                 format = {
-                    cmdline = { icon = "" }, -- { icon = ":" },
+                    cmdline = { icon = "" },     -- { icon = ":" },
                     search_down = { icon = "" }, --{ icon = "🔎" },
-                    search_up = { icon = "" }, --{ icon = "🔍" },
-                    help = { icon = "" }, --{ icon = "?" }
+                    search_up = { icon = "" },   --{ icon = "🔍" },
+                    help = { icon = "" },        --{ icon = "?" }
                 }
             },
             lsp = {
-                hover = {
-                    enabled = false,
-                },
-                signature = {
-                    enabled = false,
-                },
+                -- hover = {
+                --     enabled = false,
+                -- },
+                -- signature = {
+                --     enabled = false,
+                -- },
                 -- override markdown rendering so that `cmp`
                 -- and other plugins use `Treesitter`
                 override = {
@@ -77,23 +77,16 @@ return {
                     fps = 60,
                     timeout = 3000,
                     top_down = false,
-                    icons = {
-                        ERROR = "E",
-                        WARN = "W",
-                        INFO = "I",
-                        DEBUG = "D",
-                        TRACE = "T"
-                    },
                     -- @see https://github.com/rcarriga/nvim-notify/blob/master/lua/notify/render/minimal.lua
-                    render = function(id_bu, notification, highlights)
+                    render = function(buffer, notification, highlights)
                         -- prepend a space so notification text have a little more room
                         local message = vim.tbl_map(
-                            function(line) return " " .. line end,
+                            function(line) return " " .. line .. " " end,
                             notification.message
                         )
-                        vim.api.nvim_buf_set_lines(id_bu, 0, -1, false, message)
+                        vim.api.nvim_buf_set_lines(buffer, 0, -1, false, message)
                         local id_ns = notify_render_base.namespace()
-                        vim.api.nvim_buf_set_extmark(id_bu, id_ns, 0, 0, {
+                        vim.api.nvim_buf_set_extmark(buffer, id_ns, 0, 0, {
                             hl_group = highlights.icon,
                             end_line = #notification.message - 1,
                             end_col = #notification.message[#notification.message],
