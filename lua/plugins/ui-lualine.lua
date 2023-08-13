@@ -6,23 +6,6 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     config = function()
-        local theme = {
-            normal = {
-                a = { fg = theme_colors.darker, bg = theme_colors.darkst },
-                b = { fg = theme_colors.liter, bg = theme_colors.darker },
-                c = { fg = theme_colors.darker, bg = theme_colors.darkst },
-                z = { fg = theme_colors.liter, bg = theme_colors.darker },
-            },
-            insert = {
-                a = { fg = theme_colors.mode_i_fg, bg = theme_colors.mode_i_bg },
-            },
-            visual = {
-                a = { fg = theme_colors.mode_v_fg, bg = theme_colors.mode_v_bg },
-            },
-            command = {
-                a = { fg = theme_colors.mode_c_fg, bg = theme_colors.mode_c_bg },
-            },
-        }
         -- Put proper separators and gaps between components in sections
         local empty = require('lualine.component'):extend()
         local function process(sections)
@@ -47,7 +30,23 @@ return {
             options = {
                 icons_enabled = true,
                 -- theme = "iceberg_dark",
-                theme = theme,
+                theme = {
+                    normal = {
+                        a = { fg = theme_colors.darker, bg = theme_colors.darkst },
+                        b = { fg = theme_colors.liter, bg = theme_colors.darker },
+                        c = { fg = theme_colors.darker, bg = theme_colors.darkst },
+                        z = { fg = theme_colors.liter, bg = theme_colors.darker },
+                    },
+                    insert = {
+                        a = { fg = theme_colors.mode_i_fg, bg = theme_colors.mode_i_bg },
+                    },
+                    visual = {
+                        a = { fg = theme_colors.mode_v_fg, bg = theme_colors.mode_v_bg },
+                    },
+                    command = {
+                        a = { fg = theme_colors.mode_c_fg, bg = theme_colors.mode_c_bg },
+                    },
+                },
                 always_divide_middle = true,
                 globalstatus = true,
                 -- component_separators = { left = "┆", right = "┆" },
