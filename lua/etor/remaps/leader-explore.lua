@@ -1,6 +1,8 @@
 require("etor.utils").onload(function()
-    require("which-key").register({ ["<leader>e"] = { name= "+explore" } })
-    require("which-key").register({ ["<leader>et"] = { name= "explore: term" } })
+    local wk = require("which-key")
+    wk.register({ ["<leader>e"] = { name = "+explore" } })
+    wk.register({ ["<leader>et"] = { name = "explore: term" } })
+    wk.register({ ["<leader>ep"] = { name = "explore: projects" } })
 
     -- adds lazy keybinding
     vim.api.nvim_set_keymap(
@@ -13,38 +15,39 @@ end)
 
 local M = {}
 
+M.projects = {
+    { "<leader>epp", "<cmd>Autosession search<cr>", desc = "explore: projects" },
+    { "<leader>epd", "<cmd>Autosession delete<cr>", desc = "explore: projects: delete" },
+}
+
 M.alerts = {
-    { "<leader>ea", "<cmd>TroubleToggle<cr>", desc="explore: alerts" },
+    { "<leader>ea", "<cmd>TroubleToggle<cr>", desc = "explore: alerts" },
 }
 
 M.content = {
     {
         "<leader>e/",
         "<cmd>lua require('spectre').toggle()",
-        desc="explore: search & replace" },
+        desc = "explore: search & replace"
+    },
 }
-
-M.todos = {
-    { "<leader>ed", "<cmd>TodoTelescope<cr>", desc="explore: to-dos" },
-}
-
 
 M.files = {
-    { "<leader>ef", "<cmd>NvimTreeToggle<cr>", desc="explore: files" },
+    { "<leader>ef", "<cmd>NvimTreeToggle<cr>", desc = "explore: files" },
 }
 
 M.term = {
 
-        {
-            "<leader>etv",
-            "<cmd>ToggleTerm dir=git_dir direction=vertical size=80<cr>",
-            desc = "explore: term: vertical split",
-        },
-        {
-            "<leader>ets",
-            "<cmd>ToggleTerm dir=git_dir direction=horizontal size=20<cr>",
-            desc = "explore: term: split",
-        },
+    {
+        "<leader>etv",
+        "<cmd>ToggleTerm dir=git_dir direction=vertical size=80<cr>",
+        desc = "explore: term: vertical split",
+    },
+    {
+        "<leader>ets",
+        "<cmd>ToggleTerm dir=git_dir direction=horizontal size=20<cr>",
+        desc = "explore: term: split",
+    },
 }
 
 M.git = {
@@ -63,7 +66,7 @@ M.git = {
 }
 
 M.undo = {
-    { "<leader>eu", "<cmd>UndotreeToggle<cr>", desc="explore: undo-tree" },
+    { "<leader>eu", "<cmd>UndotreeToggle<cr>", desc = "explore: undo-tree" },
 }
 
 return M;

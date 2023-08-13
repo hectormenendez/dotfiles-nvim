@@ -1,5 +1,5 @@
 local utils = require("etor.utils");
-local remaps_le = require("etor.remaps.leader-explore");
+local remaps_lf = require("etor.remaps.leader-find");
 
 return {
     "folke/todo-comments.nvim",
@@ -7,7 +7,7 @@ return {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim"
     },
-    keys = utils.tablemerge(remaps_le.todos),
+    keys = utils.tablemerge(remaps_lf.todos),
     opts = {
         -- show icons in the signs column
         signs = true,
