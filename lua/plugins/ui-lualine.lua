@@ -1,4 +1,6 @@
-local theme_colors = require("etor.theme").theme_colors;
+local theme = require("etor.theme");
+local theme_colors = theme.theme_colors
+local theme_icons = theme.theme_icons
 
 return {
     "nvim-lualine/lualine.nvim",
@@ -7,9 +9,9 @@ return {
         local theme = {
             normal = {
                 a = { fg = theme_colors.darker, bg = theme_colors.darkst },
-                b = { fg = theme_colors.liter,  bg = theme_colors.darker },
+                b = { fg = theme_colors.liter, bg = theme_colors.darker },
                 c = { fg = theme_colors.darker, bg = theme_colors.darkst },
-                z = { fg = theme_colors.liter,  bg = theme_colors.darker },
+                z = { fg = theme_colors.liter, bg = theme_colors.darker },
             },
             insert = {
                 a = { fg = theme_colors.mode_i_fg, bg = theme_colors.mode_i_bg },
@@ -28,7 +30,7 @@ return {
                 local left = name:sub(9, 10) < 'x'
                 for pos = 1, name ~= 'lualine_z' and #section or #section - 1 do
                     local o = { empty, color = { fg = "teal", bg = "crimson" } };
-                    table.insert( section, pos * 2, o)
+                    table.insert(section, pos * 2, o)
                 end
                 for id, comp in ipairs(section) do
                     if type(comp) ~= 'table' then
@@ -69,7 +71,11 @@ return {
             extensions = {},
             sections = process({
                 lualine_a = { "mode" },
-                lualine_b = { "branch", "diff", "diagnostics" },
+                lualine_b = {
+                    "branch",
+                    "diff",
+                    { "diagnostics", symbols = theme_icons.diagnostics }
+                },
                 lualine_c = { "filename" },
                 lualine_x = {
                     "encoding",

@@ -1,3 +1,4 @@
+local theme_icons = require("etor.theme").theme_icons;
 return {
     "VonHeikemen/lsp-zero.nvim",
     -- TODO: on Sept 2023, this will be main, check that
@@ -34,6 +35,7 @@ return {
             -- see :help lsp-zero-keybindings to learn the available actions
             lsp.default_keymaps({ buffer })
         end)
+        lsp.set_sign_icons(theme_icons.diagnostics)
 
         require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 

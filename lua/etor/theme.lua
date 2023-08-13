@@ -1,8 +1,18 @@
 local M = {};
 
+M.theme_icons = {
+    diagnostics = {
+        error = '✘',
+        warn = '▲',
+        hint = '⚑',
+        info = '»'
+    },
+}
+
 M.theme_colors = {
     litest = "#EEEFEF",
     liter = "slategray",
+    lite = "#242839",
     darkst = "#10121A",
     darker = "#262A3D",
     mode_c_fg = "orange",
