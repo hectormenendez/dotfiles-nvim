@@ -30,19 +30,14 @@ return {
     config = function()
         local lsp = require("lsp-zero").preset({})
 
-        lsp.on_attach(function(client, bufnr)
+        lsp.on_attach(function(client, buffer)
             -- see :help lsp-zero-keybindings to learn the available actions
-            lsp.default_keymaps({ buffer = bufnr })
+            lsp.default_keymaps({ buffer })
         end)
 
-        lsp.extend_cmp()
+        require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
-        local cmp = require("cmp")
-        cmp.setup({
-            mapping = {
-                ["<cr>"] = cmp.mapping.confirm({ select = false })
-            }
-        })
+        lsp.extend_cmp()
 
         require("mason").setup({})
 
@@ -54,6 +49,13 @@ return {
                 "lua_ls",
                 "rust_analyzer"
             },
+        })
+
+        local cmp = require("cmp")
+        cmp.setup({
+            mapping = {
+                ["<cr>"] = cmp.mapping.confirm({ select = false })
+            }
         })
 
         require("neodev").setup({})
