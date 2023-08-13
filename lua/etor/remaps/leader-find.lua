@@ -1,59 +1,47 @@
 local name = "fuzzy-find: "
 
+local key = "<leader>f";
+
 require("etor.utils").onload(function()
-    require("which-key").register({ ["<leader>f"] = { name } })
+    local wk = require("which-key")
+    wk.register({ [key] = { name } })
 end)
 
 local M = {}
 
 M.projects = {
     {
-        "<leader>fp",
+        key .. "p",
         "<cmd>Telescope session-lens<cr>",
-        desc = name.."projects",
+        desc = name .. "projects",
     }
 }
 
 M.files = {
-    {
-        "<leader>ff",
-        "<cmd>Telescope find_files<cr>",
-        desc = name.."files"
-    },
-    {
-        "<leader>fg",
-        "<cmd>Telescope git_files<cr>",
-        desc= name.."git files"
-    },
+    { key .. "f", "<cmd>Telescope find_files<cr>", desc = name .. "files" },
+    { key .. "g", "<cmd>Telescope git_files<cr>",  desc = name .. "git files" },
 }
 
 M.expressions = {
+    { key .. "/", "<cmd>Telescope live_grep<cr>", desc = name .. "regex: live" },
     {
-        "<leader>f/",
-        "<cmd>Telescope live_grep<cr>",
-        desc = name.."regex: live"
-    },
-    {
-        "<leader>f?",
+        key .. "?",
         function()
             local builtin = require("telescope.builtin");
             builtin.grep_string({ search = vim.fn.input("Grep > ") });
         end,
-        desc = name.."regex: input"
+        desc = name .. "regex: input"
     },
 }
 
 M.todos = {
-    { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = name.."to-dos" },
+    { key .. "t", "<cmd>TodoTelescope<cr>", desc = name .. "to-dos" },
 }
 
 M.others = {
-    { "<leader>fg", "<cmd>Telescope help_tags<cr>", desc = name.."tags" },
-    {
-        "<leader>fb",
-        "<cmd>Telescope buffers<cr>",
-        desc = name.."buffers"
-    },
+    { key .. "g", "<cmd>Telescope help_tags<cr>",  desc = name .. "tags" },
+    { key .. "g", "<cmd>Telescope highlights<cr>", desc = name .. "highlights" },
+    { key .. "b", "<cmd>Telescope buffers<cr>",    desc = name .. "buffers" },
 }
 
 return M;

@@ -1,58 +1,75 @@
+local M = {}
+
+M.name = "explore: ";
+M.name_term = M.name.."term"
+M.name_proj = M.name.."projects"
+M.name_inst = M.name.."installers"
+
+M.key = "<leader>e";
+M.key_term = M.key.."t"
+M.key_proj = M.key.."p"
+M.key_inst = M.key.."i"
+
+
 require("etor.utils").onload(function()
     local wk = require("which-key")
-    wk.register({ ["<leader>e"] = { name = "+explore" } })
-    wk.register({ ["<leader>et"] = { name = "explore: term" } })
-    wk.register({ ["<leader>ep"] = { name = "explore: projects" } })
+    wk.register({ [M.key] = { name = M.name } })
+    wk.register({ [M.key_term] = { name = M.name_term } })
+    wk.register({ [M.key_proj] = { name = M.name_proj } })
+    wk.register({ [M.key_inst] = { name = M.name_inst } })
 
     -- adds lazy keybinding
     vim.api.nvim_set_keymap(
         "n",
-        "<leader>el",
+        M.key_inst.."p",
         ":Lazy<cr>",
-        { noremap = true, silent = true, desc = "explore: lazy plugins" }
+        { noremap = true, silent = true, desc = M.name.."plugins" }
     );
 end)
 
-local M = {}
+
+M.inst_lsp = {
+    { M.key_inst.."s", "<cmd>LspInstall<cr>", desc = "language servers" },
+}
 
 M.projects = {
-    { "<leader>epp", "<cmd>Autosession search<cr>", desc = "explore: projects" },
-    { "<leader>epd", "<cmd>Autosession delete<cr>", desc = "explore: projects: delete" },
+    { M.key_proj.."p", "<cmd>Autosession search<cr>", desc = M.name_proj },
+    { M.key_proj.."d", "<cmd>Autosession delete<cr>", desc = M.name_proj.."delete" },
 }
 
 M.alerts = {
-    { "<leader>ea", "<cmd>TroubleToggle<cr>", desc = "explore: alerts" },
+    { M.key.."a", "<cmd>TroubleToggle<cr>", desc = M.name.."alerts" },
 }
 
 M.content = {
     {
-        "<leader>e/",
+        M.key.."/",
         "<cmd>lua require('spectre').toggle()",
-        desc = "explore: search & replace"
+        desc = M.name.."search & replace"
     },
 }
 
 M.files = {
-    { "<leader>ef", "<cmd>NvimTreeToggle<cr>", desc = "explore: files" },
+    { M.key.."f", "<cmd>NvimTreeToggle<cr>", desc = M.name.."files" },
 }
 
 M.term = {
 
     {
-        "<leader>etv",
+        M.key_term.."v",
         "<cmd>ToggleTerm dir=git_dir direction=vertical size=80<cr>",
-        desc = "explore: term: vertical split",
+        desc = M.name_term.."vertical split",
     },
     {
-        "<leader>ets",
+        M.key_term.."s",
         "<cmd>ToggleTerm dir=git_dir direction=horizontal size=20<cr>",
-        desc = "explore: term: split",
+        desc = M.name_term.."split",
     },
 }
 
 M.git = {
     {
-        "<leader>eg",
+        M.key.."g",
         table.concat({
             "<cmd>",
             "TermExec",
@@ -61,12 +78,12 @@ M.git = {
             "go_back=0",
             "<cr>",
         }, " "),
-        desc = "explore: git",
+        desc = M.name.."git",
     }
 }
 
 M.undo = {
-    { "<leader>eu", "<cmd>UndotreeToggle<cr>", desc = "explore: undo-tree" },
+    { M.key.."u", "<cmd>UndotreeToggle<cr>", desc = M.name.."undo-tree" },
 }
 
 return M;
