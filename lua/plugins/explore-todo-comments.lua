@@ -7,13 +7,20 @@ return {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim"
     },
-    keys = utils.tablemerge(remaps_lf.todos),
+    keys = remaps_lf.todos,
+    init = function()
+        local wk = require("which-key")
+        local td = require("todo-comments")
+        local name = "todos: "
+        wk.register({ ["gt"] = { name } })
+        vim.keymap.set("n", "gtn", function() td.jump_next() end, { desc = name .. "next" });
+        vim.keymap.set("n", "gtp", function() td.jump_prev() end, { desc = name .. "prev" });
+    end,
     opts = {
         -- show icons in the signs column
-        signs = true,
+        signs = false,
         -- sign priority
         sign_priority = 8,
-
         -- keywords recognized as todo comments
         keywords = {
             BUG  = { icon = "", color = "error" },
@@ -21,12 +28,10 @@ return {
             WARN = { icon = "", color = "warning", alt = { "HACK" } },
             NOTE = { icon = "", color = "hint", alt = { "INFO" } },
         },
-
         gui_style = {
-            fg = "NONE", -- The gui style to use for the fg highlight group.
-            bg = "BOLD", -- The gui style to use for the bg highlight group.
+            fg = "None", -- The gui style to use for the fg highlight group.
+            bg = "Bold", -- The gui style to use for the bg highlight group.
         },
-
         -- highlighting of the line containing the todo comment
         --    - before: highlights before the keyword (typically comment characters)
         --    - keyword: highlights of the keyword
@@ -51,7 +56,6 @@ return {
             -- list of file types to exclude highlighting
             exclude = {},
         },
-
         colors = {
             error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
             warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
@@ -60,7 +64,6 @@ return {
             default = { "Identifier", "#7C3AED" },
             test = { "Identifier", "#FF00FF" }
         },
-
         search = {
             command = "rg",
             args = {
