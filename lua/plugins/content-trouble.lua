@@ -4,7 +4,7 @@ local remaps_le = require("etor.remaps.leader-explore");
 return {
     "folke/trouble.nvim",
     dependencies = {},
-    keys = utils.tablemerge(remaps_le.alerts),
+    keys = utils.tablemerge(remaps_le.diag),
     opts = {
         -- position of the list can be: bottom, top, left, right
         position = "bottom",
