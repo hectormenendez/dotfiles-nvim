@@ -9,13 +9,12 @@ end)
 return {
     "rmagatti/auto-session",
     lazy = false,
-    keys = utils.tablemerge(remaps_le.projects, remaps_lf.projects),
+    keys = utils.tablemerge(remaps_le.proj, remaps_lf.projects),
     dependencies = {
         "nvim-telescope/telescope.nvim",
     },
     config = function()
-
-        vim.o.sessionoptions= table.concat({
+        vim.o.sessionoptions = table.concat({
             "blank",
             "buffers",
             "curdir",
@@ -43,8 +42,6 @@ return {
             auto_save_enabled = true,
             -- Enables/disables auto restoring
             auto_restore_enabled = true,
-            -- -- Allow session create/restore if in one of the list of dirs
-            -- auto_session_allowed_dirs = nil,
             -- Use the git branch to differentiate the session name
             auto_session_use_git_branch = false,
             -- Suppress session create/restore if in one of the list of dirs
@@ -65,6 +62,8 @@ return {
                 -- function: called after auto_session code runs `DirChanged`
                 post_cwd_changed_hook = nil,
             },
+            -- TODO: This is not working, it spits an error:
+            --       Telescope.run_command: unknown command
             session_lens = {
                 load_on_setup = true, -- will be triggered by key
                 theme_conf = { border = true },
