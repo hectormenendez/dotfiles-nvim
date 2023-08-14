@@ -56,6 +56,7 @@ return {
                         event = "msg_showmode",
                         cond = function(message)
                             if (message.event ~= "msg_showmode") then return false end
+                            ---@diagnostic disable-next-line: unused-local
                             for _k, v in pairs(message._lines) do
                                 local content = v:content();
                                 local has_insert = content:find("-- INSERT") ~= nil
