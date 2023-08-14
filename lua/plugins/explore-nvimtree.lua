@@ -7,45 +7,35 @@ return {
     version = "*",
     lazy = false, -- recomended by the docs
     dependencies = {},
-    keys = utils.tablemerge(remap_le.files),
+    keys = utils.tablemerge(remap_le.file),
     opts = {
         -- default: false; not really needed, because I killed it at load.
         disable_netrw = true,
-
         -- default: true; reload explored when a write happens.
         auto_reload_on_write = true,
-
         -- default: false; open nvimtree in place of unnamed buffer
         hijack_unnamed_buffer_when_opening = true,
-
         -- default: false; keeps the cursor on the first letter of each item
         hijack_cursor = true,
-
         -- default: {}; only relevant when `update_focused_file.update_root = true`
         --              preferred root directories
         root_dirs = {},
-
         -- default: false; only relevant when `update_focused_file.update_root = true`
         --              prefer `root_dirs` when updating root directory of the tree.
         prefer_startup_root = false,
-
         -- default: false; changes the tree root directory whevenver `DirChanged`
         --                 and refreshes the tree.
         sync_root_with_cwd = false,
-
         -- default: false; whenever entering a new buffer, reload the tree.
         reload_on_bufenter = false,
-
         -- default: false; when opening tree, it will change cwd to curren't buyffer path
         respect_buf_cwd = true,
-
         -- default: {}; take control when a dir buffer is opened
         hijack_directories = {
             -- disable this if using: vim-dirvish or dirbuf.nvim
             enable = true,
             auto_open = true,
         },
-
         -- default: {}; update focused file on tree on BufEnter.
         --              uncollapses the folders recursively until it finds the file
         update_focused_file = {
@@ -55,14 +45,12 @@ return {
             update_root = true, -- related to prefer_startup_root
             ignore_list = {}
         },
-
         -- handles opening a file with a dedicated app.
         system_open = {
             -- default: "";
             cmd = "spacefm",
             args = {},
         },
-
         -- depends on: `renderer.icons.show.git` or `renderer.highlight_git`
         git = {
             enable = true,
@@ -72,7 +60,6 @@ return {
             -- disable the functionality for these dirs
             disable_for_dirs = {},
         },
-
         -- sorting for files and folders
         sort = {
             -- default: name; available: modification_time, extension, suffix, filetype
@@ -80,16 +67,14 @@ return {
             -- default: true;
             folders_first = true,
         },
-
         -- shows whether files have modifications
         -- dependes on `renderer.icons.show.modified` or `renderer.highlight_modified`
         modified = {
             -- default: false;
             enable = true,
-            show_on_dirs = true;
-            show_on_open_dirs = true;
+            show_on_dirs = true,
+            show_on_open_dirs = true,
         },
-
         -- modify the window behaviour
         view = {
             -- default: false; the initial node will be the one in the middle
@@ -107,7 +92,6 @@ return {
             number = false,
             relativenumber = false,
         },
-
         filters = {
             dotfiles = true,
             git_ignored = false,
@@ -117,7 +101,6 @@ return {
                 "node_modules$",
             },
         },
-
         actions = {
             change_dir = {
                 enable = true
@@ -127,7 +110,6 @@ return {
                 resize_window = true,
             },
         },
-
         renderer = {
             -- default: true; resolve the link?
             symlink_destination = true,
@@ -156,12 +138,10 @@ return {
                     none = " ",
                 },
             },
-
             special_files = {
                 "README.md",
                 "package.json",
             },
-
             icons = {
                 webdev_colors = true,
                 git_placement = "after",
@@ -203,4 +183,3 @@ return {
         }
     }
 }
-
