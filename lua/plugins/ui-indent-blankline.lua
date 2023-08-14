@@ -1,21 +1,29 @@
+local theme_colors = require("etor.theme").theme_colors;
 local utils = require("etor.utils")
 
 utils.onload(function()
+    -- uncomment these to show hidden characters
+    -- TODO: create a toggler function
     -- vim.opt.list = true;
     -- vim.opt.listchars:append "eol:↴"
     -- vim.opt.listchars:append "space:."
-    utils.highlighter({
-        IndentBlanklineChar = { guifg = "#242839" },
-        IndentBlanklineSpaceChar = { guifg = "NONE", guibg = "NONE" },
 
-        -- these are horrible colors, I just want to set them so when the context
-        -- works, I notice haha.
-        IndentBlanklineSpaceCharBlankline = { guifg = "#0000FF" },
-        IndentBlanklineContextChar = { guifg = "#FF0000", guibg = "#0000FF" },
-        IndentBlanklineContextSpaceChar = { guifg = "#00FFFF", guibg = "#FF0000" },
-        IndentBlanklineContextStart = { guifg = "#FFFF00", guibg = "#0000FF" },
+    utils.highlighter({
+        IndentBlanklineChar = { guifg = theme_colors.lite },
+        -- IndentBlanklineSpaceChar = { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineSpaceCharBlankline = { guifg = "cyan", guibg = "magenta" },
+        IndentBlanklineContextChar = { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineContextSpaceChar = { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineContextStart = { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineIndent1 = { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineIndent2 = { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineIndent4 - { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineIndent5 - { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineIndent6 - { guifg = "cyan", guibg = "magenta" },
+        -- IndentBlanklineIndent3 - { guifg = "cyan", guibg = "magenta" },
     })
 end)
+
 
 return {
     "lukas-reineke/indent-blankline.nvim",
@@ -42,7 +50,7 @@ return {
             show_current_context = true,
             show_current_context_start = false,
             show_current_context_start_on_current_line = true,
-            context_highlight_list = {'Error', 'Warning'},
+            context_highlight_list = { 'Error', 'Warning' },
             context_patterns = {
                 "class", "return", "function", "method",
                 "^if", "^while", "jsx_element", "^for",
