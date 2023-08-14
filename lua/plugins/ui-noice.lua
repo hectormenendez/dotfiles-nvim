@@ -24,10 +24,10 @@ return {
             cmdline = {
                 enabled = true,
                 format = {
-                    cmdline = { icon = "" },     -- { icon = ":" },
+                    cmdline = { icon = "" }, -- { icon = ":" },
                     search_down = { icon = "" }, --{ icon = "🔎" },
-                    search_up = { icon = "" },   --{ icon = "🔍" },
-                    help = { icon = "" },        --{ icon = "?" }
+                    search_up = { icon = "" }, --{ icon = "🔍" },
+                    help = { icon = "" }, --{ icon = "?" }
                 }
             },
             lsp = {
