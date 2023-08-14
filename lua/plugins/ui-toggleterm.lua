@@ -5,13 +5,11 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     event = "VeryLazy",
-
-    keys = utils.tablemerge(
+    keys = utils.table_merge(
         remap_le.term,
         remap_le.git,
         -- when in terminal mode, ESC will put you in normal mode
-        { "<ESC>", "<C-\\><C-n>", mode="t" }
+        { "<ESC>", "<C-\\><C-n>", mode = "t" }
     ),
-
     opts = {},
 }

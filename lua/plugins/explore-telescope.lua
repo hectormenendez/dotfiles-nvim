@@ -11,7 +11,7 @@ return {
         "nvim-lua/plenary.nvim", -- utilities
         "nvim-treesitter/nvim-treesitter",
     },
-    keys = utils.tablemerge(
+    keys = utils.table_merge(
         remaps_lf.files,
         remaps_lf.expressions,
         remaps_lf.others

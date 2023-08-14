@@ -9,7 +9,7 @@ end)
 return {
     "rmagatti/auto-session",
     lazy = false,
-    keys = utils.tablemerge(remaps_le.proj, remaps_lf.projects),
+    keys = utils.table_merge(remaps_le.proj, remaps_lf.projects),
     dependencies = {
         "nvim-telescope/telescope.nvim",
     },

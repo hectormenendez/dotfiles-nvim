@@ -7,7 +7,7 @@ return {
     version = "*",
     lazy = false, -- recomended by the docs
     dependencies = {},
-    keys = utils.tablemerge(remap_le.file),
+    keys = utils.table_merge(remap_le.file),
     opts = {
         -- default: false; not really needed, because I killed it at load.
         disable_netrw = true,

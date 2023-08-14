@@ -14,10 +14,10 @@ M.name_search = M.name .. "search: "
 
 local flash_opt = { wrap = false, multi_window = false };
 local flash_fn_fwd = function()
-    require('flash').jump(utils.tablemerge(flash_opt, { forward = true }))
+    require('flash').jump(utils.table_merge(flash_opt, { forward = true }))
 end
 local flash_fn_bak = function()
-    require('flash').jump(utils.tablemerge(flash_opt, { forward = true }))
+    require('flash').jump(utils.table_merge(flash_opt, { forward = true }))
 end
 
 M.flash = {
