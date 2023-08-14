@@ -19,7 +19,7 @@ M.projects = {
 
 M.files = {
     { key .. "f", "<cmd>Telescope find_files<cr>", desc = name .. "files" },
-    { key .. "g", "<cmd>Telescope git_files<cr>",  desc = name .. "git files" },
+    { key .. "g", "<cmd>Telescope git_files<cr>", desc = name .. "git files" },
 }
 
 M.expressions = {
@@ -39,9 +39,9 @@ M.todos = {
 }
 
 M.others = {
-    { key .. "g", "<cmd>Telescope help_tags<cr>",  desc = name .. "tags" },
-    { key .. "g", "<cmd>Telescope highlights<cr>", desc = name .. "highlights" },
-    { key .. "b", "<cmd>Telescope buffers<cr>",    desc = name .. "buffers" },
+    { key .. "g", "<cmd>Telescope help_tags<cr>", desc = name .. "tags" },
+    { key .. "h", "<cmd>Telescope highlights<cr>", desc = name .. "highlights" },
+    { key .. "b", "<cmd>Telescope buffers<cr>", desc = name .. "buffers" },
 }
 
 return M;
