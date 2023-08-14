@@ -1,6 +1,6 @@
 local theme_icons = require("etor.theme").theme_icons;
-local utils = require("etor.utils");
 local remaps_le = require("etor.remaps.leader-explore");
+local utils = require("etor.utils");
 
 return {
     "VonHeikemen/lsp-zero.nvim",
@@ -28,12 +28,18 @@ return {
         { "williamboman/mason-lspconfig.nvim" },
 
         -- utilities for lua plugin development
-        { "folke/neodev.nvim",                opts = {} },
+        { "folke/neodev.nvim", opts = {} },
     },
+    init = function()
+        ---@diagnostic disable-next-line: unused-local
+        for _i, remap in pairs(remaps_le.mang_lsp) do
+            vim.keymap.set("n", remap[1], remap[2], remap[3])
+        end
+    end,
     config = function()
         local lsp = require("lsp-zero").preset({
             -- none, single, double, rounded, solid, shadow
-            float_border = "rounder",
+            float_border = "single",
             -- reserve space in the gutter for glyphs showing status of line
             set_signcolumn = true,
             -- whether to integrate wtihe nvim-cmp using lspconfig
@@ -90,7 +96,25 @@ return {
                     -- this needs to be adapted because it assumes neovim lua
                     -- is the only lua project in system
                     require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls({
-                        single_file_support = false,
+                        settings = {
+                            Lua = {
+                                telemetry = { enabled = false },
+                                format = {
+                                    enable = true,
+                                    -- who the fuck still thinks this is a good idea?
+                                    defaultConfig = {
+                                        align_call_args = "false",
+                                        align_function_params = "false",
+                                        align_continuous_assign_statement = "false",
+                                        align_continuous_rect_table_field = "false",
+                                        align_if_branch = "false",
+                                        align_array_table = "false",
+                                        align_continuous_similar_call_args = "false",
+                                        align_continuous_inline_comment = "false",
+                                    },
+                                },
+                            },
+                        },
                         on_attach = function()
                             require("neodev").setup({})
                         end,
@@ -99,7 +123,8 @@ return {
             },
         })
 
-        lsp.on_attach(function(client, buffer)
+        ---@diagnostic disable-next-line: unused-local
+        lsp.on_attach(function(_client, buffer)
             -- see :help lsp-zero-keybindings to learn the available actions
             lsp.default_keymaps({ buffer })
 
@@ -108,14 +133,5 @@ return {
 
             -- NOTE: Insert keybindings here
         end)
-
-
-        -- set opts for a specific language server
-        -- lsp.configure("lua_ls", {
-        --     single_file_support = false,
-        --     on_attach = function(client, buffer)
-        --         print("hello")
-        --     end
-        -- })
     end
 }
