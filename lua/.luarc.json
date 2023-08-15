@@ -1,0 +1,33 @@
+{
+    "workspace.library": [
+        "/home/etor/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "/usr/share/nvim/runtime/lua",
+        "/home/etor/.local/share/nvim/lazy/lualine.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/mason.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/indent-blankline.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/lazy.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/conduct.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/mason-lspconfig.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/toggleterm.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/Comment.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/telescope.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/plenary.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/highlight-whitespace/lua",
+        "/home/etor/.local/share/nvim/lazy/neodev.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/nvim-autopairs/lua",
+        "/home/etor/.local/share/nvim/lazy/nvim-tree.lua/lua",
+        "/home/etor/.local/share/nvim/lazy/gitsigns.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/cmp-nvim-lsp/lua",
+        "/home/etor/.local/share/nvim/lazy/lsp-zero.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/bufferline.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/which-key.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/nvim-cmp/lua",
+        "/home/etor/.local/share/nvim/lazy/nvim-treesitter/lua",
+        "/home/etor/.local/share/nvim/lazy/nvim-surround/lua",
+        "/home/etor/.local/share/nvim/lazy/tokyonight.nvim/lua",
+        "/home/etor/.local/share/nvim/lazy/LuaSnip/lua",
+        "/home/etor/.local/share/nvim/lazy/nvim-lspconfig/lua",
+        "/home/etor/Source/hectormenendez/dotfiles/dotfiles/config/nvim/lua",
+        "${3rd}/luv/library"
+    ]
+}
