@@ -19,7 +19,7 @@ M.projects = {
 
 M.files = {
     { key .. "f", "<cmd>Telescope find_files<cr>", desc = name .. "files" },
-    { key .. "g", "<cmd>Telescope git_files<cr>", desc = name .. "git files" },
+    { key .. "F", "<cmd>Telescope git_files<cr>", desc = name .. "git files" },
 }
 
 M.expressions = {
