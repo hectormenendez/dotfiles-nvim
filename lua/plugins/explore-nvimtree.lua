@@ -27,7 +27,7 @@ return {
         --                 and refreshes the tree.
         sync_root_with_cwd = false,
         -- default: false; whenever entering a new buffer, reload the tree.
-        reload_on_bufenter = false,
+        reload_on_bufenter = true,
         -- default: false; when opening tree, it will change cwd to curren't buyffer path
         respect_buf_cwd = true,
         -- default: {}; take control when a dir buffer is opened
@@ -93,7 +93,7 @@ return {
             relativenumber = false,
         },
         filters = {
-            dotfiles = true,
+            dotfiles = false,
             git_ignored = false,
             custom = {
                 ".git$",
@@ -106,7 +106,7 @@ return {
                 enable = true
             },
             open_file = {
-                quit_on_open = true,
+                quit_on_open = false,
                 resize_window = true,
             },
         },
@@ -141,6 +141,7 @@ return {
             special_files = {
                 "README.md",
                 "package.json",
+                "deno.json"
             },
             icons = {
                 webdev_colors = true,
