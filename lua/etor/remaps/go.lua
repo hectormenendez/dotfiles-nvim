@@ -29,4 +29,9 @@ M.flash = {
     { "<C-S-s>", mode = { "i" }, flash_fn_bak, desc = M.name_search .. "backwards" },
 }
 
+M.lsp = {
+    { "gr", "<cmd>Telescope lsp_references<cr>", desc = "lsp_reference" }
+}
+
+
 return M;
