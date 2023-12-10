@@ -31,10 +31,12 @@ return {
         { "folke/neodev.nvim", opts = {} },
     },
     init = function()
-        ---@diagnostic disable-next-line: unused-local
-        for _i, remap in pairs(remaps_le.mang_lsp) do
-            vim.keymap.set("n", remap[1], remap[2], remap[3])
-        end
+        -- TODO: Set these in the corresponding remap files
+        vim.keymap.set("n", "ea", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "explore: Code Actions" })
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Definition" })
+        vim.keymap.set("n", "gR", function() vim.lsp.buf.references() end, { desc = "References" })
+        vim.keymap.set({ "n", "i" }, "<C-h>", function() vim.lsp.buf.hover() end, { desc = "Hover" })
+        vim.keymap.set({ "n", "i" }, "<C-/>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
     end,
     config = function()
         local lsp = require("lsp-zero").preset({
@@ -74,6 +76,7 @@ return {
                 ["<cr>"] = cmp.mapping.confirm({ select = false }),
                 ["<C-f>"] = cmp_action.luasnip_jump_forward(),
                 ["<C-b>"] = cmp_action.luasnip_jump_backward(),
+                ['<C-Space>'] = cmp.mapping.complete(),
             }
         })
 
