@@ -9,14 +9,6 @@ end)
 
 local M = {}
 
-M.projects = {
-    {
-        key .. "p",
-        "<cmd>Telescope session-lens<cr>",
-        desc = name .. "projects",
-    }
-}
-
 M.files = {
     { key .. "F", "<cmd>Telescope find_files<cr>", desc = name .. "files" },
     { key .. "f", "<cmd>Telescope git_files<cr>", desc = name .. "git files" },
