@@ -9,7 +9,7 @@ end)
 return {
     "rmagatti/auto-session",
     lazy = false,
-    keys = utils.table_merge(remaps_le.proj, remaps_lf.projects),
+    keys = utils.table_merge(remaps_le.proj),
     dependencies = {
         "nvim-telescope/telescope.nvim",
     },
@@ -29,9 +29,9 @@ return {
 
         require("auto-session").setup({
             -- Sets the log level of the plugin
-            log_level = 'info', -- 'debug', 'info', 'error'
-            -- Loads the last loaded session only when opening from home
-            auto_session_enable_last_session = vim.loop.cwd() == vim.loop.os_homedir(),
+
+            -- Determines if the last session should be restored
+            auto_session_enable_last_session = vim.loop.cwd() ~= vim.loop.os_homedir(),
             -- Changes the root dir for sessions
             auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
             -- Enables/disables the plugin's auto save and restore features
@@ -60,10 +60,12 @@ return {
                 -- function: called after auto_session code runs `DirChangedPre`
                 pre_cwd_changed_hook = nil,
                 -- function: called after auto_session code runs `DirChanged`
-                post_cwd_changed_hook = nil,
+                function()
+                    -- TODO: this is  only a test, delete it.
+                    -- refresh lualine so the new session name is displayed in the status bar
+                    require("lualine").refresh()
+                end,
             },
-            -- TODO: This is not working, it spits an error:
-            --       Telescope.run_command: unknown command
             session_lens = {
                 load_on_setup = true, -- will be triggered by key
                 theme_conf = { border = true },
