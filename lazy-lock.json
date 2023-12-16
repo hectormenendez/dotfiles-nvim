@@ -4,6 +4,7 @@
   "auto-session": { "branch": "main", "commit": "9a623ccbfd8acf71c0e51f8f957b713a7545a542" },
   "bufferline.nvim": { "branch": "main", "commit": "d24378edc14a675c820a303b4512af3bbc5761e9" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
+  "copilot.vim": { "branch": "release", "commit": "5b19fb001d7f31c4c7c5556d7a97b243bd29f45f" },
   "dressing.nvim": { "branch": "master", "commit": "6bde51adabba06f7fd4a469885a85f36d78a5f52" },
   "flash.nvim": { "branch": "main", "commit": "967117690bd677cb7b6a87f0bc0077d2c0be3a27" },
   "gitsigns.nvim": { "branch": "main", "commit": "bae45ef449d8811061cc940459e70e883a3aa83a" },
