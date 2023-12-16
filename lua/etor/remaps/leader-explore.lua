@@ -99,9 +99,6 @@ M.file = {
 }
 
 M.proj = {
-    { M.key_proj_save, "<cmd>SessionSave<cr>", desc = M.name_proj_save },
-    { M.key_proj_sel, "<cmd>Autosession search<cr>", desc = M.name_proj_sel },
-    { M.key_proj_del, "<cmd>Autosession delete<cr>", desc = M.name_proj_del },
 }
 
 M.term = {
