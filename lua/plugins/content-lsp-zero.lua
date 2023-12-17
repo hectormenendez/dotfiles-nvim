@@ -1,6 +1,4 @@
 local theme_icons = require("etor.theme").theme_icons;
-local remaps_le = require("etor.remaps.leader-explore");
-local utils = require("etor.utils");
 
 return {
     "VonHeikemen/lsp-zero.nvim",
@@ -29,6 +27,9 @@ return {
 
         -- utilities for lua plugin development
         { "folke/neodev.nvim", opts = {} },
+
+        -- snippets
+        { "L3MON4D3/LuaSnip", opts = {} },
     },
     init = function()
         -- TODO: Set these in the corresponding remap files
