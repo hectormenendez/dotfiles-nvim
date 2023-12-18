@@ -18,18 +18,6 @@ M.name_undo = M.name .. "undo-tree"
 M.key_file = M.key .. "f"
 M.name_file = M.name .. "files"
 
-M.key_proj = M.key .. "p"
-M.name_proj = M.name .. "projects: "
-
-M.key_proj_save = M.key_proj .. "s"
-M.name_proj_save = M.name_proj .. "save"
-
-M.key_proj_sel = M.key_proj .. "p"
-M.name_proj_sel = M.name_proj .. "select"
-
-M.key_proj_del = M.key_proj .. "d"
-M.name_proj_del = M.name_proj .. "delete"
-
 M.key_term = M.key .. "t"
 M.name_term = M.name .. "term: "
 
@@ -98,7 +86,20 @@ M.file = {
     { M.key_file, "<cmd>NvimTreeToggle<cr>", desc = M.name_file },
 }
 
+--------------------------------------------------------------------------- PROJECTS
+
+M.key_proj = M.key .. "p"
+M.name_proj = M.name .. "projects: "
+
+M.key_proj_sel = M.key_proj .. "p"
+M.name_proj_sel = M.name_proj .. "select"
+
+M.key_proj_save = M.key_proj .. "s"
+M.name_proj_save = M.name_proj .. "save"
+
 M.proj = {
+    { M.key_proj_sel, "<cmd>WorkspacesOpen<cr>", desc = M.name_proj_sel },
+    { M.key_proj_save, "<cmd>SessionsSave<cr>", desc = M.name_proj_save },
 }
 
 M.term = {
