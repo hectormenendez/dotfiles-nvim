@@ -14,17 +14,26 @@ return {
         -- default: true; reload explored when a write happens.
         auto_reload_on_write = true,
         -- default: false; open nvimtree in place of unnamed buffer
-        hijack_unnamed_buffer_when_opening = true,
+        hijack_unnamed_buffer_when_opening = false,
         -- default: false; keeps the cursor on the first letter of each item
         hijack_cursor = true,
+        -- uncollapses the folders recursively until it finds the file
+        -- default: {}; update focused file on tree on BufEnter.
+        update_focused_file = {
+            enable = false,
+            -- default: false; if the file is not under current root directory
+            -- sets the new root, falls back the containing folder.
+            update_root = true, -- related to prefer_startup_root
+            ignore_list = {}
+        },
+        -- preferred root directories
         -- default: {}; only relevant when `update_focused_file.update_root = true`
-        --              preferred root directories
         root_dirs = {},
+        -- prefer `root_dirs` when updating root directory of the tree.
         -- default: false; only relevant when `update_focused_file.update_root = true`
-        --              prefer `root_dirs` when updating root directory of the tree.
         prefer_startup_root = false,
-        -- default: false; changes the tree root directory whevenver `DirChanged`
-        --                 and refreshes the tree.
+        -- changes the tree root directory whevenver `DirChanged` and refreshes the tree.
+        -- default: false;
         sync_root_with_cwd = false,
         -- default: false; whenever entering a new buffer, reload the tree.
         reload_on_bufenter = true,
@@ -35,15 +44,6 @@ return {
             -- disable this if using: vim-dirvish or dirbuf.nvim
             enable = true,
             auto_open = true,
-        },
-        -- default: {}; update focused file on tree on BufEnter.
-        --              uncollapses the folders recursively until it finds the file
-        update_focused_file = {
-            enable = true,
-            -- default: false; if the file is not under current root directory
-            --                 sets the new root, falls back the containing folder.
-            update_root = true, -- related to prefer_startup_root
-            ignore_list = {}
         },
         -- handles opening a file with a dedicated app.
         system_open = {
@@ -93,7 +93,7 @@ return {
             relativenumber = false,
         },
         filters = {
-            dotfiles = false,
+            dotfiles = true,
             git_ignored = false,
             custom = {
                 ".git$",
