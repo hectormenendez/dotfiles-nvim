@@ -10,8 +10,8 @@ end)
 local M = {}
 
 M.files = {
-    { key .. "F", "<cmd>Telescope find_files<cr>", desc = name .. "files" },
-    { key .. "f", "<cmd>Telescope git_files<cr>", desc = name .. "git files" },
+    { key .. "f", "<cmd>Telescope find_files<cr>", desc = name .. "files" },
+    { key .. "F", "<cmd>Telescope git_files<cr>", desc = name .. "git files" },
 }
 
 M.expressions = {
