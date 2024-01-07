@@ -20,7 +20,7 @@ return {
         -- uncollapses the folders recursively until it finds the file
         -- default: {}; update focused file on tree on BufEnter.
         update_focused_file = {
-            enable = false,
+            enable = true,
             -- default: false; if the file is not under current root directory
             -- sets the new root, falls back the containing folder.
             update_root = true, -- related to prefer_startup_root
@@ -143,6 +143,8 @@ return {
                 "package.json",
                 "deno.json"
             },
+            -- on arch, install: ttf-nerd-fonts-symbols
+            -- then visit: https://www.nerdfonts.com/cheat-sheet
             icons = {
                 webdev_colors = true,
                 git_placement = "after",
@@ -158,8 +160,8 @@ return {
                 },
                 glyphs = {
                     default = "",
-                    symlink = "🔗",
-                    bookmark = "🔖",
+                    symlink = "󰌷 ",
+                    bookmark = " ",
                     modified = "●",
                     git = {
                         unstaged = "~",
@@ -173,11 +175,11 @@ return {
                     folder = {
                         arrow_closed = "►",
                         arrow_open = "▼",
-                        default = "📁",
-                        symlink = "*🔗",
-                        open = "📂",
-                        empty = "📁",
-                        empty_open = "📂",
+                        default = " ",
+                        symlink = " ",
+                        open = " ",
+                        empty = " ",
+                        empty_open = " ",
                     }
                 },
             },
