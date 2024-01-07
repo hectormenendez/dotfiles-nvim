@@ -94,6 +94,7 @@ return {
                 "tsserver",
                 "eslint",
                 "denols",
+                "marksman", -- markdown
             },
             handlers = {
                 lsp.default_setup,
@@ -150,5 +151,7 @@ return {
             root_dir = nvim_lsp.util.root_pattern("package.json"),
             single_file_support = false
         }
+
+        nvim_lsp.marksman.setup {}
     end
 }
