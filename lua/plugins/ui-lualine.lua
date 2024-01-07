@@ -75,7 +75,7 @@ return {
                     "diff",
                     { "diagnostics", symbols = theme_icons.diagnostics }
                 },
-                lualine_c = { "filename" },
+                lualine_c = { { "filename", path = 1 } },
                 lualine_x = {
                     "encoding",
                     {
