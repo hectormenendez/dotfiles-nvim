@@ -30,7 +30,7 @@ return {
         -- sort by recency
         sort = true,
         mru_sort = true,
-        auto_open = true,
+        auto_open = false,
         notify_info = true,
         hooks = {
             open_pre = function(_ws_name, _pwd)
