@@ -33,13 +33,27 @@ return {
         auto_open = false,
         notify_info = true,
         hooks = {
-            open_pre = function(_ws_name, _pwd)
+            open_pre = function(ws_name, pwd)
                 -- important so it does not save this window in the session
                 vim.cmd("NvimTreeClose")
                 -- saves current sesion and stops recording
                 vim.cmd("SessionsStop")
                 -- removes all buffers
                 vim.cmd("bufdo bd!")
+                -- determine if the workspace root contains a .nvimrc and loads it
+                vim.api.nvim_echo({
+                    { "Loading workspace: ", "Normal" },
+                    { ws_name, "String" },
+                }, true, {})
+                local rc = pwd .. ".nvim"
+                if vim.fn.filereadable(rc) == 1 then
+                    vim.cmd('echomsg ".nvim detected."')
+                    vim.api.nvim_echo({
+                        { "Detected ", "Normal" }, { ".nvim", "String" }
+                    }, true, {})
+                    -- read file and execute it
+                    vim.cmd("luafile " .. rc)
+                end
             end,
             open = function()
                 -- loads the session for current workspace

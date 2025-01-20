@@ -3,7 +3,7 @@ return {
     event = "VeryLazy",
     keys = {},
     opts = {
-        signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+        signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
         numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
         linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
         word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -15,9 +15,10 @@ return {
         status_formatter = nil, -- Use default
         max_file_length = 40000, -- Disable if file is longer than this (in lines)
 
-        yadm = {
-            enable = false
-        },
+        -- TODO: this was throwing a warning, check if it's still needed
+        -- yadm = {
+        --     enable = false
+        -- },
 
         watch_gitdir = {
             follow_files = true

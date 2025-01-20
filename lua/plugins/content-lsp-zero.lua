@@ -17,7 +17,7 @@ return {
         {
             "hrsh7th/nvim-cmp",
             dependencies = {
-                { "L3MON4D3/LuaSnip" }
+                { "L3MON4D3/LuaSnip", run = "make install_jsregexp" }
             }
         },
 
@@ -37,7 +37,7 @@ return {
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Definition" })
         vim.keymap.set("n", "gR", function() vim.lsp.buf.references() end, { desc = "References" })
         vim.keymap.set({ "n", "i" }, "<C-h>", function() vim.lsp.buf.hover() end, { desc = "Hover" })
-        vim.keymap.set({ "n", "i" }, "<C-/>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
+        vim.keymap.set({ "n", "i" }, "<C-/>", function() vim.diagnostic.open_float() end, { desc = "Show Diagnostic" })
     end,
     config = function()
         local lsp = require("lsp-zero").preset({
@@ -45,7 +45,7 @@ return {
             float_border = "single",
             -- reserve space in the gutter for glyphs showing status of line
             set_signcolumn = true,
-            -- whether to integrate wtihe nvim-cmp using lspconfig
+            -- whether to integrate with nvim-cmp using lspconfig
             extend_lspconfig = true,
         })
 
@@ -56,7 +56,7 @@ return {
             set_lsp_source = true,
             -- whether to emulate neovim's default completion bindings
             set_mappings = true,
-            -- whether to use luasnp to expand snippets
+            -- whether to use luasnip to expand snippets
             use_luasnip = true,
             -- whether the completion items will show a label identifying the source
             set_format = true,
@@ -90,42 +90,16 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
-                "zls", -- zig
-                "tsserver",
+                -- "zls", -- i am installing this manually now
+                -- "pyright", -- python
+                "clangd",
+                "ts_ls",
                 "eslint",
                 "denols",
                 "marksman", -- markdown
             },
             handlers = {
                 lsp.default_setup,
-                lua_ls = function()
-                    -- this needs to be adapted because it assumes neovim lua
-                    -- is the only lua project in system
-                    require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls({
-                        settings = {
-                            Lua = {
-                                telemetry = { enabled = false },
-                                format = {
-                                    enable = true,
-                                    -- who the fuck still thinks this is a good idea?
-                                    defaultConfig = {
-                                        align_call_args = "false",
-                                        align_function_params = "false",
-                                        align_continuous_assign_statement = "false",
-                                        align_continuous_rect_table_field = "false",
-                                        align_if_branch = "false",
-                                        align_array_table = "false",
-                                        align_continuous_similar_call_args = "false",
-                                        align_continuous_inline_comment = "false",
-                                    },
-                                },
-                            },
-                        },
-                        on_attach = function()
-                            require("neodev").setup({})
-                        end,
-                    }))
-                end
             },
         })
 
@@ -141,17 +115,85 @@ return {
         end)
 
         local nvim_lsp = require('lspconfig')
+
+        local on_attach = function(client)
+            if nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
+                -- write a message in order to determine if this is running
+                if client.name == "ts_ls" then
+                    vim.api.nvim_echo({ { "ts_ls was stopped", "Normal" } }, true, {})
+                    client.stop()
+                    return
+                end
+            end
+        end
+
+        nvim_lsp.lua_ls.setup(lsp.nvim_lua_ls({
+            on_attach = function(client, bufnr)
+                require("neodev").setup({})
+            end,
+            settings = {
+                Lua = {
+                    telemetry = { enabled = false },
+                    format = {
+                        enable = true,
+                        -- who still thinks this is a good idea?
+                        defaultConfig = {
+                            align_call_args = "false",
+                            align__params = "false",
+                            align_continuous_assign_statement = "false",
+                            align_continuous_rect_table_field = "false",
+                            align_if_branch = "false",
+                            align_array_table = "false",
+                            align_continuous_similar_call_args = "false",
+                            align_continuous_inline_comment = "false",
+                        },
+                    },
+                },
+            },
+            -- root_dir = function()
+            --     -- TODO: Improve this
+            --     return util.find_git_ancestor(vim.fn.getcwd()) or vim.loop.cwd()
+            -- end,
+        }))
+
+        nvim_lsp.clangd.setup {
+            on_attach = on_attach,
+            root_dir = nvim_lsp.util.root_pattern(".clangd"),
+            filetypes = { "c", "cuda" },
+            single_file_support = true,
+        }
+
         nvim_lsp.denols.setup {
             on_attach = on_attach,
             root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
         }
 
-        nvim_lsp.tsserver.setup {
+        nvim_lsp.ts_ls.setup {
             on_attach = on_attach,
             root_dir = nvim_lsp.util.root_pattern("package.json"),
             single_file_support = false
         }
 
+        -- nvim_lsp.zls.setup {
+        --     on_attach = on_attach,
+        --     root_dir = nvim_lsp.util.root_pattern(".git"),
+        --     -- TODO: this should be called with a config path
+        --     cmd = { "/home/etor/Source/gik.new/data/zig_zls/zig-out/bin/zls" },
+        --     settings = {
+        --         -- Docs: gik.new/data/zig_zls/src/tools/config.json
+        --         zls = {
+        --             zig_exe_path = "/home/etor/Source/gik.new/zig",
+        --             -- global_cache_path = "/home/etor/Source/gik.new/.zig-cache",
+        --             highlight_global_var_declarations = true,
+        --             warn_style = true,
+        --             semantic_tokens = "full",
+        --             enable_build_on_save = true,
+        --             enable_snippets = true,
+        --         },
+        --     },
+        -- }
+        --
         nvim_lsp.marksman.setup {}
     end
 }
+

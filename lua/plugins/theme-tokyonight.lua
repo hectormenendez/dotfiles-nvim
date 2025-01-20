@@ -6,12 +6,17 @@ return {
         transparent = true,
         terminal_colors = true,
         dim_inactive = true,
+        style = "storm",
+        use_background = true,
 
         sidebars = { -- different background for some buffers
             "qf",
             "help",
             "terminal"
-        }, 
+        },
+        -- on_colors = (colors)
+        --     colors.bg = "#ff0000"
+        -- end,
 
         -- make telescope borderless
         on_highlights = function(hl, c)
@@ -20,6 +25,7 @@ return {
             hl.CursorLine = { bg = indicator };
             hl.CursorColumn = { bg = indicator };
             hl.ColorColumn = { bg = indicator };
+            hl.BufferLineBackground = { bg = c.bg_dark };
 
             -- hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
             -- hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }

@@ -57,7 +57,7 @@ return {
             -- show status icons on directories
             show_on_dirs = true,
             show_on_open_dirs = true,
-            -- disable the functionality for these dirs
+            -- disable the ality for these dirs
             disable_for_dirs = {},
         },
         -- sorting for files and folders
@@ -81,11 +81,11 @@ return {
             centralize_selection = true,
             -- default: true; enable the cursor line in the tree
             cursorline = true,
-            width = {
-                min = 40,
-                max = "40%",
-                padding = 1,
-            },
+            -- width = {
+            --     min = 40,
+            --     max = "40%",
+            --     padding = 1,
+            -- },
             side = "right",
             preserve_window_proportions = false,
             -- enable line numbers
@@ -93,7 +93,7 @@ return {
             relativenumber = false,
         },
         filters = {
-            dotfiles = true,
+            dotfiles = false,
             git_ignored = false,
             custom = {
                 ".git$",
@@ -103,7 +103,7 @@ return {
         },
         actions = {
             change_dir = {
-                enable = true
+                enable = false
             },
             open_file = {
                 quit_on_open = true,
@@ -116,7 +116,7 @@ return {
             -- default: false; adds a trailing slahs to dirs
             add_trailing = true,
             -- default: false; make empty dirs compact
-            group_empty = true,
+            group_empty = false,
             -- if the name is wider than the window, show it ina float
             full_name = false,
             -- depends on `git` setting
@@ -141,7 +141,8 @@ return {
             special_files = {
                 "README.md",
                 "package.json",
-                "deno.json"
+                "deno.json",
+                "deno.jsonc",
             },
             -- on arch, install: ttf-nerd-fonts-symbols
             -- then visit: https://www.nerdfonts.com/cheat-sheet

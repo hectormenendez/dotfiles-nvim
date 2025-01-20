@@ -32,7 +32,7 @@ return {
         end
 
         require("neoclip").setup({
-            filter,
+            filter = filter,
             -- default: 1000
             history = 999999,
             enable_macro_history = true,
