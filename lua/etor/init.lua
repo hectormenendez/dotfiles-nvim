@@ -1,13 +1,13 @@
 local utils = require("etor.utils");
 local theme_set = require("etor.theme").theme_set;
 
--- TODO: Make a theme switcher
-theme_set("tokyonight-night");
---theme_set("tokyonight-storm");
---theme_set("tokyonight-day");
---theme_set("tokyonight-moon");
-
 require("etor.settings");
+
+if vim.g.neovide then
+    require("etor.neovide");
+end
+
+theme_set("tokyonight");
 
 utils.onload(function()
     -- hide command area.
@@ -45,4 +45,9 @@ utils.onload(function()
     vim.api.nvim_set_keymap('n', '//', ':%s/\\v', o)
     vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohlsearch<CR><Esc>', o)
     vim.api.nvim_set_keymap('n', '<Esc><Esc><Esc>', ':/^❌ 💩 /<CR>', o)
+
+    -- mapping» terminal»
+
+    -- easier to switch between terminal and normal mode
+    vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', o)
 end)
