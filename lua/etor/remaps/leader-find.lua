@@ -4,13 +4,13 @@ local key = "<leader>f";
 
 require("etor.utils").onload(function()
     local wk = require("which-key")
-    wk.register({ [key] = { name } })
+    wk.add({ key, desc = name })
 end)
 
 local M = {}
 
 M.files = {
-    { key .. "f", "<cmd>Telescope find_files<cr>", desc = name .. "files" },
+    { key .. "f", "<cmd>Telescope find_files recurse_submodules=false<cr>", desc = name .. "files" },
     { key .. "F", "<cmd>Telescope git_files<cr>", desc = name .. "git files" },
 }
 

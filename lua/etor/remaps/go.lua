@@ -7,7 +7,7 @@ M.key = "g"
 
 require("etor.utils").onload(function()
     local wk = require("which-key")
-    wk.register({ [M.key] = { name = M.name } })
+    wk.add({ M.key, desc = M.name })
 end)
 
 M.name_search = M.name .. "search: "

@@ -24,7 +24,9 @@ vim.opt.rtp:prepend(path_lazy)
 
 require("lazy").setup({
     -- where to look for plugins?
-    spec = "plugins",
+    spec = {
+        { import = "plugins" }
+    },
 
     change_detection = {
         notify = false,

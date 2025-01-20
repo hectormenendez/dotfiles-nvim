@@ -3,8 +3,6 @@ local M = {}
 M.key = "<leader>e"
 M.name = "explore: ";
 
-M.key_diag = M.key .. "d"
-M.name_diag = M.name .. "diagnostics"
 
 M.key_cont = M.key .. "/"
 M.name_cont = M.name .. "search & replace"
@@ -47,19 +45,25 @@ M.name_mang_lsp_d = M.name_mang_lsp .. "uninstall"
 
 require("etor.utils").onload(function()
     local wk = require("which-key")
-    wk.register({ [M.key] = { name = M.name } })
-    wk.register({ [M.key_term] = { name = M.name_term } })
-    wk.register({ [M.key_proj] = { name = M.name_proj } })
-    wk.register({ [M.key_mang] = { name = M.name_mang } })
-    wk.register({ [M.key_mang_lsp] = { name = M.name_mang_lsp } })
+    wk.add({ M.key, desc = M.name })
+    wk.add({ M.key_term, desc = M.name_term })
+    wk.add({ M.key_proj, desc = M.name_proj })
+    wk.add({ M.key_mang, desc = M.name_mang })
+    wk.add({ M.key_mang_lsp, desc = M.name_mang_lsp })
 
     -- adds lazy keybinding
     vim.keymap.set("n", M.key_mang_lazy, "<cmd>Lazy<cr>", { desc = M.name_mang_lazy })
 end)
 
+M.key_diag_d = M.key .. "d"
+M.name_diag_d = M.name .. "diagnostics: document"
+
+M.key_diag_w = M.key .. "D"
+M.name_diag_w = M.name .. "diagnostics: workspace"
 
 M.diag = {
-    { M.key_diag, "<cmd>TroubleToggle<cr>", desc = M.name_diag }
+    { M.key_diag_d, "<cmd>Trouble document_diagnostics<cr>", desc = M.name_diag_d },
+    { M.key_diag_w, "<cmd>Trouble workspace_diagnostics<cr>", desc = M.name_diag_w },
 }
 
 M.cont = {
@@ -79,7 +83,7 @@ M.git = {
 }
 
 M.undo = {
-    { M.key_undo, "<cmd>UndotreeToggle<cr>", desc = M.name_undo },
+    { M.key_undo, "<cmd>lua require('undotree').toggle()<cr>", desc = M.name_undo },
 }
 
 M.file = {
