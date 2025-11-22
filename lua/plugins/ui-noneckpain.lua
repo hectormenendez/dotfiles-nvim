@@ -6,7 +6,7 @@ return {
             -- default: true
             debug = false,
             -- default: 100
-            width = 130,
+            width = 150,
             -- default: 10
             minSideBufferWidth = 50,
             -- default: false
@@ -46,7 +46,7 @@ return {
                 },
                 undotree = {
                     -- default: "left"
-                    position = "left",
+                    position = "right"
                 },
             }
         })
