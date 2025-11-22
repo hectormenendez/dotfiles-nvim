@@ -56,9 +56,9 @@ end
 local augroup_hex_editor = vim.api.nvim_create_augroup('hex_editor', { clear = true })
 
 -- if yo're annoyed, just comment these out.
-vim.api.nvim_create_autocmd({ 'BufReadPre' }, { group = augroup_hex_editor, callback = buf_read_pre })
-vim.api.nvim_create_autocmd({ 'BufReadPost' }, { group = augroup_hex_editor, callback = buf_read_post })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, { group = augroup_hex_editor, callback = buf_write_pre })
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, { group = augroup_hex_editor, callback = buf_write_post })
+-- vim.api.nvim_create_autocmd({ 'BufReadPre' }, { group = augroup_hex_editor, callback = buf_read_pre })
+-- vim.api.nvim_create_autocmd({ 'BufReadPost' }, { group = augroup_hex_editor, callback = buf_read_post })
+-- vim.api.nvim_create_autocmd({ 'BufWritePre' }, { group = augroup_hex_editor, callback = buf_write_pre })
+-- vim.api.nvim_create_autocmd({ 'BufWritePost' }, { group = augroup_hex_editor, callback = buf_write_post })
 
 return {}
