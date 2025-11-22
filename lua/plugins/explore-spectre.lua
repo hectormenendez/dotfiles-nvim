@@ -1,4 +1,4 @@
-local utils = require("etor.utils");
+-- search and replace, dangerous stuff!
 
 return {
     "nvim-pack/nvim-spectre",

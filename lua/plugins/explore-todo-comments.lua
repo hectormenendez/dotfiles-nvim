@@ -23,7 +23,7 @@ return {
         sign_priority = 8,
         -- keywords recognized as todo comments
         keywords = {
-            BUG = { icon = "", color = "error" },
+            FAIL = { icon = "", color = "error", alt = {"ERROR", "BUG"}},
             TODO = { icon = "", color = "info" },
             WARN = { icon = "", color = "warning", alt = { "HACK" } },
             NOTE = { icon = "", color = "hint", alt = { "INFO" } },
