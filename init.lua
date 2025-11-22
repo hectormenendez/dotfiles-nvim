@@ -7,6 +7,9 @@ vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true 
 vim.g.mapleader = " ";
 vim.g.maplocalleader = " ";
 
+-- disable the welcome message
+vim.opt.shortmess = vim.opt.shortmess + { I = true }
+
 ------------------------------------------------------------ PACKAGE MANAGER
 
 local path_lazy = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -24,7 +27,9 @@ vim.opt.rtp:prepend(path_lazy)
 
 require("lazy").setup({
     -- where to look for plugins?
-    spec = "plugins",
+    spec = {
+        { import = "plugins" }
+    },
 
     change_detection = {
         notify = false,

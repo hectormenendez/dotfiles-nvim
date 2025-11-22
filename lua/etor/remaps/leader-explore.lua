@@ -3,8 +3,6 @@ local M = {}
 M.key = "<leader>e"
 M.name = "explore: ";
 
-M.key_diag = M.key .. "d"
-M.name_diag = M.name .. "diagnostics"
 
 M.key_cont = M.key .. "/"
 M.name_cont = M.name .. "search & replace"
@@ -17,18 +15,6 @@ M.name_undo = M.name .. "undo-tree"
 
 M.key_file = M.key .. "f"
 M.name_file = M.name .. "files"
-
-M.key_proj = M.key .. "p"
-M.name_proj = M.name .. "projects: "
-
-M.key_proj_save = M.key_proj .. "s"
-M.name_proj_save = M.name_proj .. "save"
-
-M.key_proj_sel = M.key_proj .. "p"
-M.name_proj_sel = M.name_proj .. "select"
-
-M.key_proj_del = M.key_proj .. "d"
-M.name_proj_del = M.name_proj .. "delete"
 
 M.key_term = M.key .. "t"
 M.name_term = M.name .. "term: "
@@ -59,19 +45,25 @@ M.name_mang_lsp_d = M.name_mang_lsp .. "uninstall"
 
 require("etor.utils").onload(function()
     local wk = require("which-key")
-    wk.register({ [M.key] = { name = M.name } })
-    wk.register({ [M.key_term] = { name = M.name_term } })
-    wk.register({ [M.key_proj] = { name = M.name_proj } })
-    wk.register({ [M.key_mang] = { name = M.name_mang } })
-    wk.register({ [M.key_mang_lsp] = { name = M.name_mang_lsp } })
+    wk.add({ M.key, desc = M.name })
+    wk.add({ M.key_term, desc = M.name_term })
+    wk.add({ M.key_proj, desc = M.name_proj })
+    wk.add({ M.key_mang, desc = M.name_mang })
+    wk.add({ M.key_mang_lsp, desc = M.name_mang_lsp })
 
     -- adds lazy keybinding
     vim.keymap.set("n", M.key_mang_lazy, "<cmd>Lazy<cr>", { desc = M.name_mang_lazy })
 end)
 
+M.key_diag_d = M.key .. "d"
+M.name_diag_d = M.name .. "diagnostics: document"
+
+M.key_diag_w = M.key .. "D"
+M.name_diag_w = M.name .. "diagnostics: workspace"
 
 M.diag = {
-    { M.key_diag, "<cmd>TroubleToggle<cr>", desc = M.name_diag }
+    { M.key_diag_d, "<cmd>Trouble document_diagnostics<cr>", desc = M.name_diag_d },
+    { M.key_diag_w, "<cmd>Trouble workspace_diagnostics<cr>", desc = M.name_diag_w },
 }
 
 M.cont = {
@@ -91,17 +83,27 @@ M.git = {
 }
 
 M.undo = {
-    { M.key_undo, "<cmd>UndotreeToggle<cr>", desc = M.name_undo },
+    { M.key_undo, "<cmd>lua require('undotree').toggle()<cr>", desc = M.name_undo },
 }
 
 M.file = {
     { M.key_file, "<cmd>NvimTreeToggle<cr>", desc = M.name_file },
 }
 
+--------------------------------------------------------------------------- PROJECTS
+
+M.key_proj = M.key .. "p"
+M.name_proj = M.name .. "projects: "
+
+M.key_proj_sel = M.key_proj .. "p"
+M.name_proj_sel = M.name_proj .. "select"
+
+M.key_proj_save = M.key_proj .. "s"
+M.name_proj_save = M.name_proj .. "save"
+
 M.proj = {
-    { M.key_proj_save, "<cmd>SessionSave<cr>", desc = M.name_proj_save },
-    { M.key_proj_sel, "<cmd>Autosession search<cr>", desc = M.name_proj_sel },
-    { M.key_proj_del, "<cmd>Autosession delete<cr>", desc = M.name_proj_del },
+    { M.key_proj_sel, "<cmd>WorkspacesOpen<cr>", desc = M.name_proj_sel },
+    { M.key_proj_save, "<cmd>SessionsSave<cr>", desc = M.name_proj_save },
 }
 
 M.term = {

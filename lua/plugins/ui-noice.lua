@@ -1,3 +1,5 @@
+-- notifications
+
 local utils = require("etor.utils")
 local c = require("etor.theme").theme_colors;
 
@@ -16,7 +18,11 @@ return {
     event = "VeryLazy",
     dependencies = {
         "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
+        {
+            "rcarriga/nvim-notify",
+            -- for some reason this setting is not working in the `views` section
+            opts = { top_down = false } -- force bottom-right
+        },
     },
     config = function()
         local notify_render_base = require("notify.render.base");
@@ -70,6 +76,13 @@ return {
                         end
                     }
                 },
+                {
+                    filter = {
+                        event = "msg_show",
+                        kind = "shell_out",
+                    },
+                    opts = { skip = true },
+                },
             },
             views = {
                 -- customize notifications
@@ -77,7 +90,6 @@ return {
                     stages = "slide",
                     fps = 60,
                     timeout = 3000,
-                    top_down = false,
                     -- @see https://github.com/rcarriga/nvim-notify/blob/master/lua/notify/render/minimal.lua
                     render = function(buffer, notification, highlights)
                         -- prepend a space so notification text have a little more room

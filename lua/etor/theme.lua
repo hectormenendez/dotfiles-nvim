@@ -11,10 +11,14 @@ M.theme_icons = {
 
 M.theme_colors = {
     litest = "#EEEFEF",
-    liter = "slategray",
+    liter = "#708090",
     lite = "#242839",
     darkst = "#10121A",
     darker = "#262A3D",
+
+    literish = "#506070",
+    litestish = "#BBBCBC",
+
     mode_c_fg = "orange",
     mode_c_bg = "crimson",
     mode_v_fg = "midnightblue",

@@ -15,10 +15,7 @@ return {
     -- insert configuration here
     opts = {
         -- Automatically setup triggers
-        triggers = "auto", -- { "<leader>" },
-
-        -- enable this to hide mappings for which you didn't specify a label
-        ignore_missing = false,
+        triggers = { "<auto>", mode = "nxsot" },
 
         -- shows a message in the commandline to know how to use the plugin
         show_help = true,
@@ -46,39 +43,39 @@ return {
             },
         },
 
-        -- Used to override the default display of certain keys
-        key_labels = {
-            -- ["<space>"] = "SPC",
-        },
-
-        -- Overrides to the icons shown in the UI
+        -- Disable icons all-together, we like our text, plain.
         icons = {
-            -- used in the command line area, shows your active key combo
-            breadcrumb = "»",
-            -- used between a key and it's label
-            separator = "",
-            -- symbol prepended to a group
-            group = "+",
+            rules = false,
+            mappings = false,
         },
 
-        -- hides mappings
-        hidden = {
-            -- "<silent>",
-        },
-        -- on the following, the plugin will showup immediately
-        triggers_nowait = {
-            -- marks
-            "`", "'", "g`", "g'",
-            -- registers
-            '"', "<c-r>",
-            -- spelling
-            "z=",
-        },
-        -- ignore keys in certain modes
-        triggers_blacklist = {
-            i = { "j", "k" },
-            v = { "j", "k" },
-        },
+        delay = function(ctx)
+            local marks = { "'", "`", "g'", "g`" }
+            local registers = { '"', "<c-r>" }
+            local spelling = { "z=" }
+            -- join all the tables
+            local no_delay = vim.tbl_extend("force", marks, registers, spelling)
+            -- if the key is in the table, then no delay
+            if vim.tbl_contains(no_delay, ctx.keys) then
+                return 0
+            end
+
+            return ctx.plugin and 0 or 200
+        end,
+
+        filter = function(mapping)
+            -- -- mappings without a description get filtered
+            -- if mapping.desc and mapping.desc == "" then
+            --     return false
+            -- end
+            -- excluide in insert mode the j and k keys
+            local mode_i_or_v = mapping.mode == "i" or mapping.mode == "v"
+            if mode_i_or_v and (mapping.keys == "j" or mapping.keys == "k") then
+                return false
+            end
+            return true
+        end,
+
         -- disable the plugin either by filetype or buffer type
         disable = {
             buftypes = {},
@@ -86,4 +83,3 @@ return {
         },
     },
 }
-

@@ -24,44 +24,75 @@ return {
             show_buffer_close_icons = false,
         },
         highlights = {
+
+            -- this is the background of the bar
+
             fill = {
                 fg = "None",
                 bg = theme_colors.darkst,
             },
+
+            -- these are the inactive ones
+
+            background = {
+                fg = theme_colors.literish,
+                bg = theme_colors.darker,
+            },
             separator = {
                 fg = theme_colors.darkst,
-                bg = theme_colors.darkst,
+                bg = theme_colors.darker,
             },
+            duplicate = { -- the folder
+                fg = theme_colors.literish,
+                bg = theme_colors.darker,
+                bold = false,
+                italic = false,
+            },
+
+
+            -- these are the currently active
+
             separator_selected = {
                 fg = theme_colors.darkst,
-                bg = "None",
-            },
-            separator_visible = {
-                fg = theme_colors.darkst,
-                bg = theme_colors.darkst,
-            },
-            background = {
-                fg = theme_colors.darker,
-                bg = theme_colors.darkst,
+                bg = theme_colors.litestish,
             },
             buffer_selected = {
-                fg = theme_colors.litest,
-                bg = "None",
+                fg = theme_colors.darkst,
+                bg = theme_colors.litestish,
                 bold = true,
                 italic = false,
             },
-            buffer_visible = {
-                fg = theme_colors.darker,
-                bg = theme_colors.darkst,
+            modified_selected = {
+                fg = theme_colors.darkst,
+                bg = theme_colors.litestish,
             },
-            modified_visible = {
-                bg = theme_colors.darkst,
-            },
-            duplicate = {
-                fg = theme_colors.lite,
-                bg = theme_colors.darkst,
+            duplicate_selected = { -- the folder
+                fg = theme_colors.darkst,
+                bg = theme_colors.litestish,
+                bold = false,
                 italic = false,
             },
+
+
+            -- these two are the visible but not selected
+
+            separator_visible = {
+                fg = theme_colors.darkst,
+                bg = theme_colors.liter,
+            },
+            buffer_visible = {
+                fg = theme_colors.darker,
+                bg = theme_colors.liter,
+            },
+            modified_visible = {
+                fg = theme_colors.darker,
+                bg = theme_colors.liter,
+            },
+
+            -- duplicate_visible = {
+            --     fg = "cyan",
+            --     bg = "yellow",
+            -- },
             -- tab = {
             --     fg = "cyan",
             --     bg = "magenta",
@@ -78,7 +109,6 @@ return {
             --     fg = "cyan",
             --     bg = "magenta",
             --     sp = "yellow",
-            --     underline = "red",
             -- },
             -- tab_close = {
             --     fg = "cyan",
@@ -256,16 +286,7 @@ return {
             --     fg = "cyan",
             --     bg = "magenta",
             -- },
-            -- modified_selected = {
-            --     fg = "cyan",
-            --     bg = "magenta",
-            -- },
             -- duplicate_selected = {
-            --     fg = "cyan",
-            --     bg = "magenta",
-            --     italic = true,
-            -- },
-            -- duplicate_visible = {
             --     fg = "cyan",
             --     bg = "magenta",
             --     italic = true,

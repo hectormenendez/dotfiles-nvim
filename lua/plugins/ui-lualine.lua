@@ -34,7 +34,7 @@ return {
                     normal = {
                         a = { fg = theme_colors.darker, bg = theme_colors.darkst },
                         b = { fg = theme_colors.liter, bg = theme_colors.darker },
-                        c = { fg = theme_colors.darker, bg = theme_colors.darkst },
+                        c = { fg = theme_colors.liter, bg = theme_colors.darkst },
                         z = { fg = theme_colors.liter, bg = theme_colors.darker },
                     },
                     insert = {
@@ -75,7 +75,7 @@ return {
                     "diff",
                     { "diagnostics", symbols = theme_icons.diagnostics }
                 },
-                lualine_c = { "filename" },
+                lualine_c = { { "filename", path = 1 } },
                 lualine_x = {
                     "encoding",
                     {

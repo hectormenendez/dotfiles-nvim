@@ -12,7 +12,7 @@ return {
         local wk = require("which-key")
         local td = require("todo-comments")
         local name = "todos: "
-        wk.register({ ["gt"] = { name } })
+        wk.add({ "gt", desc = name, })
         vim.keymap.set("n", "gtn", function() td.jump_next() end, { desc = name .. "next" });
         vim.keymap.set("n", "gtp", function() td.jump_prev() end, { desc = name .. "prev" });
     end,
@@ -23,7 +23,7 @@ return {
         sign_priority = 8,
         -- keywords recognized as todo comments
         keywords = {
-            BUG  = { icon = "", color = "error" },
+            FAIL = { icon = "", color = "error", alt = {"ERROR", "BUG"}},
             TODO = { icon = "", color = "info" },
             WARN = { icon = "", color = "warning", alt = { "HACK" } },
             NOTE = { icon = "", color = "hint", alt = { "INFO" } },
@@ -32,6 +32,9 @@ return {
             fg = "None", -- The gui style to use for the fg highlight group.
             bg = "Bold", -- The gui style to use for the bg highlight group.
         },
+        -- default: true, custom keywords will be merged with the defaults
+        merge_keywords = false,
+
         -- highlighting of the line containing the todo comment
         --    - before: highlights before the keyword (typically comment characters)
         --    - keyword: highlights of the keyword
@@ -48,7 +51,11 @@ return {
             -- surrounding characters, wide_fg acts accordingly but with fg)
             keyword = "wide",
             -- pattern or table of patterns, used for highlighting (vim regex)
-            pattern = [[.*<(KEYWORDS)\s*:]],
+            pattern = {
+                -- matches keyword specified above
+                [[.*<(KEYWORDS)\s*:]],
+                -- matches `![ ] >|`
+            },
             -- uses treesitter to match keywords in comments only
             comments_only = true,
             -- ignore lines longer than this
