@@ -1,3 +1,5 @@
+-- notifications
+
 local utils = require("etor.utils")
 local c = require("etor.theme").theme_colors;
 
@@ -73,6 +75,13 @@ return {
                             return true
                         end
                     }
+                },
+                {
+                    filter = {
+                        event = "msg_show",
+                        kind = "shell_out",
+                    },
+                    opts = { skip = true },
                 },
             },
             views = {
