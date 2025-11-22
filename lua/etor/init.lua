@@ -19,12 +19,15 @@ utils.onload(function()
     vim.api.nvim_set_keymap('n', '<Left>', '<Nop>', o)
     vim.api.nvim_set_keymap('v', '<Left>', '<Nop>', o)
     vim.api.nvim_set_keymap('i', '<Left>', '<Nop>', o)
+
     vim.api.nvim_set_keymap('n', '<Right>', '<Nop>', o)
     vim.api.nvim_set_keymap('v', '<Right>', '<Nop>', o)
     vim.api.nvim_set_keymap('i', '<Right>', '<Nop>', o)
+
     vim.api.nvim_set_keymap('n', '<Up>', '<Nop>', o)
     vim.api.nvim_set_keymap('v', '<Up>', '<Nop>', o)
     vim.api.nvim_set_keymap('i', '<Up>', '<Nop>', o)
+
     vim.api.nvim_set_keymap('n', '<Down>', '<Nop>', o)
     vim.api.nvim_set_keymap('v', '<Down>', '<Nop>', o)
     vim.api.nvim_set_keymap('i', '<Down>', '<Nop>', o)

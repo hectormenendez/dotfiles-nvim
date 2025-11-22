@@ -46,19 +46,19 @@ vim.o.linespace = 4
 vim.o.termguicolors = false
 
 -- Cursor appearance and animation settings
-vim.o.guicursor = "n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait800-blinkoff800-blinkon800-Cursor/lCursor"
-vim.g.neovide_cursor_animation_length = 0.09
-vim.g.neovide_cursor_trail_size = 0.7
-vim.g.neovide_cursor_antialiasing = true
-vim.g.neovide_cursor_animate_in_insert_mode = true
-vim.g.neovide_cursor_animate_command_line = true
-vim.g.neovide_cursor_unfocused_outline_width = 0.1
-vim.g.neovide_cursor_smooth_blink = true
-vim.g.neovide_cursor_vfx_mode = "railgun"
-vim.g.neovide_cursor_vfx_opeacity = 200.00
-vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
-vim.g.neovide_cursor_vfx_particle_density = 7.0
-vim.g.neovide_cursor_vfx_particle_speed = 10.0
+-- vim.o.guicursor = "n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait800-blinkoff800-blinkon800-Cursor/lCursor"
+-- vim.g.neovide_cursor_animation_length = 0.03
+-- vim.g.neovide_cursor_trail_size = 0.7
+-- vim.g.neovide_cursor_antialiasing = true
+-- vim.g.neovide_cursor_animate_in_insert_mode = true
+-- vim.g.neovide_cursor_animate_command_line = true
+-- vim.g.neovide_cursor_unfocused_outline_width = 0.1
+-- vim.g.neovide_cursor_smooth_blink = true
+-- vim.g.neovide_cursor_vfx_mode = "railgun"
+-- vim.g.neovide_cursor_vfx_opeacity = 200.00
+-- vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
+-- vim.g.neovide_cursor_vfx_particle_density = 7.0
+-- vim.g.neovide_cursor_vfx_particle_speed = 10.0
 -- for railgun only
 vim.g.neovide_cursor_vfx_particle_phase = 1.5
 vim.g.neovide_cursor_vfx_particle_curl = 0.4
