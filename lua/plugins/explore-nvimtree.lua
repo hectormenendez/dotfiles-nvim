@@ -14,8 +14,8 @@ return {
         -- default: true; reload explored when a write happens.
         auto_reload_on_write = true,
         -- default: false; open nvimtree in place of unnamed buffer
-        hijack_unnamed_buffer_when_opening = false,
-        -- default: false; keeps the cursor on the first letter of each item
+        hijack_unnamed_buffer_when_opening = true,
+        -- default: false; keeps the cursor on the  letter of each item
         hijack_cursor = true,
         -- uncollapses the folders recursively until it finds the file
         -- default: {}; update focused file on tree on BufEnter.
@@ -65,7 +65,7 @@ return {
             -- default: name; available: modification_time, extension, suffix, filetype
             sorter = "case_sensitive",
             -- default: true;
-            folders_first = true,
+            folders_first = false,
         },
         -- shows whether files have modifications
         -- dependes on `renderer.icons.show.modified` or `renderer.highlight_modified`
@@ -78,27 +78,31 @@ return {
         -- modify the window behaviour
         view = {
             -- default: false; the initial node will be the one in the middle
-            centralize_selection = true,
+            centralize_selection = false,
             -- default: true; enable the cursor line in the tree
             cursorline = true,
-            -- width = {
-            --     min = 40,
-            --     max = "40%",
-            --     padding = 1,
-            -- },
+            width = {
+                min = 40,
+                max = "40%",
+                padding = 1,
+            },
             side = "right",
-            preserve_window_proportions = false,
+            preserve_window_proportions = true,
             -- enable line numbers
-            number = false,
-            relativenumber = false,
+            number = true,
+            relativenumber = true,
         },
         filters = {
             dotfiles = false,
             git_ignored = false,
             custom = {
-                ".git$",
-                ".pyc$",
+                "\\.git$",
+                "\\.pyc$",
                 "node_modules$",
+                "\\.o$", -- zig's build-exe
+                "hub/.lib$", -- ~/Source/gik.new/hub/.lib
+                "hub/codegen/.lib$", -- ~/Source/gik.new/hub/.lib
+                "\\.zig-cache$",
             },
         },
         actions = {
@@ -106,7 +110,7 @@ return {
                 enable = false
             },
             open_file = {
-                quit_on_open = true,
+                quit_on_open = false,
                 resize_window = true,
             },
         },
@@ -118,13 +122,13 @@ return {
             -- default: false; make empty dirs compact
             group_empty = false,
             -- if the name is wider than the window, show it ina float
-            full_name = false,
+            full_name = true,
             -- depends on `git` setting
             highlight_git = true,
             -- default: none; available: "icon", "name", "all".
             highlight_opened_files = "all",
             -- depends on `modified` setting
-            highlight_modified = "icon",
+            highlight_modified = "all",
             -- default: 2;
             indent_width = 4,
             indent_markers = {
