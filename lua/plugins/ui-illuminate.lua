@@ -1,3 +1,4 @@
+-- highlights all other matches of word under the cursor
 return {
     "RRethy/vim-illuminate",
     lazy = false,
