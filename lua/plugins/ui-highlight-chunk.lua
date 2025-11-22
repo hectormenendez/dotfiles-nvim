@@ -29,7 +29,10 @@ return {
                 use_treesitter = true,
                 chars = {
                     "▏",
-                }
+                },
+                exclude_filetypes = {
+                    markdown = true,
+                },
             },
             line_num = {
                 enable = false,
